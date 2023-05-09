@@ -1,0 +1,28 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ns2:queryIMSIInfoReqMsg xmlns:ns2="http://www.huawei.com/bes/crminterface/invservices">
+            <querySubReqHeader>
+                <ns1:version xmlns:ns1="http://www.huawei.com/bes/crminterface/crmheader">1</ns1:version>
+                <ns1:businessCode xmlns:ns1="http://www.huawei.com/bes/crminterface/crmheader">queryIMSIInfo</ns1:businessCode>
+                <ns1:messageSeq xmlns:ns1="http://www.huawei.com/bes/crminterface/crmheader">714_20180818_134245_123256227890</ns1:messageSeq>
+                <queryBalanceOwnershipInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <beId>10101</beId>
+                    <regionId>10101</regionId>
+                </queryBalanceOwnershipInfo>
+                <accessSecurity xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <loginSystemCode>714</loginSystemCode>
+                    <password>kQwkaEwWU0gravIASYtwcf0XZq2BP0ahtPj/DKXeZyE=</password>
+                </accessSecurity>
+                <operatorInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <operatorId>714</operatorId>
+                    <orgId>10101</orgId>
+                </operatorInfo>
+                <ns1:channelType xmlns:ns1="http://www.huawei.com/bes/crminterface/crmheader">714</ns1:channelType>
+            </querySubReqHeader>
+            <queryIMSIInfoRequest>
+                <ns2:mobileNumber>9190771622</ns2:mobileNumber>
+            </queryIMSIInfoRequest>
+        </ns2:queryIMSIInfoReqMsg>
+    </soapenv:Body>
+</soapenv:Envelope>

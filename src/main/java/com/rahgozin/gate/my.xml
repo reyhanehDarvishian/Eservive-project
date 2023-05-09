@@ -1,0 +1,32 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cms:queryEntityIdReqMsg xmlns:cms="http://www.huawei.com/bes/crminterface/cmservices">
+            <requestHeader>
+                <crm:version xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">1</crm:version>
+                <crm:businessCode xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">queryEntityId</crm:businessCode>
+                <crm:messageSeq xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">663_20180818_121905_316024179170</crm:messageSeq>
+                <ownershipInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <beId>10101</beId>
+                    <regionId>10101</regionId>
+                </ownershipInfo>
+                <accessSecurity xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <loginSystemCode>714</loginSystemCode>
+                    <password>i3qsntAtJug0YxeTIr+7Ij0gR9Dgz02gTwWd3E9uhfI=</password>
+                </accessSecurity>
+                <operatorInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
+                    <operatorId>714</operatorId>
+                    <orgId>714</orgId>
+                </operatorInfo>
+                <crm:channelType xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">714</crm:channelType>
+            </requestHeader>
+            <queryEntityIdRequest>
+                <cms:queryObj>
+                    <cms:subAccessCode>
+                        <cms:primaryIdentity>9921905802</cms:primaryIdentity>
+                    </cms:subAccessCode>
+                </cms:queryObj>
+            </queryEntityIdRequest>
+        </cms:queryEntityIdReqMsg>
+    </soapenv:Body>
+</soapenv:Envelope>

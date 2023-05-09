@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "custom.rest.connection.read-timeout",
+      "type": "java.lang.String",
+      "description": "Description for custom.rest.connection.read-timeout."
+  }
+] }
