@@ -6,10 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class QueryFreeUnitBodyRes {
-    @JsonProperty("bbs:QueryFreeUnitResultMsg")
+    @JsonProperty("QueryFreeUnitResultMsg")
     QueryFreeUnitResultMsg queryFreeUnitResultMsg;
 
-    @XmlElement(name = "bbs:QueryFreeUnitResultMsg")
+    @XmlElement(name = "QueryFreeUnitResultMsg")
     public QueryFreeUnitResultMsg getQueryFreeUnitResultMsg() {
         if (queryFreeUnitResultMsg == null) queryFreeUnitResultMsg = new QueryFreeUnitResultMsg();
         return queryFreeUnitResultMsg;

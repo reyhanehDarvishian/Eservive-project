@@ -4,14 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryBalance.request.*;
+import com.rahgozin.gate.dto.queryBalance.response.QueryBalanceResEnvelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 @Service
 public class QueryBalanceService {
@@ -29,13 +28,12 @@ public class QueryBalanceService {
         this.tokenService = tokenService;
     }
 
-    public Map<String, String> queryBalanceService() {
+    public QueryBalanceResEnvelope queryBalanceService(String phoneNumber) {
         QueryBalanceEnvelopeReq queryBalanceEnvelopeReq = new QueryBalanceEnvelopeReq();
         QueryBalanceBody queryBalanceBody = new QueryBalanceBody();
         QueryBalanceRequestMsg queryBalanceRequestMsg = new QueryBalanceRequestMsg();
         QueryBalanceReqHeader queryBalanceReqHeader = new QueryBalanceReqHeader();
         QueryBalanceRequest queryBalanceRequest = new QueryBalanceRequest();
-
         queryBalanceReqHeader.getVersion().setVersion(applicationProperties.getQueryBalanceConnection().getVersion());
         queryBalanceReqHeader.getBusinessCode().setBusinessCode(applicationProperties.getQueryBalanceConnection()
                 .getBusinessCode());
@@ -50,20 +48,15 @@ public class QueryBalanceService {
                 .getOperatorID());
         queryBalanceReqHeader.getOperatorInfoReq().setChannelId(applicationProperties.getQueryBalanceConnection()
                 .getChannelID());
-
-        queryBalanceRequest.getQueryObj().getSubAccessCode().getPrimaryIdentity()
-                .setPrimaryIdentity(applicationProperties.getQueryBalanceConnection().getPrimaryIdentity());
-
+        queryBalanceRequest.getQueryObj().getSubAccessCode().getPrimaryIdentity().setPrimaryIdentity(phoneNumber);
         queryBalanceRequestMsg.setQueryBalanceReqHeader(queryBalanceReqHeader);
         queryBalanceRequestMsg.setQueryBalanceRequest(queryBalanceRequest);
         queryBalanceBody.setQueryBalanceRequestMsg(queryBalanceRequestMsg);
         queryBalanceEnvelopeReq.setBody(queryBalanceBody);
-
         HttpHeaders queryBalanceHeaders = new HttpHeaders();
         queryBalanceHeaders.add(HttpHeaders.AUTHORIZATION, tokenService.getQueryBalanceToken());
         queryBalanceHeaders.add("soapaction", "QueryBalance");
         queryBalanceHeaders.add(HttpHeaders.CONTENT_TYPE, "application/xml");
-
         HttpEntity<String> queryBalanceResBody = null;
         try {
             queryBalanceResBody =
@@ -71,7 +64,6 @@ public class QueryBalanceService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return queryBalanceRestTemplate.postForEntity(applicationProperties.getQueryBalanceConnection().getBaseUrl(), queryBalanceResBody, Map.class).getBody();
+        return queryBalanceRestTemplate.postForEntity(applicationProperties.getQueryBalanceConnection().getBaseUrl(), queryBalanceResBody, QueryBalanceResEnvelope.class).getBody();
     }
-
 }

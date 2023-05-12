@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryBusinessFee.request.*;
-import org.json.JSONObject;
-import org.json.XML;
+import com.rahgozin.gate.dto.queryBusinessFee.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
@@ -34,13 +33,13 @@ public class QueryBusinessFeeService {
         this.tokenService = tokenService;
     }
 
-    public Object queryBusinessFee() {
+    public BusinessFeeResEnvelope queryBusinessFee(String phoneNumber) {
         QueryBusinessFeeEnvelope businessFeeEnvelope = new QueryBusinessFeeEnvelope();
         QueryBusinessFeeReqBody queryBusinessFeeReqBody = new QueryBusinessFeeReqBody();
         QueryBusinessFeeReqMsg businessFeeReqMsg = new QueryBusinessFeeReqMsg();
         QueryBusinessFeeRequest queryBusinessFeeRequest = new QueryBusinessFeeRequest();
         QueryBusinessFeeReqHeader queryBusinessFeeReqHeader = new QueryBusinessFeeReqHeader();
-        List<BusinessFeeSimpleProperty> businessFeeSimplePropertyList = new ArrayList<>();
+        List<BusinessFeeAdditionalProperty> businessFeeAdditionalPropertyList = new ArrayList<>();
 
         queryBusinessFeeReqHeader
                 .setVersion(applicationProperties.getQueryBusinessFeeConnection().getVersion());
@@ -69,12 +68,12 @@ public class QueryBusinessFeeService {
         queryBusinessFeeReqHeader
                 .setBusinessFeeChannelTypeReq(applicationProperties.getQueryBusinessFeeConnection().getChannelType());
 
-        businessFeeSimplePropertyList.add(new BusinessFeeSimpleProperty("ChangeSIMReasonCode", "1"));
-        businessFeeSimplePropertyList.add(new BusinessFeeSimpleProperty("New_ICCID", "8998112900008650523"));
-        queryBusinessFeeRequest.setBusinessFeeAdditionalProperty(businessFeeSimplePropertyList);
+        businessFeeAdditionalPropertyList.add(new BusinessFeeAdditionalProperty("ChangeSIMReasonCode", "1"));
+        businessFeeAdditionalPropertyList.add(new BusinessFeeAdditionalProperty("New_ICCID", "8998112900008650523"));
+        queryBusinessFeeRequest.setBusinessFeeAdditionalProperty(businessFeeAdditionalPropertyList);
         queryBusinessFeeRequest
                 .getBusinessFeeQueryObj().getBusinessFeeSubAccessCode()
-                .setPrimaryIdentity(applicationProperties.getQueryBusinessFeeConnection().getPrimaryIdentity());
+                .setPrimaryIdentity(phoneNumber);
         queryBusinessFeeRequest
                 .setBusinessCode(applicationProperties.getQueryBusinessFeeConnection().getBusinessCode2());
         businessFeeReqMsg.setBusinessFeeReqHeader(queryBusinessFeeReqHeader);
@@ -93,6 +92,6 @@ public class QueryBusinessFeeService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return queryBusinessFeeRestTemplate.postForEntity(applicationProperties.getQueryBusinessFeeConnection().getBaseUrl(), queryBusinessFeeResBody, String.class).getBody();
+        return queryBusinessFeeRestTemplate.postForEntity(applicationProperties.getQueryBusinessFeeConnection().getBaseUrl(), queryBusinessFeeResBody, BusinessFeeResEnvelope.class).getBody();
     }
 }

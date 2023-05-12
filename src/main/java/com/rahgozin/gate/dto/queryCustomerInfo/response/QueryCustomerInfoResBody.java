@@ -10,12 +10,12 @@ public class QueryCustomerInfoResBody {
 	QueryCustomerInfoRspMsg queryCustomerInfoRspMsg;
 
     @XmlElement(name = "queryCustomerInfoRspMsg")
-    public QueryCustomerInfoRspMsg getQueryCustomerInfoRspMsgBean() {
+    public QueryCustomerInfoRspMsg getQueryCustomerInfoRspMsg() {
         if (queryCustomerInfoRspMsg == null) queryCustomerInfoRspMsg = new QueryCustomerInfoRspMsg();
         return queryCustomerInfoRspMsg;
     }
 
-    public void setQueryCustomerInfoRspMsgBean(QueryCustomerInfoRspMsg queryCustomerInfoRspMsg) {
+    public void setQueryCustomerInfoRspMsg(QueryCustomerInfoRspMsg queryCustomerInfoRspMsg) {
         this.queryCustomerInfoRspMsg = queryCustomerInfoRspMsg;
     }
 }

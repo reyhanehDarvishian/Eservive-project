@@ -2,7 +2,7 @@ package com.rahgozin.gate.dto.queryAccountInfo.response;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class ExtPropertiesBean {
+public class ExtProperties {
     String code;
     String value;
 

@@ -32,22 +32,13 @@ public class NewQueryCustService {
         this.tokenService = tokenService;
         this.entityIdService = entityIdService;
     }
-    public Object newQueryCustomer(Pageable pageable,String phoneNumber) {
-        JSONObject customerIdJSONObj = XML.toJSONObject(String.valueOf(entityIdService.entityId(phoneNumber))); // ino fix konam, string nemide.
-        JSONArray entityInfo = null;
-        JSONObject customerId = null;
-        String customerIdValue = "";
-        entityInfo = (JSONArray) customerIdJSONObj.get("entityInfo");
-        if (entityInfo.getJSONObject(0).equals("C")) {
-            customerId = entityInfo.getJSONObject(1);
-            customerIdValue = customerId.getString("entityId");
-        }
+    public QuerySubEnvelopeRes newQueryCustomer(Pageable pageable,String phoneNumber) {
+        String customerId = (entityIdService.entityId(phoneNumber).getBody().getQueryEntityIdRspMsg().getQueryEntityIdResponse().getEntityInfos().get(2).getEntityId());
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();
         QuerySubscriberReq querySubscriberReq = new QuerySubscriberReq();
         QuerySubscriberReqMsg querySubscriberReqMsg = new QuerySubscriberReqMsg();
         QuerySubReqHeader querySubReqHeader = new QuerySubReqHeader();
-
         querySubReqHeader.setVersion(applicationProperties.getQuerySubscriberConnection().getVersion());
         querySubReqHeader.setBusinessCode(applicationProperties.getQuerySubscriberConnection().getBusinessCode());
         querySubReqHeader.setMessageSeq("BHS_TEST_${=((int)(Math.random()*(9999999-1000000)+1000000))}");
@@ -56,7 +47,6 @@ public class NewQueryCustService {
         querySubReqHeader.getAccessSecurity().setLoginSystemCode(applicationProperties.getQuerySubscriberConnection().getLoginSystemCode());
         querySubReqHeader.getAccessSecurity().setPassword("i3qsntAtJug0YxeTIr+7Ij0gR9Dgz02gTwWd3E9uhfI");
         querySubReqHeader.getOperatorInfo().setOperatorId(applicationProperties.getQuerySubscriberConnection().getOperatorId());
-
         querySubscriberReq.getIncludeObjRequest().setIncludeOfferFlag(applicationProperties.getQuerySubscriberConnection().getIncludeOfferFlag());
         querySubscriberReq.getIncludeObjRequest().setIncludeHistoryFlag(applicationProperties.getQuerySubscriberConnection().getIncludeHistoryFlag());
         querySubscriberReq.getIncludeObjRequest().setIncludeProdFlag(applicationProperties.getQuerySubscriberConnection().getIncludeProdFlag());
@@ -64,9 +54,8 @@ public class NewQueryCustService {
         querySubscriberReq.getPageQueryRequest().setPageSize(pageable.getPageSize());
         querySubscriberReq.getPageQueryRequest().setStartNum((int) pageable.getOffset());
         querySubscriberReq.getPageQueryRequest().setTotalNum(pageable.getPageSize());
-        querySubscriberReq.getQueryObjRequest().getCustAccessCodeReq().setCustomerId(customerIdValue);
+        querySubscriberReq.getQueryObjRequest().getCustAccessCodeReq().setCustomerId(customerId);
         querySubscriberReqMsg.setRequestHeader(querySubReqHeader);
-
         querySubscriberReqMsg.setQuerySubscriberRequestList(querySubscriberReq);
         querySubBodyReq.setQuerySubscriberReqMsg(querySubscriberReqMsg);
         querySubEnvelopeReq.setBody(querySubBodyReq);

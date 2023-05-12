@@ -9,12 +9,12 @@ public class QueryBalanceResBody {
 	QueryBalanceResultMsg queryBalanceResultMsg;
 
     @XmlElement(name = "QueryBalanceResultMsg")
-    public QueryBalanceResultMsg getQueryBalanceResultMsgBean() {
+    public QueryBalanceResultMsg getQueryBalanceResultMsg() {
         if (queryBalanceResultMsg == null) queryBalanceResultMsg = new QueryBalanceResultMsg();
         return queryBalanceResultMsg;
     }
 
-    public void setQueryBalanceResultMsgBean(QueryBalanceResultMsg queryBalanceResultMsg) {
+    public void setQueryBalanceResultMsg(QueryBalanceResultMsg queryBalanceResultMsg) {
         this.queryBalanceResultMsg = queryBalanceResultMsg;
     }
 }

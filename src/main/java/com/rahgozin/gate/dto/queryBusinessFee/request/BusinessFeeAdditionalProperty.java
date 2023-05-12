@@ -5,7 +5,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class BusinessFeeSimpleProperty {
+public class BusinessFeeAdditionalProperty {
     @JacksonXmlProperty(isAttribute = true, localName = "xmlns:com")
     private String schemaLocation = "http://www.huawei.com/bes/crminterface/common";
 
@@ -33,7 +33,7 @@ public class BusinessFeeSimpleProperty {
         this.value = value;
     }
 
-    public BusinessFeeSimpleProperty(String code, String value) {
+    public BusinessFeeAdditionalProperty(String code, String value) {
         this.code = code;
         this.value = value;
     }

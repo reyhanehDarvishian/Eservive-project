@@ -56,4 +56,9 @@ public class TokenJob {
     public void queryFreeUnitJob() {
         tokenService.reNewQueryFreeUnitToken();
     }
+
+    //    @Scheduled(fixedRateString = "${scheduler-time}")
+    public void customerClubInquiryScoreJob() {
+        tokenService.reNewCustomerClubInquiryScoreToken();
+    }
 }

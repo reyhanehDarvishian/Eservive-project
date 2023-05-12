@@ -7,17 +7,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class FreeUnitItem {
-	@JsonProperty("bbs:FreeUnitType")
 	String freeUnitType;
-	@JsonProperty("bbs:FreeUnitTypeName")
 	String freeUnitTypeName;
-	@JsonProperty("bbs:MeasureUnit")
 	String measureUnit;
-	@JsonProperty("bbs:MeasureUnitName")
 	String measureUnitName;
-	@JsonProperty("bbs:TotalInitialAmount")
 	String totalInitialAmount;
-	@JsonProperty("bbs:TotalUnusedAmount")
 	String totalUnusedAmount;
     @JsonProperty("FreeUnitItemDetail")
     FreeUnitItemDetail freeUnitItemDetail;
@@ -26,7 +20,7 @@ public class FreeUnitItem {
         this.freeUnitType = freeUnitType;
     }
 
-    @XmlAttribute(name = "bbs:FreeUnitType")
+    @XmlAttribute(name = "FreeUnitType")
     public String getFreeUnitType() {
         return freeUnitType;
     }
@@ -35,7 +29,7 @@ public class FreeUnitItem {
         this.freeUnitTypeName = freeUnitTypeName;
     }
 
-    @XmlAttribute(name = "bbs:FreeUnitTypeName")
+    @XmlAttribute(name = "FreeUnitTypeName")
     public String getFreeUnitTypeName() {
         return freeUnitTypeName;
     }
@@ -44,7 +38,7 @@ public class FreeUnitItem {
         this.measureUnit = measureUnit;
     }
 
-    @XmlAttribute(name = "bbs:MeasureUnit")
+    @XmlAttribute(name = "MeasureUnit")
     public String getMeasureUnit() {
         return measureUnit;
     }
@@ -53,7 +47,7 @@ public class FreeUnitItem {
         this.measureUnitName = measureUnitName;
     }
 
-    @XmlAttribute(name = "bbs:MeasureUnitName")
+    @XmlAttribute(name = "MeasureUnitName")
     public String getMeasureUnitName() {
         return measureUnitName;
     }
@@ -62,7 +56,7 @@ public class FreeUnitItem {
         this.totalInitialAmount = totalInitialAmount;
     }
 
-    @XmlAttribute(name = "bbs:TotalInitialAmount")
+    @XmlAttribute(name = "TotalInitialAmount")
     public String getTotalInitialAmount() {
         return totalInitialAmount;
     }
@@ -71,7 +65,7 @@ public class FreeUnitItem {
         this.totalUnusedAmount = totalUnusedAmount;
     }
 
-    @XmlAttribute(name = "bbs:TotalUnusedAmount")
+    @XmlAttribute(name = "TotalUnusedAmount")
     public String getTotalUnusedAmount() {
         return totalUnusedAmount;
     }

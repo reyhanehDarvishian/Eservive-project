@@ -6,7 +6,7 @@ public class QueryCustomerInfoChannelType {
 
     private String channelType;
     @JacksonXmlProperty(isAttribute = true, localName = "xmlns:ns3")
-    private String channelTypeSchema = "http://www.huawei.com/bme/cbsinterface/cbscommon";
+    private String channelTypeSchema = "http://www.huawei.com/bes/crminterface/crmheader";
 
     public String getChannelType() {
         return channelType;

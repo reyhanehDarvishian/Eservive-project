@@ -3,9 +3,9 @@ package com.rahgozin.gate.dto.queryAccountInfo.response;
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class QueryAccountInfoResResultHeader {
+    String version;
     String resultCode;
     String resultDesc;
-    String version;
 
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;

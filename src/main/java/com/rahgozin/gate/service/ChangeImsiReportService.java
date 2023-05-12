@@ -74,7 +74,6 @@ public class ChangeImsiReportService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Map<String,String> changeImsiReportResponse = queryChangeImsiReportRestTemplate.postForEntity(applicationProperties.getChangeImsiReportConnection().getBaseUrl(), changeImsiReportResBody, Map.class).getBody();
-        return new ObjectMapper().convertValue(changeImsiReportResponse, ChangeImsiReportResEnvelope.class);
+        return queryChangeImsiReportRestTemplate.postForEntity(applicationProperties.getChangeImsiReportConnection().getBaseUrl(), changeImsiReportResBody, ChangeImsiReportResEnvelope.class).getBody();
     }
 }

@@ -2,14 +2,15 @@ package com.rahgozin.gate.dto.queryFreeUnit.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
 
 public class QueryFreeUnitResult {
-    @JsonProperty("bbs:FreeUnitItem")
+    @JsonProperty("FreeUnitItem")
     FreeUnitItem freeUnitItem;
 
-    @XmlElement(name = "bbs:FreeUnitItem")
+    @XmlAttribute(name = "FreeUnitItem")
     public FreeUnitItem getFreeUnitItem() {
         if (freeUnitItem == null) freeUnitItem = new FreeUnitItem();
         return freeUnitItem;

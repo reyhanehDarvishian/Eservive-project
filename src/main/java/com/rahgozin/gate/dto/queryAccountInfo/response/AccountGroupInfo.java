@@ -2,9 +2,9 @@ package com.rahgozin.gate.dto.queryAccountInfo.response;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class AccountGroupInfoBean {
-    String accountGroupCode;
+public class AccountGroupInfo {
     String accountGroupId;
+    String accountGroupCode;
     String accountGroupName;
     String exemptionAmount;
 

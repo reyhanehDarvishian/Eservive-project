@@ -7,22 +7,20 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class FreeUnitOrigin {
-
-	@JsonProperty("bbs:OriginType")
-	private String originType;
-    @JsonProperty("bbs:OfferingKey")
+    private String originType;
+    @JsonProperty("OfferingKey")
     OfferingKey offeringKey;
 
     public void setOriginType(String originType) {
         this.originType = originType;
     }
 
-    @XmlAttribute(name = "bbs:OriginType")
+    @XmlAttribute(name = "OriginType")
     public String getOriginType() {
         return originType;
     }
 
-    @XmlElement(name = "bbs:OfferingKey")
+    @XmlElement(name = "OfferingKey")
     public OfferingKey getOfferingKey() {
         if (offeringKey == null) offeringKey = new OfferingKey();
         return offeringKey;

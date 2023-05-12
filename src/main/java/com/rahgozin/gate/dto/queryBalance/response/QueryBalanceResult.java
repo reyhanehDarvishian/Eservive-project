@@ -6,16 +6,16 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class QueryBalanceResult {
     @JsonProperty("AcctList")
-    QueryBalanceAcctList queryBalanceAcctList;
+    QueryBalanceResAcctList queryBalanceResAcctList;
 
     @XmlElement(name = "AcctList")
-    public QueryBalanceAcctList getAcctList() {
-        if (queryBalanceAcctList == null) queryBalanceAcctList = new QueryBalanceAcctList();
-        return queryBalanceAcctList;
+
+    public QueryBalanceResAcctList getQueryBalanceResAcctList() {
+        if (queryBalanceResAcctList == null) queryBalanceResAcctList = new QueryBalanceResAcctList();
+        return queryBalanceResAcctList;
     }
 
-    public void setAcctList(QueryBalanceAcctList queryBalanceAcctList) {
-        this.queryBalanceAcctList = queryBalanceAcctList;
+    public void setQueryBalanceResAcctList(QueryBalanceResAcctList queryBalanceResAcctList) {
+        this.queryBalanceResAcctList = queryBalanceResAcctList;
     }
-
 }

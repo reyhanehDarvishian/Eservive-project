@@ -7,30 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryCustomerInfoRspMsg {
-    @JsonProperty("queryCustomerInfoResponse")
-    List<QueryCustomerInfoResponse> queryCustomerInfoResponseList;
     @JsonProperty("resultHeader")
-	QueryCustomerInfoResResultHeader queryCustomerInfoResResultHeader;
-
-    public void setQueryCustomerInfoResponseBeanList(List<QueryCustomerInfoResponse> queryCustomerInfoResponseList) {
-        this.queryCustomerInfoResponseList = queryCustomerInfoResponseList;
-    }
+    QueryCustomerInfoResResultHeader queryCustomerInfoResResultHeader;
+    @JsonProperty("queryCustomerInfoResponse")
+    QueryCustomerInfoResponse queryCustomerInfoResponse;
 
     @XmlElement(name = "queryCustomerInfoResponse")
-    public List<QueryCustomerInfoResponse> getQueryCustomerInfoResponseBeanList() {
-        if (queryCustomerInfoResponseList == null)
-            queryCustomerInfoResponseList = new ArrayList<QueryCustomerInfoResponse>();
-        return queryCustomerInfoResponseList;
+    public QueryCustomerInfoResponse getQueryCustomerInfoResponse() {
+        if (queryCustomerInfoResponse == null) queryCustomerInfoResponse = new QueryCustomerInfoResponse();
+        return queryCustomerInfoResponse;
+    }
+
+    public void setQueryCustomerInfoResponse(QueryCustomerInfoResponse queryCustomerInfoResponse) {
+        this.queryCustomerInfoResponse = queryCustomerInfoResponse;
     }
 
     @XmlElement(name = "resultHeader")
-    public QueryCustomerInfoResResultHeader getResultHeaderBean() {
+    public QueryCustomerInfoResResultHeader getQueryCustomerInfoResResultHeader() {
         if (queryCustomerInfoResResultHeader == null) queryCustomerInfoResResultHeader = new QueryCustomerInfoResResultHeader();
         return queryCustomerInfoResResultHeader;
     }
 
-    public void setResultHeaderBean(QueryCustomerInfoResResultHeader queryCustomerInfoResResultHeader) {
+    public void setQueryCustomerInfoResResultHeader(QueryCustomerInfoResResultHeader queryCustomerInfoResResultHeader) {
         this.queryCustomerInfoResResultHeader = queryCustomerInfoResResultHeader;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.rahgozin.gate.dto.queryEntityId.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.rahgozin.gate.dto.querySub.querySubscriber.response.SubscriberInfoRes;
@@ -20,6 +21,7 @@ public class QueryEntityIdResponse {
     public void addToEntityInfos(EntityInfo entityInfo) {
         entityInfos.add(entityInfo);
     }
+
     @JsonProperty("entityInfo")
     public EntityInfo getEntityInfo() {
         return entityInfo;

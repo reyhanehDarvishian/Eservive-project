@@ -14,8 +14,8 @@ public class QueryFreeUnitController {
     public QueryFreeUnitController(QueryFreeUnitService queryFreeUnitService) {
         this.queryFreeUnitService = queryFreeUnitService;
     }
-    @GetMapping("/query-free-unit")
-    public Object queryFreeUnit() {
-        return queryFreeUnitService.queryFreeUnit();
+    @GetMapping("/query-free-unit/{phone-number}")
+    public Object queryFreeUnit(@PathVariable(name = "phone-number") String phoneNumber) {
+        return queryFreeUnitService.queryFreeUnit(phoneNumber);
     }
 }

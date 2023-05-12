@@ -10,13 +10,12 @@ public class QueryAccountInfoResEnvelope {
     QueryAccountInfoResBody queryAccountInfoResBody;
 
     @XmlElement(name = "Body")
-    public QueryAccountInfoResBody getBodyBean() {
+    public QueryAccountInfoResBody getQueryAccountInfoResBody() {
         if (queryAccountInfoResBody == null) queryAccountInfoResBody = new QueryAccountInfoResBody();
         return queryAccountInfoResBody;
     }
 
-    public void setBodyBean(QueryAccountInfoResBody queryAccountInfoResBody) {
+    public void setQueryAccountInfoResBody(QueryAccountInfoResBody queryAccountInfoResBody) {
         this.queryAccountInfoResBody = queryAccountInfoResBody;
     }
-
 }

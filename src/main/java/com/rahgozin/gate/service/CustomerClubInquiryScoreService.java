@@ -52,7 +52,6 @@ public class CustomerClubInquiryScoreService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        JSONObject customerClubInquiryScoreResponse = XML.toJSONObject(customerClubInquiryScoreRestTemplate.postForEntity(applicationProperties.getCustomerClubInquiryScoreConnection().getBaseUrl(), customerClubInquiryScoreResBody, String.class).getBody());
-        return customerClubInquiryScoreResponse.toString(4);
+        return customerClubInquiryScoreRestTemplate.postForEntity(applicationProperties.getCustomerClubInquiryScoreConnection().getBaseUrl(), customerClubInquiryScoreResBody, String.class).getBody();
     }
 }

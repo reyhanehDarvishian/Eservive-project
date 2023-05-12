@@ -140,6 +140,7 @@ public class TokenService {
         String accessToken = crmToken.getAccessToken();
         TokenData.addQueryFreeUnitToken(accessToken);
     }
+
     //get business fee token
     public void reNewBusinessFeeToken() {
         CRMToken crmToken = this.getCrmToken("ecare.query-business-fee-soap.read");
@@ -187,7 +188,6 @@ public class TokenService {
 
     public String getCustomerClubInquiryScoreToken() {
         String accessToken = TokenData.getCustomerClubInquiryScoreToken();
-        System.out.println("accessToken: " + accessToken);
         if (accessToken == null) {
             CRMToken crmToken = this.getCrmToken("ecare.customer-club-inquiry-score.read");
             accessToken = crmToken.getAccessToken();

@@ -3,7 +3,6 @@ package com.rahgozin.gate.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
-import com.rahgozin.gate.dto.querySub.querySubscriber.response.QuerySubEnvelopeRes;
 import com.rahgozin.gate.dto.querySub.querySubscriber.request.*;
 import com.rahgozin.gate.dto.querySub.querySubscriber.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class QuerySubService {
         this.tokenService = tokenService;
     }
 
-    public Object querySubscriber(Pageable pageable, String phoneNumber) {
+    public QuerySubEnvelopeRes querySubscriber(Pageable pageable, String phoneNumber) {
 
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();

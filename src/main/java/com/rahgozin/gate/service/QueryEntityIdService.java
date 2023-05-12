@@ -3,6 +3,7 @@ package com.rahgozin.gate.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
+import com.rahgozin.gate.dto.changeImsiReport.response.ChangeImsiReportResEnvelope;
 import com.rahgozin.gate.dto.queryEntityId.request.*;
 import com.rahgozin.gate.dto.queryEntityId.response.*;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class QueryEntityIdService {
         this.tokenService = tokenService;
     }
 
-    public Object entityId(String phoneNumber) {
+    public QueryEntityIdResEnvelope entityId(String phoneNumber) {
         QueryEntityIdEnvelope entityIdEnvelope = new QueryEntityIdEnvelope();
         QueryEntityIdBody entityIdBody = new QueryEntityIdBody();
         QueryEntityIdReqMsg entityIdReqMsg = new QueryEntityIdReqMsg();
@@ -61,10 +62,12 @@ public class QueryEntityIdService {
         queryEntityHeaders.add("soapaction", "QueryEntityId");
         HttpEntity<String> queryEntityResBody = null;
         try {
-            queryEntityResBody = new HttpEntity<>(objectMapper.writeValueAsString(entityIdEnvelope), queryEntityHeaders);
+            queryEntityResBody =
+                    new HttpEntity<>(objectMapper.writeValueAsString(entityIdEnvelope), queryEntityHeaders);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
         return queryEntityIdRestTemplate.postForEntity(applicationProperties.getQueryEntityIdConnection().getBaseUrl(), queryEntityResBody, QueryEntityIdResEnvelope.class).getBody();
     }
 }

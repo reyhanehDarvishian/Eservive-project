@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.xml.bind.annotation.XmlElement;
 
 public class QueryCustomerInfoRequest {
-    @JsonProperty("ns4:includeObj")
-    IncludeObj includeObj;
+
     @JsonProperty("ns4:queryObj")
     QueryObj queryObj;
+    @JsonProperty("ns4:includeObj")
+    IncludeObj includeObj;
 
     @XmlElement(name = "ns4:includeObj")
     public IncludeObj getIncludeObj() {

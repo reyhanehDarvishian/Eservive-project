@@ -10,12 +10,12 @@ public class QueryBalanceResEnvelope {
     QueryBalanceResBody queryBalanceResBody;
 
     @XmlElement(name = "Body")
-    public QueryBalanceResBody getBodyBean() {
+    public QueryBalanceResBody getQueryBalanceResBody() {
         if (queryBalanceResBody == null) queryBalanceResBody = new QueryBalanceResBody();
         return queryBalanceResBody;
     }
 
-    public void setBodyBean(QueryBalanceResBody queryBalanceResBody) {
+    public void setQueryBalanceResBody(QueryBalanceResBody queryBalanceResBody) {
         this.queryBalanceResBody = queryBalanceResBody;
     }
 }

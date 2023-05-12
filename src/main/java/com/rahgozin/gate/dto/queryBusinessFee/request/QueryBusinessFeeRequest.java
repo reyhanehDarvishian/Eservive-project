@@ -16,7 +16,7 @@ public class QueryBusinessFeeRequest {
     String businessCode;
 
     @JsonProperty("cus:AdditionalProperty")
-    List<BusinessFeeSimpleProperty> businessFeeSimpleProperty;
+    List<BusinessFeeAdditionalProperty> businessFeeAdditionalProperty;
 
 
     @XmlElement(name = "cus:queryObj")
@@ -40,12 +40,13 @@ public class QueryBusinessFeeRequest {
 
     @JsonIgnore
     @XmlElement(name = "cus:AdditionalProperty")
-    public List<BusinessFeeSimpleProperty> getBusinessFeeAdditionalProperty() {
-        if (businessFeeSimpleProperty == null) businessFeeSimpleProperty = new ArrayList<>();
-        return businessFeeSimpleProperty;
+    public List<BusinessFeeAdditionalProperty> getBusinessFeeAdditionalProperty() {
+        if (businessFeeAdditionalProperty == null) businessFeeAdditionalProperty = new ArrayList<>();
+        return businessFeeAdditionalProperty;
     }
 
-    public void setBusinessFeeAdditionalProperty(List<BusinessFeeSimpleProperty> businessFeeSimpleProperty) {
-        this.businessFeeSimpleProperty = businessFeeSimpleProperty;
+    @JsonIgnore
+    public void setBusinessFeeAdditionalProperty(List<BusinessFeeAdditionalProperty> businessFeeAdditionalProperty) {
+        this.businessFeeAdditionalProperty = businessFeeAdditionalProperty;
     }
 }

@@ -1,15 +1,16 @@
-package com.rahgozin.gate.dto.queryAccountInfo.response;
+package com.rahgozin.gate.dto.queryCustomerInfo.response;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class AddressInfoBean {
-    String addr1;
-    String addr2;
-    String addr3;
-    String addrClass;
-    String addrId;
-    String postalCode;
-    String usAddr;
+
+public class AddressInfo {
+    String addrId = "";
+    String addrClass = "";
+    String addr1 = "";
+    String addr2 = "";
+    String addr3 = "";
+    String usAddr = "";
+    String postalCode = "";
 
     public void setAddr1(String addr1) {
         this.addr1 = addr1;
@@ -73,4 +74,6 @@ public class AddressInfoBean {
     public String getUsAddr() {
         return usAddr;
     }
+
+
 }

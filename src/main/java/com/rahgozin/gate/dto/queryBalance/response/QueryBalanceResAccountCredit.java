@@ -2,12 +2,12 @@ package com.rahgozin.gate.dto.queryBalance.response;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class AccountCredit {
+public class QueryBalanceResAccountCredit {
 
-    String currencyID;
     String totalCreditAmount;
-    String totalRemainAmount;
     String totalUsageAmount;
+    String totalRemainAmount;
+    String currencyID;
 
     public void setCurrencyID(String currencyID) {
         this.currencyID = currencyID;

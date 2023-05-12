@@ -28,7 +28,7 @@ public class QueryCustService {
         this.tokenService = tokenService;
     }
 
-    public Object queryCust(Pageable pageable, String customerId) {
+    public QuerySubEnvelopeRes queryCust(Pageable pageable, String customerId) {
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();
         QuerySubscriberReq querySubscriberReq = new QuerySubscriberReq();

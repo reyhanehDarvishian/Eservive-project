@@ -1,21 +1,16 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryAccountInfo.request.*;
-import com.rahgozin.gate.dto.queryAccountInfo.response.*;
-import org.json.JSONObject;
-import org.json.XML;
+import com.rahgozin.gate.dto.queryAccountInfo.response.QueryAccountInfoResEnvelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 @Service
 public class QueryAccountInfoService {
@@ -42,30 +37,27 @@ public class QueryAccountInfoService {
         QueryAccountInfoRequestHeader queryAccountInfoRequestHeader = new QueryAccountInfoRequestHeader();
         QueryAccountInfoRequest queryAccountInfoRequest = new QueryAccountInfoRequest();
 
-        queryAccountInfoRequestHeader.setVersion("5.0");
-        queryAccountInfoRequestHeader.setBusinessCode("queryAccountInfo");
-        queryAccountInfoRequestHeader.setMessageSeq("123658744");
-        queryAccountInfoRequestHeader.getQueryAccountInfoOwnershipInfo().setBeId("10101");
-        queryAccountInfoRequestHeader.getQueryAccountInfoOwnershipInfo().setRegionId("10101");
-        queryAccountInfoRequestHeader.getQueryAccountInfoAccessSecurity().setLoginSystemCode("714");
-        queryAccountInfoRequestHeader.getQueryAccountInfoAccessSecurity().setPassword("i3qsntAtJug0YxeTIr+7Ij0gR9Dgz02gTwWd3E9uhfI=");
-        queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOperatorId("714");
-        queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOrgId("101");
-        queryAccountInfoRequestHeader.setChannelType("714");
-
-        queryAccountInfoRequest.getQueryAccountInfoQueryObj().getQueryAccountInfoAcctAccessCode().setAccountId("8611010003113018");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctBillCycleFlag("Y");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctCreditLimitFlag("Y");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeDeactivationFlag("Y");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludePaymentChannelFlag("Y");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeContactPersonFlag("Y");
-        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeBillMediumFlag("Y");
-
+        queryAccountInfoRequestHeader.setVersion(applicationProperties.getQueryAccountInfoConnection().getVersion());
+        queryAccountInfoRequestHeader.setBusinessCode(applicationProperties.getQueryAccountInfoConnection().getBusinessCode());
+        queryAccountInfoRequestHeader.setMessageSeq(applicationProperties.getQueryAccountInfoConnection().getMessageSeq());
+        queryAccountInfoRequestHeader.getQueryAccountInfoOwnershipInfo().setBeId(applicationProperties.getQueryAccountInfoConnection().getBeId());
+        queryAccountInfoRequestHeader.getQueryAccountInfoOwnershipInfo().setRegionId(applicationProperties.getQueryAccountInfoConnection().getRegionId());
+        queryAccountInfoRequestHeader.getQueryAccountInfoAccessSecurity().setLoginSystemCode(applicationProperties.getQueryAccountInfoConnection().getLoginSystemCode());
+        queryAccountInfoRequestHeader.getQueryAccountInfoAccessSecurity().setPassword(applicationProperties.getQueryAccountInfoConnection().getPassword());
+        queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOperatorId(applicationProperties.getQueryAccountInfoConnection().getOperatorId());
+        queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOrgId(applicationProperties.getQueryAccountInfoConnection().getOrgId());
+        queryAccountInfoRequestHeader.setChannelType(applicationProperties.getQueryAccountInfoConnection().getChannelType());
+        queryAccountInfoRequest.getQueryAccountInfoQueryObj().getQueryAccountInfoAcctAccessCode().setAccountId(applicationProperties.getQueryAccountInfoConnection().getAccountId());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctBillCycleFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeAcctBillCycleFlag());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctCreditLimitFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeAcctCreditLimitFlag());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeDeactivationFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeDeactivationFlag());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludePaymentChannelFlag(applicationProperties.getQueryAccountInfoConnection().getIncludePaymentChannelFlag());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeContactPersonFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeContactPersonFlag());
+        queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeBillMediumFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeBillMediumFlag());
         queryAccountInfoReqMsg.setQueryAccountInfoRequest(queryAccountInfoRequest);
         queryAccountInfoReqMsg.setQueryAccountInfoRequestHeader(queryAccountInfoRequestHeader);
         queryAccountInfoBody.setQueryAccountInfoReqMsg(queryAccountInfoReqMsg);
         queryAccountInfoEnvelope.setQueryAccountInfoBody(queryAccountInfoBody);
-
         HttpHeaders queryAccountInfoHeaders = new HttpHeaders();
         queryAccountInfoHeaders.add(HttpHeaders.AUTHORIZATION, tokenService.getQueryAccountInfo());
         queryAccountInfoHeaders.add("soapaction", "QueryAccountInfo");
@@ -79,7 +71,6 @@ public class QueryAccountInfoService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Map<String,String> queryAccountInfoResponse = queryAccountInfoRestTemplate.postForEntity("https://sandbox.mci.ir/api/v1/ecare/query-account-info-soap", queryAccountInfoResBody, Map.class).getBody();
-        return new ObjectMapper().convertValue(queryAccountInfoResponse,QueryAccountInfoResEnvelope.class);
+        return queryAccountInfoRestTemplate.postForEntity(applicationProperties.getQueryAccountInfoConnection().getBaseUrl(), queryAccountInfoResBody, QueryAccountInfoResEnvelope.class).getBody();
     }
 }

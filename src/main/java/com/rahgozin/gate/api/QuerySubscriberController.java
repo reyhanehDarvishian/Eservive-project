@@ -1,10 +1,7 @@
 package com.rahgozin.gate.api;
 
 
-import com.rahgozin.gate.service.NewQueryCustService;
-import com.rahgozin.gate.service.QueryAcctService;
-import com.rahgozin.gate.service.QueryCustService;
-import com.rahgozin.gate.service.QuerySubService;
+import com.rahgozin.gate.service.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,19 +17,20 @@ public class QuerySubscriberController {
     private final QueryCustService queryCustService;
     private final QueryAcctService queryAcctService;
     private final NewQueryCustService newQueryCustService;
+    private final NewQueryAcctService newQueryAcctService;
 
-    public QuerySubscriberController(QuerySubService querySubService, QueryCustService queryCustService, QueryAcctService queryAcctService, NewQueryCustService newQueryCustService) {
+    public QuerySubscriberController(QuerySubService querySubService, QueryCustService queryCustService, QueryAcctService queryAcctService, NewQueryCustService newQueryCustService, NewQueryAcctService newQueryAcctService) {
         this.querySubService = querySubService;
         this.queryCustService = queryCustService;
         this.queryAcctService = queryAcctService;
         this.newQueryCustService = newQueryCustService;
+        this.newQueryAcctService = newQueryAcctService;
     }
 
     @GetMapping(value = "/query-subscriber/sub/{phone-number}",produces = MediaType.APPLICATION_JSON_VALUE)
     public Object querySubscriber(Pageable pageable, @PathVariable(name = "phone-number") String phoneNumber) {
         return querySubService.querySubscriber(pageable, phoneNumber);
     }
-
 
     @GetMapping(value = "/query-subscriber/cust/{customer-id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public Object queryCust(Pageable pageable, @PathVariable(name = "customer-id") String customerId) {
@@ -44,8 +42,12 @@ public class QuerySubscriberController {
         return queryAcctService.queryAcct(pageable, accountId);
     }
 
-    @GetMapping(value ="/query-subscriber/new/cust/{phone-numb}")
-    public Object queryNewQueryCust(Pageable pageable, @PathVariable(name = "phone-numb") String phoneNumber) {
+    @GetMapping(value ="/query-subscriber/new/cust/{phone-number}")
+    public Object queryNewQueryCust(Pageable pageable, @PathVariable(name = "phone-number") String phoneNumber) {
         return newQueryCustService.newQueryCustomer(pageable, phoneNumber);
+    }
+    @GetMapping(value ="/query-subscriber/new/acct/{phone-number}")
+    public Object queryNewQueryAcct(Pageable pageable, @PathVariable(name = "phone-number") String phoneNumber) {
+        return newQueryAcctService.newQueryAccount(pageable, phoneNumber);
     }
 }

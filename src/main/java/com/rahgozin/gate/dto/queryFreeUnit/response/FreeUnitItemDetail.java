@@ -7,30 +7,22 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class FreeUnitItemDetail {
-    @JsonProperty("bbs:FreeUnitInstanceID")
     String freeUnitInstanceID;
-    @JsonProperty("bbs:InitialAmount")
     String initialAmount;
-    @JsonProperty("bbs:CurrentAmount")
     String currentAmount;
-    @JsonProperty("bbs:UsedAmount")
     String usedAmount;
-    @JsonProperty("bbs:EffectiveTime")
     String effectiveTime;
-    @JsonProperty("bbs:ExpireTime")
     String expireTime;
-    @JsonProperty("bbs:FreeUnitOrigin")
+    @JsonProperty("FreeUnitOrigin")
     FreeUnitOrigin freeUnitOrigin;
-    @JsonProperty("bbs:RollOverFlag")
     String rollOverFlag;
-    @JsonProperty("bbs:LastRollOveredTime")
     String lastRollOveredTime;
 
     public void setCurrentAmount(String currentAmount) {
         this.currentAmount = currentAmount;
     }
 
-    @XmlAttribute(name = "bbs:CurrentAmount")
+    @XmlAttribute(name = "CurrentAmount")
     public String getCurrentAmount() {
         return currentAmount;
     }
@@ -39,7 +31,7 @@ public class FreeUnitItemDetail {
         this.effectiveTime = effectiveTime;
     }
 
-    @XmlAttribute(name = "bbs:EffectiveTime")
+    @XmlAttribute(name = "EffectiveTime")
     public String getEffectiveTime() {
         return effectiveTime;
     }
@@ -48,7 +40,7 @@ public class FreeUnitItemDetail {
         this.expireTime = expireTime;
     }
 
-    @XmlAttribute(name = "bbs:ExpireTime")
+    @XmlAttribute(name = "ExpireTime")
     public String getExpireTime() {
         return expireTime;
     }
@@ -57,7 +49,7 @@ public class FreeUnitItemDetail {
         this.freeUnitInstanceID = freeUnitInstanceID;
     }
 
-    @XmlAttribute(name = "bbs:FreeUnitInstanceID")
+    @XmlAttribute(name = "FreeUnitInstanceID")
     public String getFreeUnitInstanceID() {
         return freeUnitInstanceID;
     }
@@ -66,7 +58,7 @@ public class FreeUnitItemDetail {
         this.initialAmount = initialAmount;
     }
 
-    @XmlAttribute(name = "bbs:InitialAmount")
+    @XmlAttribute(name = "InitialAmount")
     public String getInitialAmount() {
         return initialAmount;
     }

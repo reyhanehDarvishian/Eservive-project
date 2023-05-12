@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
-public class ContactPersonInfoBean {
+public class ContactPersonInfo {
     String contactPersonId;
+    @JsonProperty("addressInfo")
+    AddressInfo addressInfo;
     String contactPersonType;
     String firstName;
     String lastName;
     String mobilePhone;
-    @JsonProperty("addressInfo")
-    AddressInfoBean addressInfoBean;
 
     public void setContactPersonId(String contactPersonId) {
         this.contactPersonId = contactPersonId;
@@ -60,12 +60,12 @@ public class ContactPersonInfoBean {
     }
 
     @XmlElement(name = "addressInfo")
-    public AddressInfoBean getAddressInfoBean() {
-        if (addressInfoBean == null) addressInfoBean = new AddressInfoBean();
-        return addressInfoBean;
+    public AddressInfo getAddressInfo() {
+        if (addressInfo == null) addressInfo = new AddressInfo();
+        return addressInfo;
     }
 
-    public void setAddressInfoBean(AddressInfoBean addressInfoBean) {
-        this.addressInfoBean = addressInfoBean;
+    public void setAddressInfo(AddressInfo addressInfo) {
+        this.addressInfo = addressInfo;
     }
 }

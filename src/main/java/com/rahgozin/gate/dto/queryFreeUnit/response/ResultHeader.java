@@ -6,18 +6,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 
 public class ResultHeader {
-    @JsonProperty("cbs:Version")
     private String version;
-    @JsonProperty("cbs:ResultCode")
     private String resultCode;
-    @JsonProperty("cbs:ResultDesc")
     private String resultDesc;
 
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
 
-    @XmlAttribute(name = "cbs:ResultCode")
+    @XmlAttribute(name = "ResultCode")
     public String getResultCode() {
         return resultCode;
     }
@@ -26,7 +23,7 @@ public class ResultHeader {
         this.resultDesc = resultDesc;
     }
 
-    @XmlAttribute(name = "cbs:ResultDesc")
+    @XmlAttribute(name = "ResultDesc")
     public String getResultDesc() {
         return resultDesc;
     }
@@ -35,7 +32,7 @@ public class ResultHeader {
         this.version = version;
     }
 
-    @XmlAttribute(name = "cbs:Version")
+    @XmlAttribute(name = "Version")
     public String getVersion() {
         return version;
     }

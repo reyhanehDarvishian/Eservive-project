@@ -7,25 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryAccountInfoRspMsg {
-    @JsonProperty("queryAccountInfoResponse")
-    List<QueryAccountInfoResponse> queryAccountInfoResponseList;
     @JsonProperty("resultHeader")
-	QueryAccountInfoResResultHeader queryAccountInfoResResultHeader;
+    QueryAccountInfoResResultHeader queryAccountInfoResResultHeader;
+    @JsonProperty("queryAccountInfoResponse")
+    QueryAccountInfoResponse queryAccountInfoResponse;
 
     @XmlElement(name = "queryAccountInfoResponse")
-    public List<QueryAccountInfoResponse> getQueryAccountInfoResponseBeanList() {
-        if (queryAccountInfoResponseList == null)
-            queryAccountInfoResponseList = new ArrayList<QueryAccountInfoResponse>();
-        return queryAccountInfoResponseList;
+    public QueryAccountInfoResponse getQueryAccountInfoResponse() {
+        if (queryAccountInfoResponse == null) queryAccountInfoResponse = new QueryAccountInfoResponse();
+        return queryAccountInfoResponse;
+    }
+
+    public void setQueryAccountInfoResponse(QueryAccountInfoResponse queryAccountInfoResponse) {
+        this.queryAccountInfoResponse = queryAccountInfoResponse;
     }
 
     @XmlElement(name = "resultHeader")
-    public QueryAccountInfoResResultHeader getResultHeaderBean() {
+    public QueryAccountInfoResResultHeader getQueryAccountInfoResResultHeader() {
         if (queryAccountInfoResResultHeader == null) queryAccountInfoResResultHeader = new QueryAccountInfoResResultHeader();
         return queryAccountInfoResResultHeader;
     }
 
-    public void setResultHeaderBean(QueryAccountInfoResResultHeader queryAccountInfoResResultHeader) {
+    public void setQueryAccountInfoResResultHeader(QueryAccountInfoResResultHeader queryAccountInfoResResultHeader) {
         this.queryAccountInfoResResultHeader = queryAccountInfoResResultHeader;
     }
 

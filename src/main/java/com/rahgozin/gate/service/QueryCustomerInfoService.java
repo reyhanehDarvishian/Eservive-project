@@ -33,7 +33,7 @@ public class QueryCustomerInfoService {
         this.tokenService = tokenService;
     }
 
-    public QueryCustomerInfoResEnvelope queryCustomerInfo() {
+    public QueryCustomerInfoResEnvelope queryCustomerInfo(String phoneNumber) {
         QueryCustomerInfoEnvelope queryCustomerInfoEnvelope = new QueryCustomerInfoEnvelope();
         QueryCustomerInfoBody queryCustomerInfoBody = new QueryCustomerInfoBody();
         QueryCustomerInfoReqMsg queryCustomerInfoReqMsg = new QueryCustomerInfoReqMsg();
@@ -53,7 +53,7 @@ public class QueryCustomerInfoService {
         queryCustomerInfoRequestHeader.getChannelType().setChannelType(applicationProperties.getQueryCustomerInfoConnection().getChannelType());
 
 //        queryCustomerInfoRequest
-        queryCustomerInfoRequest.getQueryObBean().getSubAccessCode().setPrimaryIdentity(applicationProperties.getQueryCustomerInfoConnection().getPrimaryIdentity());
+        queryCustomerInfoRequest.getQueryObBean().getSubAccessCode().setPrimaryIdentity(phoneNumber);
         queryCustomerInfoRequest.getIncludeObj().setIncludeAddrFlag(applicationProperties.getQueryCustomerInfoConnection().getIncludeAddrFlag());
 
         queryCustomerInfoReqMsg.setQueryCustomerInfoRequestHeader(queryCustomerInfoRequestHeader);
@@ -74,7 +74,6 @@ public class QueryCustomerInfoService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Map<String,String> queryCustomerInfoResponse = queryCustomerInfoRestTemplate.postForEntity(applicationProperties.getQueryCustomerInfoConnection().getBaseUrl(), queryCustomerInfoResBody, Map.class).getBody();
-        return new ObjectMapper().convertValue(queryCustomerInfoResponse, QueryCustomerInfoResEnvelope.class);
+        return queryCustomerInfoRestTemplate.postForEntity(applicationProperties.getQueryCustomerInfoConnection().getBaseUrl(), queryCustomerInfoResBody, QueryCustomerInfoResEnvelope.class).getBody();
     }
 }

@@ -30,7 +30,7 @@ public class QueryImsiInfoService {
         this.tokenService = tokenService;
     }
 
-    public Object queryImsiInfo(String phoneNumber) {
+    public QueryImsiResEnvelope queryImsiInfo(String phoneNumber) {
         ImsiEnvelopeReq imsiEnvelopeReq = new ImsiEnvelopeReq();
         QueryImsiBody queryImsiBody = new QueryImsiBody();
         QueryImsiInfoReq queryImsiInfoReq = new QueryImsiInfoReq();

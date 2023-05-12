@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueryCustomerInfoResponse {
-    String defaultAccountId;
     @JsonProperty("customer")
-    List<CustomerBean> customerBeanList;
+    Customer customer;
+    String defaultAccountId;
 
     public void setDefaultAccountId(String defaultAccountId) {
         this.defaultAccountId = defaultAccountId;
@@ -21,14 +21,13 @@ public class QueryCustomerInfoResponse {
         return defaultAccountId;
     }
 
-    public void setCustomerBeanList(List<CustomerBean> customerBeanList) {
-        this.customerBeanList = customerBeanList;
+    @XmlElement(name = "customer")
+    public Customer getCustomer() {
+        if (customer == null) customer = new Customer();
+        return customer;
     }
 
-    @XmlElement(name = "customer")
-    public List<CustomerBean> getCustomerBeanList() {
-        if (customerBeanList == null)
-            customerBeanList = new ArrayList<CustomerBean>();
-        return customerBeanList;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

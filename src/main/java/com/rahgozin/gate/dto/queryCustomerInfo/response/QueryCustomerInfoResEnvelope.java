@@ -10,13 +10,12 @@ public class QueryCustomerInfoResEnvelope {
     QueryCustomerInfoResBody queryCustomerInfoResBody;
 
     @XmlElement(name = "Body")
-    public QueryCustomerInfoResBody getBodyBean() {
+    public QueryCustomerInfoResBody getQueryCustomerInfoResBody() {
         if (queryCustomerInfoResBody == null) queryCustomerInfoResBody = new QueryCustomerInfoResBody();
         return queryCustomerInfoResBody;
     }
 
-    public void setBodyBean(QueryCustomerInfoResBody queryCustomerInfoResBody) {
+    public void setQueryCustomerInfoResBody(QueryCustomerInfoResBody queryCustomerInfoResBody) {
         this.queryCustomerInfoResBody = queryCustomerInfoResBody;
     }
-
 }

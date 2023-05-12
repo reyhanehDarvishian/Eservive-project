@@ -10,12 +10,12 @@ public class QueryAccountInfoResBody {
 	QueryAccountInfoRspMsg queryAccountInfoRspMsg;
 
     @XmlElement(name = "queryAccountInfoRspMsg")
-    public QueryAccountInfoRspMsg getQueryAccountInfoRspMsgBean() {
+    public QueryAccountInfoRspMsg getQueryAccountInfoRspMsg() {
         if (queryAccountInfoRspMsg == null) queryAccountInfoRspMsg = new QueryAccountInfoRspMsg();
         return queryAccountInfoRspMsg;
     }
 
-    public void setQueryAccountInfoRspMsgBean(QueryAccountInfoRspMsg queryAccountInfoRspMsg) {
+    public void setQueryAccountInfoRspMsg(QueryAccountInfoRspMsg queryAccountInfoRspMsg) {
         this.queryAccountInfoRspMsg = queryAccountInfoRspMsg;
     }
 

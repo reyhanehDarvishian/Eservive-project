@@ -15,29 +15,28 @@ public class QueryBalanceResultMsg {
     @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cbs")
     private String cbscommon = "http://www.huawei.com/bme/cbsinterface/cbscommon";
 
-    @JsonProperty("ResultHeader")
+    @JsonProperty("resultHeader")
     QueryBalanceResResultHeader queryBalanceResResultHeader;
     @JsonProperty("QueryBalanceResult")
-    List<QueryBalanceResult> queryBalanceResultList;
+    QueryBalanceResult queryBalanceResult;
 
-    public void setQueryBalanceResultBeanList(List<QueryBalanceResult> queryBalanceResultList) {
-        this.queryBalanceResultList = queryBalanceResultList;
-    }
-
-    @XmlElement(name = "QueryBalanceResult")
-    public List<QueryBalanceResult> getQueryBalanceResultBeanList() {
-        if (queryBalanceResultList == null)
-            queryBalanceResultList = new ArrayList<QueryBalanceResult>();
-        return queryBalanceResultList;
-    }
-
-    @XmlElement(name = "ResultHeader")
-    public QueryBalanceResResultHeader getResultHeaderBean() {
+    @XmlElement(name = "resultHeader")
+    public QueryBalanceResResultHeader getQueryBalanceResResultHeader() {
         if (queryBalanceResResultHeader == null) queryBalanceResResultHeader = new QueryBalanceResResultHeader();
         return queryBalanceResResultHeader;
     }
 
-    public void setResultHeaderBean(QueryBalanceResResultHeader queryBalanceResResultHeader) {
+    public void setQueryBalanceResResultHeader(QueryBalanceResResultHeader queryBalanceResResultHeader) {
         this.queryBalanceResResultHeader = queryBalanceResResultHeader;
+    }
+
+    @XmlElement(name = "QueryBalanceResult")
+    public QueryBalanceResult getQueryBalanceResult() {
+        if (queryBalanceResult == null) queryBalanceResult = new QueryBalanceResult();
+        return queryBalanceResult;
+    }
+
+    public void setQueryBalanceResult(QueryBalanceResult queryBalanceResult) {
+        this.queryBalanceResult = queryBalanceResult;
     }
 }

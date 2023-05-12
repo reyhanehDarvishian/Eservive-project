@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class QueryFreeUnitSubAccessCode {
-
     @JsonProperty("ns2:PrimaryIdentity")
     QueryFreeUnitPrimaryIdentity primaryIdentity;
 

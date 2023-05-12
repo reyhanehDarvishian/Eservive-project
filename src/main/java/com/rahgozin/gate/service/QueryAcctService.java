@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.querySub.queryAccount.request.*;
-import com.rahgozin.gate.dto.querySub.queryAccount.response.QuerySubEnvelopeRes;
+import com.rahgozin.gate.dto.querySub.queryAccount.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
@@ -28,10 +28,7 @@ public class QueryAcctService {
         this.tokenService = tokenService;
     }
 
-
-
-
-    public Object queryAcct(Pageable pageable, String accountId) {
+    public QuerySubEnvelopeRes queryAcct(Pageable pageable, String accountId) {
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();
         QuerySubscriberReq querySubscriberReq = new QuerySubscriberReq();

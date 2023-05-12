@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MockQuerySubscriberController {
     private RestTemplateBuilder restTemplateBuilder;
     private ApplicationProperties applicationProperties;
-//    MockQuerySubscriberService mockQuerySubscriberService =
-//            new MockServiceImpl(restTemplateBuilder, applicationProperties);
 
     public MockQuerySubscriberController
             (RestTemplateBuilder restTemplateBuilder, ApplicationProperties applicationProperties) {

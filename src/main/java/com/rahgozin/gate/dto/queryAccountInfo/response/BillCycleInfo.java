@@ -2,12 +2,12 @@ package com.rahgozin.gate.dto.queryAccountInfo.response;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class BillCycleInfoBean {
+public class BillCycleInfo {
     String acctBillCycleId;
-    String beginDate;
     String billCycleTypeCode;
     String billCycleTypeDesc;
     String billCycleTypeId;
+    String beginDate;
     String cycleType;
     String effDate;
     String expDate;

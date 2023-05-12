@@ -1,32 +1,47 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <cms:queryEntityIdReqMsg xmlns:cms="http://www.huawei.com/bes/crminterface/cmservices">
-            <requestHeader>
-                <crm:version xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">1</crm:version>
-                <crm:businessCode xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">queryEntityId</crm:businessCode>
-                <crm:messageSeq xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">663_20180818_121905_316024179170</crm:messageSeq>
-                <ownershipInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
-                    <beId>10101</beId>
-                    <regionId>10101</regionId>
-                </ownershipInfo>
-                <accessSecurity xmlns="http://www.huawei.com/bes/crminterface/crmheader">
-                    <loginSystemCode>714</loginSystemCode>
-                    <password>i3qsntAtJug0YxeTIr+7Ij0gR9Dgz02gTwWd3E9uhfI=</password>
-                </accessSecurity>
-                <operatorInfo xmlns="http://www.huawei.com/bes/crminterface/crmheader">
-                    <operatorId>714</operatorId>
-                    <orgId>714</orgId>
-                </operatorInfo>
-                <crm:channelType xmlns:crm="http://www.huawei.com/bes/crminterface/crmheader">714</crm:channelType>
-            </requestHeader>
-            <queryEntityIdRequest>
-                <cms:queryObj>
-                    <cms:subAccessCode>
-                        <cms:primaryIdentity>9921905802</cms:primaryIdentity>
-                    </cms:subAccessCode>
-                </cms:queryObj>
-            </queryEntityIdRequest>
-        </cms:queryEntityIdReqMsg>
-    </soapenv:Body>
-</soapenv:Envelope>
+<QuerySubEnvelopeRes>
+    <Body>
+        <querySubscriberRspMsg>
+            <resultHeader>
+                <version>1</version>
+                <resultCode>0</resultCode>
+                <resultDesc>success</resultDesc>
+            </resultHeader>
+            <querySubscriberResponse>
+                <subscriberInfo>
+                    <subInfo>
+                        <subsId>8611010002820090</subsId>
+                        <ownerPartyRoleType>C</ownerPartyRoleType>
+                        <ownerPartyRoleId>8611000000731043</ownerPartyRoleId>
+                        <subsName>9921905802</subsName>
+                        <subsWrittenLang>Persian</subsWrittenLang>
+                        <subsVocieLang>4</subsVocieLang>
+                        <offeringId>107</offeringId>
+                        <brand>2</brand>
+                        <primaryIdentity>9921905802</primaryIdentity>
+                        <networkType>1</networkType>
+                        <defaultAcctId>8611010002877093</defaultAcctId>
+                        <paymentType>1</paymentType>
+                        <imsi>432113911287746</imsi>
+                        <iccid>8998113900011287746</iccid>
+                        <subType>1</subType>
+                        <effDate>2022-04-26T16:45:47</effDate>
+                        <expDate>2022-12-12T11:46:54</expDate>
+                        <activeDate>2022-04-26T16:45:47</activeDate>
+                        <status>9</status>
+                        <statusTime>2022-12-12T11:46:56</statusTime>
+                        <statusDetail>000000000000</statusDetail>
+                        <salesChannelType>601</salesChannelType>
+                        <salesChannelId>5236334594</salesChannelId>
+                        <beId>10101</beId>
+                        <remark>Bulk Unbar B2BCreditControlReason</remark>
+                    </subInfo>
+                </subscriberInfo>
+                <pageQuery>
+                    <pageSize>20</pageSize>
+                    <startNum>0</startNum>
+                    <totalNum>20</totalNum>
+                </pageQuery>
+            </querySubscriberResponse>
+        </querySubscriberRspMsg>
+    </Body>
+</QuerySubEnvelopeRes>

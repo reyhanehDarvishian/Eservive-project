@@ -11,15 +11,14 @@ public class QueryFreeUnitOwnershipInfo {
     private String schemaLocation = "http://www.huawei.com/bme/cbsinterface/cbscommon";
 
     @JsonProperty("BEID")
-    private String bEID;
-
-    public void setBEID(String bEID) {
-        this.bEID = bEID;
-    }
+    private String beId;
 
     @XmlAttribute(name = "BEID")
-    public String getBEID() {
-        return bEID;
+    public String getBeId() {
+        return beId;
     }
 
+    public void setBeId(String beId) {
+        this.beId = beId;
+    }
 }

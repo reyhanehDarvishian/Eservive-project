@@ -22,6 +22,7 @@ public class QuerySubscriberRes {
 
 
     private List<SubscriberInfoRes> subscribersInfoRes=new ArrayList<>();
+
     @JsonProperty("pageQuery")
     private PageQueryResponse pageQueryResponse;
 

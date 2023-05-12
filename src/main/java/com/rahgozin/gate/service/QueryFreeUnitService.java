@@ -1,19 +1,16 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryFreeUnit.request.*;
-import com.rahgozin.gate.dto.queryFreeUnit.response.*;
+import com.rahgozin.gate.dto.queryFreeUnit.response.QueryFreeUnitEnvelopeRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 @Service
 public class QueryFreeUnitService {
@@ -31,7 +28,7 @@ public class QueryFreeUnitService {
         this.tokenService = tokenService;
     }
 
-    public Object queryFreeUnit() {
+    public QueryFreeUnitEnvelopeRes queryFreeUnit(String phoneNumber) {
         QueryFreeUnitEnvelope queryFreeUnitEnvelope = new QueryFreeUnitEnvelope();
         QueryFreeUnitBody queryFreeUnitBody = new QueryFreeUnitBody();
         QueryFreeUnitRequestMsg queryFreeUnitRequestMsg = new QueryFreeUnitRequestMsg();
@@ -41,12 +38,12 @@ public class QueryFreeUnitService {
         queryFreeUnitRequestHeader.getVersion().setVersion(applicationProperties.getQueryFreeUnitConnection().getVersion());
         queryFreeUnitRequestHeader.getBusinessCode().setBusinessCode(applicationProperties.getQueryFreeUnitConnection().getBusinessCode());
         queryFreeUnitRequestHeader.getMessageSeq().setMessageSeq(applicationProperties.getQueryFreeUnitConnection().getMessageSeq());
-        queryFreeUnitRequestHeader.getQueryFreeUnitOwnershipInfo().setBEID(applicationProperties.getQueryFreeUnitConnection().getBeId());
+        queryFreeUnitRequestHeader.getQueryFreeUnitOwnershipInfo().setBeId(applicationProperties.getQueryFreeUnitConnection().getBeId());
         queryFreeUnitRequestHeader.getQueryFreeUnitAccessSecurity().setLoginSystemCode(applicationProperties.getQueryFreeUnitConnection().getLoginSystemCode());
         queryFreeUnitRequestHeader.getQueryFreeUnitAccessSecurity().setPassword(applicationProperties.getQueryFreeUnitConnection().getPassword());
         queryFreeUnitRequestHeader.getQueryFreeUnitOperatorInfo().setOperatorID(applicationProperties.getQueryFreeUnitConnection().getOperatorId());
         queryFreeUnitRequestHeader.getQueryFreeUnitOperatorInfo().setChannelID(applicationProperties.getQueryFreeUnitConnection().getChannelId());
-        queryFreeUnitRequest.getQueryFreeUnitQueryObj().getQueryFreeUnitSubAccessCode().getPrimaryIdentity().setPrimaryIdentity(applicationProperties.getQueryFreeUnitConnection().getPrimaryIdentity());
+        queryFreeUnitRequest.getQueryFreeUnitQueryObj().getQueryFreeUnitSubAccessCode().getPrimaryIdentity().setPrimaryIdentity(phoneNumber);
         queryFreeUnitRequestMsg.setQueryFreeUnitRequestHeader(queryFreeUnitRequestHeader);
         queryFreeUnitRequestMsg.setQueryFreeUnitRequest(queryFreeUnitRequest);
         queryFreeUnitBody.setQueryFreeUnitRequestMsg(queryFreeUnitRequestMsg);
@@ -62,6 +59,6 @@ public class QueryFreeUnitService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return queryFreeUnitRestTemplate.postForEntity(applicationProperties.getQueryImsiInfoConnection().getBaseUrl(), queryFreeUnitResBody, Map.class).getBody();
+        return queryFreeUnitRestTemplate.postForEntity(applicationProperties.getQueryFreeUnitConnection().getBaseUrl(), queryFreeUnitResBody, QueryFreeUnitEnvelopeRes.class).getBody();
     }
 }

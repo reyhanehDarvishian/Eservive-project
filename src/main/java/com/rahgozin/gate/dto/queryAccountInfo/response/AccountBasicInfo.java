@@ -4,20 +4,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AccountBasicInfoBean {
-    String acctClass;
+public class AccountBasicInfo {
+
+    @JsonProperty("extProperties")
+    ExtProperties extProperties;
+    private List<ExtProperties> extsProperties = new ArrayList<>();
     String acctCode;
     String acctName;
-    String acctType;
-    String billLang;
-    String currencyId;
     String partyId;
+    String acctType;
+    String acctClass;
     String paymentType;
+    String currencyId;
     String status;
     String statusTime;
-    @JsonProperty("extProperties")
-    ExtPropertiesBean extPropertiesBean;
+    String billLang;
+
+    public void addToExtProperties(ExtProperties extProperties) {
+        extsProperties.add(extProperties);
+    }
+    public List<ExtProperties> getExtsProperties() {
+        return extsProperties;
+    }
+
+    public void setExtsProperties(List<ExtProperties> extsProperties) {
+        this.extsProperties = extsProperties;
+    }
 
     public void setAcctClass(String acctClass) {
         this.acctClass = acctClass;
@@ -110,13 +125,14 @@ public class AccountBasicInfoBean {
     }
 
     @XmlElement(name = "extProperties")
-    public ExtPropertiesBean getExtPropertiesBean() {
-        if (extPropertiesBean == null) extPropertiesBean = new ExtPropertiesBean();
-        return extPropertiesBean;
+    public ExtProperties getExtProperties() {
+        if (extProperties == null) extProperties = new ExtProperties();
+        return extProperties;
     }
 
-    public void setExtPropertiesBean(ExtPropertiesBean extPropertiesBean) {
-        this.extPropertiesBean = extPropertiesBean;
+    public void setExtProperties(ExtProperties extProperties) {
+        addToExtProperties(extProperties);
+        this.extProperties = extProperties;
     }
 
 }

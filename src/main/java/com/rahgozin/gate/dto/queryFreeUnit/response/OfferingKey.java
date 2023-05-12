@@ -6,17 +6,14 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 
 public class OfferingKey {
-
-    @JsonProperty("bbs:OfferingID")
     private String offeringID;
-    @JsonProperty("bbs:PurchaseSeq")
     private String purchaseSeq;
 
     public void setOfferingID(String offeringID) {
         this.offeringID = offeringID;
     }
 
-    @XmlAttribute(name = "bbs:OfferingID")
+    @XmlAttribute(name = "OfferingID")
     public String getOfferingID() {
         return offeringID;
     }
@@ -25,7 +22,7 @@ public class OfferingKey {
         this.purchaseSeq = purchaseSeq;
     }
 
-    @XmlAttribute(name = "bbs:PurchaseSeq")
+    @XmlAttribute(name = "PurchaseSeq")
     public String getPurchaseSeq() {
         return purchaseSeq;
     }

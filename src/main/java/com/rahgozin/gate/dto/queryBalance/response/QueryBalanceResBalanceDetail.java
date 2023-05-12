@@ -3,13 +3,13 @@ package com.rahgozin.gate.dto.queryBalance.response;
 import javax.xml.bind.annotation.XmlAttribute;
 
 
-public class BalanceDetailBean {
-    String amount;
+public class QueryBalanceResBalanceDetail {
     String balanceInstanceID;
-    String effectiveTime;
-    String expireTime;
+    String amount;
     String initialAmount;
     String usedAmount;
+    String effectiveTime;
+    String expireTime;
 
     public void setAmount(String amount) {
         this.amount = amount;
