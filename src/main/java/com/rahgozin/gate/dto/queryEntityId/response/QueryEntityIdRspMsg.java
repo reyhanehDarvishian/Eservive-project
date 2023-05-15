@@ -1,35 +1,39 @@
 package com.rahgozin.gate.dto.queryEntityId.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.xml.bind.annotation.XmlElement;
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Generated;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "resultHeader",
+        "queryEntityIdResponse"
+})
+@Generated("jsonschema2pojo")
 public class QueryEntityIdRspMsg {
-    @JsonProperty("resultHeader")
-    QueryEntityIdResultHeader entityIdResultHeader;
+    private QueryEntityIdResultHeader entityIdResultHeader;
+    private QueryEntityIdResponse queryEntityIdResponse;
 
     @JsonProperty("queryEntityIdResponse")
-    QueryEntityIdResponse queryEntityIdResponse;
-
     public void setQueryEntityIdResponse(QueryEntityIdResponse queryEntityIdResponseList) {
         this.queryEntityIdResponse = queryEntityIdResponseList;
     }
 
-    @XmlElement(name = "queryEntityIdResponse")
+    @JsonProperty("queryEntityIdResponse")
     public QueryEntityIdResponse getQueryEntityIdResponse() {
         return queryEntityIdResponse;
     }
 
-    @XmlElement(name = "resultHeader")
+    @JsonProperty("resultHeader")
     public QueryEntityIdResultHeader getEntityIdResultHeader() {
         if (entityIdResultHeader == null) entityIdResultHeader = new QueryEntityIdResultHeader();
         return entityIdResultHeader;
     }
 
+    @JsonProperty("resultHeader")
     public void setEntityIdResultHeader(QueryEntityIdResultHeader entityIdResultHeader) {
         this.entityIdResultHeader = entityIdResultHeader;
     }

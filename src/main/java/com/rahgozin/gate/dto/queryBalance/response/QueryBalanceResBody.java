@@ -1,19 +1,26 @@
 package com.rahgozin.gate.dto.queryBalance.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "QueryBalanceResultMsg"
+})
+@Generated("jsonschema2pojo")
 public class QueryBalanceResBody {
-    @JsonProperty("QueryBalanceResultMsg")
-	QueryBalanceResultMsg queryBalanceResultMsg;
+	private QueryBalanceResultMsg queryBalanceResultMsg;
 
-    @XmlElement(name = "QueryBalanceResultMsg")
+    @JsonProperty("queryBalanceResultMsg")
     public QueryBalanceResultMsg getQueryBalanceResultMsg() {
-        if (queryBalanceResultMsg == null) queryBalanceResultMsg = new QueryBalanceResultMsg();
         return queryBalanceResultMsg;
     }
 
+    @JsonProperty("QueryBalanceResultMsg")
     public void setQueryBalanceResultMsg(QueryBalanceResultMsg queryBalanceResultMsg) {
         this.queryBalanceResultMsg = queryBalanceResultMsg;
     }

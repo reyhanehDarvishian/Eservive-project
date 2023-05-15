@@ -12,22 +12,24 @@ public class QueryAccountInfoRspMsg {
     @JsonProperty("queryAccountInfoResponse")
     QueryAccountInfoResponse queryAccountInfoResponse;
 
-    @XmlElement(name = "queryAccountInfoResponse")
+    @JsonProperty("queryAccountInfoResponse")
     public QueryAccountInfoResponse getQueryAccountInfoResponse() {
         if (queryAccountInfoResponse == null) queryAccountInfoResponse = new QueryAccountInfoResponse();
         return queryAccountInfoResponse;
     }
 
+    @JsonProperty("queryAccountInfoResponse")
     public void setQueryAccountInfoResponse(QueryAccountInfoResponse queryAccountInfoResponse) {
         this.queryAccountInfoResponse = queryAccountInfoResponse;
     }
 
-    @XmlElement(name = "resultHeader")
+    @JsonProperty("resultHeader")
     public QueryAccountInfoResResultHeader getQueryAccountInfoResResultHeader() {
         if (queryAccountInfoResResultHeader == null) queryAccountInfoResResultHeader = new QueryAccountInfoResResultHeader();
         return queryAccountInfoResResultHeader;
     }
 
+    @JsonProperty("resultHeader")
     public void setQueryAccountInfoResResultHeader(QueryAccountInfoResResultHeader queryAccountInfoResResultHeader) {
         this.queryAccountInfoResResultHeader = queryAccountInfoResResultHeader;
     }

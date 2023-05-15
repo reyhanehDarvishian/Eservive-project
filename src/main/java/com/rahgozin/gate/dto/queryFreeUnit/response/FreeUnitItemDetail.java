@@ -1,11 +1,27 @@
 package com.rahgozin.gate.dto.queryFreeUnit.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "FreeUnitInstanceID",
+        "InitialAmount",
+        "CurrentAmount",
+        "UsedAmount",
+        "EffectiveTime",
+        "ExpireTime",
+        "FreeUnitOrigin",
+        "RollOverFlag",
+        "LastRollOveredTime",
+})
+@Generated("jsonschema2pojo")
 public class FreeUnitItemDetail {
     String freeUnitInstanceID;
     String initialAmount;
@@ -13,89 +29,96 @@ public class FreeUnitItemDetail {
     String usedAmount;
     String effectiveTime;
     String expireTime;
-    @JsonProperty("FreeUnitOrigin")
-    FreeUnitOrigin freeUnitOrigin;
+    private FreeUnitOrigin freeUnitOrigin;
     String rollOverFlag;
     String lastRollOveredTime;
 
+    @JsonProperty("CurrentAmount")
     public void setCurrentAmount(String currentAmount) {
         this.currentAmount = currentAmount;
     }
 
-    @XmlAttribute(name = "CurrentAmount")
+    @JsonProperty("currentAmount")
     public String getCurrentAmount() {
         return currentAmount;
     }
 
+    @JsonProperty("EffectiveTime")
     public void setEffectiveTime(String effectiveTime) {
         this.effectiveTime = effectiveTime;
     }
 
-    @XmlAttribute(name = "EffectiveTime")
+    @JsonProperty("effectiveTime")
     public String getEffectiveTime() {
         return effectiveTime;
     }
 
+    @JsonProperty("ExpireTime")
     public void setExpireTime(String expireTime) {
         this.expireTime = expireTime;
     }
 
-    @XmlAttribute(name = "ExpireTime")
+    @JsonProperty("expireTime")
     public String getExpireTime() {
         return expireTime;
     }
 
+    @JsonProperty("FreeUnitInstanceID")
     public void setFreeUnitInstanceID(String freeUnitInstanceID) {
         this.freeUnitInstanceID = freeUnitInstanceID;
     }
 
-    @XmlAttribute(name = "FreeUnitInstanceID")
+    @JsonProperty("freeUnitInstanceID")
     public String getFreeUnitInstanceID() {
         return freeUnitInstanceID;
     }
 
+    @JsonProperty("InitialAmount")
     public void setInitialAmount(String initialAmount) {
         this.initialAmount = initialAmount;
     }
 
-    @XmlAttribute(name = "InitialAmount")
+    @JsonProperty("initialAmount")
     public String getInitialAmount() {
         return initialAmount;
     }
 
+    @JsonProperty("LastRollOveredTime")
     public void setLastRollOveredTime(String lastRollOveredTime) {
         this.lastRollOveredTime = lastRollOveredTime;
     }
 
-    @XmlAttribute(name = "bbs:LastRollOveredTime")
+    @JsonProperty("lastRollOveredTime")
     public String getLastRollOveredTime() {
         return lastRollOveredTime;
     }
 
+    @JsonProperty("RollOverFlag")
     public void setRollOverFlag(String rollOverFlag) {
         this.rollOverFlag = rollOverFlag;
     }
 
-    @XmlAttribute(name = "bbs:RollOverFlag")
+    @JsonProperty("rollOverFlag")
     public String getRollOverFlag() {
         return rollOverFlag;
     }
 
+    @JsonProperty("UsedAmount")
     public void setUsedAmount(String usedAmount) {
         this.usedAmount = usedAmount;
     }
 
-    @XmlAttribute(name = "bbs:UsedAmount")
+    @JsonProperty("usedAmount")
     public String getUsedAmount() {
         return usedAmount;
     }
 
-    @XmlElement(name = "bbs:FreeUnitOrigin")
+    @JsonProperty("freeUnitOrigin")
     public FreeUnitOrigin getFreeUnitOrigin() {
-        if (freeUnitOrigin == null) freeUnitOrigin = new FreeUnitOrigin();
         return freeUnitOrigin;
     }
 
+    @JsonProperty("FreeUnitOrigin")
     public void setFreeUnitOrigin(FreeUnitOrigin freeUnitOrigin) {
         this.freeUnitOrigin = freeUnitOrigin;
     }

@@ -19,8 +19,6 @@ public class QuerySubscriberRes {
 
     @JsonProperty("subscriberInfo")
     private SubscriberInfoRes subscriberInfoRes;
-
-
     private List<SubscriberInfoRes> subscribersInfoRes=new ArrayList<>();
 
     @JsonProperty("pageQuery")

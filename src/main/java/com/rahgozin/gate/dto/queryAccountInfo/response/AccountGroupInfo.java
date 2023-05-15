@@ -1,6 +1,6 @@
 package com.rahgozin.gate.dto.queryAccountInfo.response;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AccountGroupInfo {
     String accountGroupId;
@@ -8,38 +8,42 @@ public class AccountGroupInfo {
     String accountGroupName;
     String exemptionAmount;
 
+    @JsonProperty("accountGroupCode")
     public void setAccountGroupCode(String accountGroupCode) {
         this.accountGroupCode = accountGroupCode;
     }
 
-    @XmlAttribute(name = "accountGroupCode")
+    @JsonProperty("accountGroupCode")
     public String getAccountGroupCode() {
         return accountGroupCode;
     }
 
+    @JsonProperty("accountGroupId")
     public void setAccountGroupId(String accountGroupId) {
         this.accountGroupId = accountGroupId;
     }
 
-    @XmlAttribute(name = "accountGroupId")
+    @JsonProperty("accountGroupId")
     public String getAccountGroupId() {
         return accountGroupId;
     }
 
+    @JsonProperty("accountGroupName")
     public void setAccountGroupName(String accountGroupName) {
         this.accountGroupName = accountGroupName;
     }
 
-    @XmlAttribute(name = "accountGroupName")
+    @JsonProperty("accountGroupName")
     public String getAccountGroupName() {
         return accountGroupName;
     }
 
+    @JsonProperty("exemptionAmount")
     public void setExemptionAmount(String exemptionAmount) {
         this.exemptionAmount = exemptionAmount;
     }
 
-    @XmlAttribute(name = "exemptionAmount")
+    @JsonProperty("exemptionAmount")
     public String getExemptionAmount() {
         return exemptionAmount;
     }

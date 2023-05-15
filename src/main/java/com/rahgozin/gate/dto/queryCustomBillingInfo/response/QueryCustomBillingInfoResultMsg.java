@@ -1,36 +1,39 @@
+
 package com.rahgozin.gate.dto.queryCustomBillingInfo.response;
 
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.xml.bind.annotation.XmlElement;
-import java.util.ArrayList;
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "resultHeader",
+    "queryCustomBillingInfoResult"
+})
+@Generated("jsonschema2pojo")
 public class QueryCustomBillingInfoResultMsg {
-    @JsonProperty("QueryCustomBillingInfoResult")
-    List<QueryCustomBillingInfoResult> queryCustomBillingInfoResultList;
+    private ResultHeader resultHeader;
+    private QueryCustomBillingInfoResult queryCustomBillingInfoResult;
+
+    @JsonProperty("resultHeader")
+    public ResultHeader getResultHeader() {
+        return resultHeader;
+    }
+
     @JsonProperty("ResultHeader")
-    QueryCustomBillingInfoResultHeader queryCustomBillingInfoResultHeader;
-
-    public void setQueryCustomBillingInfoResultBeanList(List<QueryCustomBillingInfoResult> queryCustomBillingInfoResultList) {
-        this.queryCustomBillingInfoResultList = queryCustomBillingInfoResultList;
+    public void setResultHeader(ResultHeader resultHeader) {
+        this.resultHeader = resultHeader;
     }
 
-    @XmlElement(name = "QueryCustomBillingInfoResult")
-    public List<QueryCustomBillingInfoResult> getQueryCustomBillingInfoResultBeanList() {
-        if (queryCustomBillingInfoResultList == null)
-            queryCustomBillingInfoResultList = new ArrayList<QueryCustomBillingInfoResult>();
-        return queryCustomBillingInfoResultList;
+    @JsonProperty("queryCustomBillingInfoResult")
+    public QueryCustomBillingInfoResult getQueryCustomBillingInfoResult() {
+        return queryCustomBillingInfoResult;
     }
 
-    @XmlElement(name = "ResultHeader")
-    public QueryCustomBillingInfoResultHeader getResultHeaderBean() {
-        if (queryCustomBillingInfoResultHeader == null)
-            queryCustomBillingInfoResultHeader = new QueryCustomBillingInfoResultHeader();
-        return queryCustomBillingInfoResultHeader;
+    @JsonProperty("QueryCustomBillingInfoResult")
+    public void setQueryCustomBillingInfoResult(QueryCustomBillingInfoResult queryCustomBillingInfoResult) {
+        this.queryCustomBillingInfoResult = queryCustomBillingInfoResult;
     }
 
-    public void setResultHeaderBean(QueryCustomBillingInfoResultHeader queryCustomBillingInfoResultHeader) {
-        this.queryCustomBillingInfoResultHeader = queryCustomBillingInfoResultHeader;
-    }
 }

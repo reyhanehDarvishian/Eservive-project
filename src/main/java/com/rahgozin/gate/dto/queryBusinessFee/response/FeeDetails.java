@@ -27,11 +27,12 @@ public class FeeDetails {
         chargeCodesNames.add(chargeCodeNames);
     }
 
+    @JsonProperty("chargeCodeNames")
     public ChargeCodeNames getChargeCodeNames() {
         return chargeCodeNames;
     }
 
-    @XmlElement(name = "chargeCodeNames")
+    @JsonProperty("chargeCodeNames")
     public void setChargeCodeNames(ChargeCodeNames chargeCodeNames) {
         addToChargeCodeNames(chargeCodeNames);
         this.chargeCodeNames = chargeCodeNames;
@@ -45,74 +46,82 @@ public class FeeDetails {
         this.chargeCodesNames = chargeCodesNames;
     }
 
+    @JsonProperty("chargeCode")
     public void setChargeCode(String chargeCode) {
         this.chargeCode = chargeCode;
     }
 
-    @XmlAttribute(name = "chargeCode")
+    @JsonProperty("chargeCode")
     public String getChargeCode() {
         return chargeCode;
     }
 
+    @JsonProperty("chargeType")
     public void setChargeType(String chargeType) {
         this.chargeType = chargeType;
     }
 
-    @XmlAttribute(name = "chargeType")
+    @JsonProperty("chargeType")
     public String getChargeType() {
         return chargeType;
     }
 
+    @JsonProperty("discount")
     public void setDiscount(String discount) {
         this.discount = discount;
     }
 
-    @XmlAttribute(name = "discount")
+    @JsonProperty("discount")
     public String getDiscount() {
         return discount;
     }
 
+    @JsonProperty("tax")
     public void setTax(String tax) {
         this.tax = tax;
     }
 
-    @XmlAttribute(name = "tax")
+    @JsonProperty("tax")
     public String getTax() {
         return tax;
     }
 
+    @JsonProperty("totaUpfrontCost")
     public void setTotaUpfrontCost(String totaUpfrontCost) {
         this.totaUpfrontCost = totaUpfrontCost;
     }
 
-    @XmlAttribute(name = "totaUpfrontCost")
+    @JsonProperty("totaUpfrontCost")
     public String getTotaUpfrontCost() {
         return totaUpfrontCost;
     }
 
+    @JsonProperty("total")
     public void setTotal(String total) {
         this.total = total;
     }
 
-    @XmlAttribute(name = "total")
+    @JsonProperty("total")
     public String getTotal() {
         return total;
     }
 
+    @JsonProperty("unitPrice")
     public void setUnitPrice(String unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    @XmlAttribute(name = "unitPrice")
+    @JsonProperty("unitPrice")
     public String getUnitPrice() {
         return unitPrice;
     }
 
+    @JsonProperty("waived")
     public void setWaived(String waived) {
         this.waived = waived;
     }
 
-    @XmlAttribute(name = "waived")
+    @JsonProperty("waived")
     public String getWaived() {
         return waived;
     }

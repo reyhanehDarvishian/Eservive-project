@@ -1,11 +1,13 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryImsiinfo.request.*;
-import com.rahgozin.gate.dto.queryImsiinfo.response.*;
+import com.rahgozin.gate.dto.queryImsiinfo.response.QueryImsiResEnvelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
@@ -18,19 +20,20 @@ import java.util.Map;
 @Service
 public class QueryImsiInfoService {
     private final RestTemplate queryImsiRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
-    public QueryImsiInfoService(XmlMapper xmlMapper, @Qualifier("queryImsiRestTemplate") RestTemplate queryImsiRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
+    public QueryImsiInfoService(@Qualifier("queryImsiRestTemplate") RestTemplate queryImsiRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryImsiRestTemplate = queryImsiRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public QueryImsiResEnvelope queryImsiInfo(String phoneNumber) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         ImsiEnvelopeReq imsiEnvelopeReq = new ImsiEnvelopeReq();
         QueryImsiBody queryImsiBody = new QueryImsiBody();
         QueryImsiInfoReq queryImsiInfoReq = new QueryImsiInfoReq();
@@ -64,6 +67,8 @@ public class QueryImsiInfoService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return queryImsiRestTemplate.postForEntity(applicationProperties.getQueryImsiInfoConnection().getBaseUrl(), queryImsiInfoResBody, QueryImsiResEnvelope.class).getBody();
+        Map body = queryImsiRestTemplate.postForEntity(applicationProperties.getQueryImsiInfoConnection().getBaseUrl(),
+                queryImsiInfoResBody, Map.class).getBody();
+        return new ObjectMapper().convertValue(body, QueryImsiResEnvelope.class);
     }
 }

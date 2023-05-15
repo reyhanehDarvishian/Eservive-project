@@ -9,17 +9,12 @@ import javax.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "ns2:subInfo"
+    "subInfo"
 })
 @Generated("jsonschema2pojo")
 public class SubscriberInfoRes {
-
-
-
     @JsonProperty("subInfo")
     private SubInfoResponse subInfoResponse;
-
-
 
     public void setSubInfoResponse(SubInfoResponse subInfoResponse) {
         this.subInfoResponse = subInfoResponse;
@@ -30,7 +25,6 @@ public class SubscriberInfoRes {
 
         return subInfoResponse;
     }
-
 
     @JsonProperty("subInfo")
     public void setSubInfo(SubInfoResponse subInfoResponse) {

@@ -9,12 +9,12 @@ public class QueryAccountInfoResBody {
     @JsonProperty("queryAccountInfoRspMsg")
 	QueryAccountInfoRspMsg queryAccountInfoRspMsg;
 
-    @XmlElement(name = "queryAccountInfoRspMsg")
+    @JsonProperty("queryAccountInfoRspMsg")
     public QueryAccountInfoRspMsg getQueryAccountInfoRspMsg() {
-        if (queryAccountInfoRspMsg == null) queryAccountInfoRspMsg = new QueryAccountInfoRspMsg();
         return queryAccountInfoRspMsg;
     }
 
+    @JsonProperty("queryAccountInfoRspMsg")
     public void setQueryAccountInfoRspMsg(QueryAccountInfoRspMsg queryAccountInfoRspMsg) {
         this.queryAccountInfoRspMsg = queryAccountInfoRspMsg;
     }

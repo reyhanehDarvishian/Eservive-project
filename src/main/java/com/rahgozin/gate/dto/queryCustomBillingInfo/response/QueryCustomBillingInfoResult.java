@@ -1,21 +1,28 @@
+
 package com.rahgozin.gate.dto.queryCustomBillingInfo.response;
 
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.xml.bind.annotation.XmlElement;
-
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "InvoiceInfo"
+})
+@Generated("jsonschema2pojo")
 public class QueryCustomBillingInfoResult {
-    @JsonProperty("InvoiceInfo")
-	QueryCustomBillingInfoResInvoiceInfo queryCustomBillingInfoResInvoiceInfo;
 
-    @XmlElement(name = "InvoiceInfo")
-    public QueryCustomBillingInfoResInvoiceInfo getInvoiceInfoBean() {
-        if (queryCustomBillingInfoResInvoiceInfo == null) queryCustomBillingInfoResInvoiceInfo = new QueryCustomBillingInfoResInvoiceInfo();
-        return queryCustomBillingInfoResInvoiceInfo;
+    private InvoiceInfo invoiceInfo;
+
+    @JsonProperty("invoiceInfo")
+    public InvoiceInfo getInvoiceInfo() {
+        return invoiceInfo;
     }
-    public void setInvoiceInfoBean(QueryCustomBillingInfoResInvoiceInfo queryCustomBillingInfoResInvoiceInfo) {
-        this.queryCustomBillingInfoResInvoiceInfo = queryCustomBillingInfoResInvoiceInfo;
+
+    @JsonProperty("InvoiceInfo")
+    public void setInvoiceInfo(InvoiceInfo invoiceInfo) {
+        this.invoiceInfo = invoiceInfo;
     }
 
 }

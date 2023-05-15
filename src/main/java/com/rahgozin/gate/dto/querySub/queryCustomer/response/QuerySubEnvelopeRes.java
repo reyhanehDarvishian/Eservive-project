@@ -14,10 +14,10 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class QuerySubEnvelopeRes {
 
-    @JsonProperty("Body")
+    @JsonProperty("body")
     private QuerySubBodyRes querySubBodyRes;
 
-    @JsonProperty("Body")
+    @JsonProperty("body")
     public QuerySubBodyRes getBody() {
         return querySubBodyRes;
     }

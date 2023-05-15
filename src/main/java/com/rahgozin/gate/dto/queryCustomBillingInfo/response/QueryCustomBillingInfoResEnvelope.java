@@ -1,21 +1,30 @@
+
 package com.rahgozin.gate.dto.queryCustomBillingInfo.response;
 
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.xml.bind.annotation.XmlElement;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "Body"
+})
+@Generated("jsonschema2pojo")
 public class QueryCustomBillingInfoResEnvelope {
+
+    @JsonProperty("body")
+    private Body body;
+
+    @JsonProperty("body")
+    public Body getBody() {
+        return body;
+    }
+
     @JsonProperty("Body")
-	QueryCustomBillingInfoResBody queryCustomBillingInfoResBody;
-
-    @XmlElement(name = "Body")
-    public QueryCustomBillingInfoResBody getBodyBean() {
-        if (queryCustomBillingInfoResBody == null) queryCustomBillingInfoResBody = new QueryCustomBillingInfoResBody();
-        return queryCustomBillingInfoResBody;
+    public void setBody(Body body) {
+        this.body = body;
     }
 
-    public void setBodyBean(QueryCustomBillingInfoResBody queryCustomBillingInfoResBody) {
-        this.queryCustomBillingInfoResBody = queryCustomBillingInfoResBody;
-    }
 
 }

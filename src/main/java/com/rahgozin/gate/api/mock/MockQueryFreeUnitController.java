@@ -3,9 +3,7 @@ package com.rahgozin.gate.api.mock;
 
 import com.rahgozin.gate.config.ApplicationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/mock/api/v1")
 @RestController
@@ -18,96 +16,86 @@ public class MockQueryFreeUnitController {
         this.applicationProperties = applicationProperties;
     }
 
-    @GetMapping("/query-free-unit")
-    public Object mockQueryFreeUnit() {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
-                "    <soapenv:Body>\n" +
-                "        <bbs:QueryFreeUnitResultMsg xmlns:bbs=\"http://www.huawei.com/bme/cbsinterface/bbservices\" xmlns:cbs=\"http://www.huawei.com/bme/cbsinterface/cbscommon\">\n" +
-                "            <ResultHeader>\n" +
-                "                <cbs:Version>1</cbs:Version>\n" +
-                "                <cbs:ResultCode>0</cbs:ResultCode>\n" +
-                "                <cbs:ResultDesc>Operation successfully.</cbs:ResultDesc>\n" +
-                "            </ResultHeader>\n" +
-                "            <QueryFreeUnitResult>\n" +
-                "                <bbs:FreeUnitItem>\n" +
-                "                    <bbs:FreeUnitType>C_5007</bbs:FreeUnitType>\n" +
-                "                    <bbs:FreeUnitTypeName>Data</bbs:FreeUnitTypeName>\n" +
-                "                    <bbs:MeasureUnit>1106</bbs:MeasureUnit>\n" +
-                "                    <bbs:MeasureUnitName>Bytes</bbs:MeasureUnitName>\n" +
-                "                    <bbs:TotalInitialAmount>42962255872</bbs:TotalInitialAmount>\n" +
-                "                    <bbs:TotalUnusedAmount>34014426830</bbs:TotalUnusedAmount>\n" +
-                "                    <bbs:FreeUnitItemDetail>\n" +
-                "                        <bbs:FreeUnitInstanceID>704000000226438849</bbs:FreeUnitInstanceID>\n" +
-                "                        <bbs:InitialAmount>42962255872</bbs:InitialAmount>\n" +
-                "                        <bbs:CurrentAmount>34014426830</bbs:CurrentAmount>\n" +
-                "                        <bbs:UsedAmount>8947829042</bbs:UsedAmount>\n" +
-                "                        <bbs:EffectiveTime>20230423084426</bbs:EffectiveTime>\n" +
-                "                        <bbs:ExpireTime>20230523084426</bbs:ExpireTime>\n" +
-                "                        <bbs:FreeUnitOrigin>\n" +
-                "                            <bbs:OriginType>1</bbs:OriginType>\n" +
-                "                            <bbs:OfferingKey>\n" +
-                "                                <bbs:OfferingID>702030</bbs:OfferingID>\n" +
-                "                                <bbs:PurchaseSeq>290100135336031585</bbs:PurchaseSeq>\n" +
-                "                            </bbs:OfferingKey>\n" +
-                "                        </bbs:FreeUnitOrigin>\n" +
-                "                        <bbs:RollOverFlag>N</bbs:RollOverFlag>\n" +
-                "                        <bbs:LastRollOveredTime>19700101033000</bbs:LastRollOveredTime>\n" +
-                "                    </bbs:FreeUnitItemDetail>\n" +
-                "                </bbs:FreeUnitItem>\n" +
-                "                <bbs:FreeUnitItem>\n" +
-                "                    <bbs:FreeUnitType>C_5015</bbs:FreeUnitType>\n" +
-                "                    <bbs:FreeUnitTypeName>SMS offnet onnet</bbs:FreeUnitTypeName>\n" +
-                "                    <bbs:MeasureUnit>1101</bbs:MeasureUnit>\n" +
-                "                    <bbs:MeasureUnitName>Item</bbs:MeasureUnitName>\n" +
-                "                    <bbs:TotalInitialAmount>150</bbs:TotalInitialAmount>\n" +
-                "                    <bbs:TotalUnusedAmount>142</bbs:TotalUnusedAmount>\n" +
-                "                    <bbs:FreeUnitItemDetail>\n" +
-                "                        <bbs:FreeUnitInstanceID>704000000227621592</bbs:FreeUnitInstanceID>\n" +
-                "                        <bbs:InitialAmount>150</bbs:InitialAmount>\n" +
-                "                        <bbs:CurrentAmount>142</bbs:CurrentAmount>\n" +
-                "                        <bbs:UsedAmount>8</bbs:UsedAmount>\n" +
-                "                        <bbs:EffectiveTime>20230508130024</bbs:EffectiveTime>\n" +
-                "                        <bbs:ExpireTime>20230607130022</bbs:ExpireTime>\n" +
-                "                        <bbs:FreeUnitOrigin>\n" +
-                "                            <bbs:OriginType>1</bbs:OriginType>\n" +
-                "                            <bbs:OfferingKey>\n" +
-                "                                <bbs:OfferingID>706400</bbs:OfferingID>\n" +
-                "                                <bbs:PurchaseSeq>290100136620340923</bbs:PurchaseSeq>\n" +
-                "                            </bbs:OfferingKey>\n" +
-                "                        </bbs:FreeUnitOrigin>\n" +
-                "                        <bbs:RollOverFlag>N</bbs:RollOverFlag>\n" +
-                "                        <bbs:LastRollOveredTime>19700101033000</bbs:LastRollOveredTime>\n" +
-                "                    </bbs:FreeUnitItemDetail>\n" +
-                "                </bbs:FreeUnitItem>\n" +
-                "                <bbs:FreeUnitItem>\n" +
-                "                    <bbs:FreeUnitType>C_4000</bbs:FreeUnitType>\n" +
-                "                    <bbs:FreeUnitTypeName>Onnet call</bbs:FreeUnitTypeName>\n" +
-                "                    <bbs:MeasureUnit>1003</bbs:MeasureUnit>\n" +
-                "                    <bbs:MeasureUnitName>Second</bbs:MeasureUnitName>\n" +
-                "                    <bbs:TotalInitialAmount>9000</bbs:TotalInitialAmount>\n" +
-                "                    <bbs:TotalUnusedAmount>9000</bbs:TotalUnusedAmount>\n" +
-                "                    <bbs:FreeUnitItemDetail>\n" +
-                "                        <bbs:FreeUnitInstanceID>704000000227621573</bbs:FreeUnitInstanceID>\n" +
-                "                        <bbs:InitialAmount>9000</bbs:InitialAmount>\n" +
-                "                        <bbs:CurrentAmount>9000</bbs:CurrentAmount>\n" +
-                "                        <bbs:UsedAmount>0</bbs:UsedAmount>\n" +
-                "                        <bbs:EffectiveTime>20230508130013</bbs:EffectiveTime>\n" +
-                "                        <bbs:ExpireTime>20230607130013</bbs:ExpireTime>\n" +
-                "                        <bbs:FreeUnitOrigin>\n" +
-                "                            <bbs:OriginType>1</bbs:OriginType>\n" +
-                "                            <bbs:OfferingKey>\n" +
-                "                                <bbs:OfferingID>700315</bbs:OfferingID>\n" +
-                "                                <bbs:PurchaseSeq>290100136620366732</bbs:PurchaseSeq>\n" +
-                "                            </bbs:OfferingKey>\n" +
-                "                        </bbs:FreeUnitOrigin>\n" +
-                "                        <bbs:RollOverFlag>N</bbs:RollOverFlag>\n" +
-                "                        <bbs:LastRollOveredTime>19700101033000</bbs:LastRollOveredTime>\n" +
-                "                    </bbs:FreeUnitItemDetail>\n" +
-                "                </bbs:FreeUnitItem>\n" +
-                "            </QueryFreeUnitResult>\n" +
-                "        </bbs:QueryFreeUnitResultMsg>\n" +
-                "    </soapenv:Body>\n" +
-                "</soapenv:Envelope>";
+    @GetMapping("/query-free-unit/{phone-number}")
+    public Object mockQueryFreeUnit(@PathVariable(name = "phone-number") String phoneNumber,@RequestHeader(name = "ERROR", required = false) Boolean error) {
+        if (error) {
+            return "{\n" +
+                    "  \"body\": {\n" +
+                    "    \"queryFreeUnitResultMsg\": {\n" +
+                    "      \"resultHeader\": {\n" +
+                    "        \"version\": 1,\n" +
+                    "        \"resultCode\": 118040195,\n" +
+                    "        \"resultDesc\": \"Failed to authenticate the LoginSystemCode, Password , and RemoteIp in the WebService message.\"\n" +
+                    "      }\n" +
+                    "    }\n" +
+                    "  }\n" +
+                    "}";
+        } else {
+            return "{\n" +
+                    "    \"body\": {\n" +
+                    "        \"queryFreeUnitResultMsg\": {\n" +
+                    "            \"resultHeader\": {\n" +
+                    "                \"version\": \"1\",\n" +
+                    "                \"resultCode\": \"0\",\n" +
+                    "                \"resultDesc\": \"Operation successfully.\"\n" +
+                    "            },\n" +
+                    "            \"queryFreeUnitResult\": {\n" +
+                    "                \"freeUnitItems\": [\n" +
+                    "                    {\n" +
+                    "                        \"freeUnitType\": \"C_Data_NoDisc\",\n" +
+                    "                        \"freeUnitTypeName\": \"Internet_Data_Free\",\n" +
+                    "                        \"measureUnit\": \"1106\",\n" +
+                    "                        \"measureUnitName\": \"Bytes\",\n" +
+                    "                        \"totalInitialAmount\": \"1086324736\",\n" +
+                    "                        \"totalUnusedAmount\": \"1086324736\",\n" +
+                    "                        \"freeUnitItemDetail\": {\n" +
+                    "                            \"freeUnitInstanceID\": \"701000000011173916\",\n" +
+                    "                            \"initialAmount\": \"1086324736\",\n" +
+                    "                            \"currentAmount\": \"1086324736\",\n" +
+                    "                            \"usedAmount\": \"0\",\n" +
+                    "                            \"effectiveTime\": \"20230419200152\",\n" +
+                    "                            \"expireTime\": \"20230519200152\",\n" +
+                    "                            \"freeUnitOrigin\": {\n" +
+                    "                                \"offeringKey\": {\n" +
+                    "                                    \"offeringID\": \"703700\",\n" +
+                    "                                    \"purchaseSeq\": \"860100010217784144\"\n" +
+                    "                                },\n" +
+                    "                                \"originType\": \"1\"\n" +
+                    "                            },\n" +
+                    "                            \"rollOverFlag\": \"N\",\n" +
+                    "                            \"lastRollOveredTime\": \"19700101033000\"\n" +
+                    "                        }\n" +
+                    "                    }\n" +
+                    "                ],\n" +
+                    "                \"freeUnitItem\": {\n" +
+                    "                    \"freeUnitType\": \"C_Data_NoDisc\",\n" +
+                    "                    \"freeUnitTypeName\": \"Internet_Data_Free\",\n" +
+                    "                    \"measureUnit\": \"1106\",\n" +
+                    "                    \"measureUnitName\": \"Bytes\",\n" +
+                    "                    \"totalInitialAmount\": \"1086324736\",\n" +
+                    "                    \"totalUnusedAmount\": \"1086324736\",\n" +
+                    "                    \"freeUnitItemDetail\": {\n" +
+                    "                        \"freeUnitInstanceID\": \"701000000011173916\",\n" +
+                    "                        \"initialAmount\": \"1086324736\",\n" +
+                    "                        \"currentAmount\": \"1086324736\",\n" +
+                    "                        \"usedAmount\": \"0\",\n" +
+                    "                        \"effectiveTime\": \"20230419200152\",\n" +
+                    "                        \"expireTime\": \"20230519200152\",\n" +
+                    "                        \"freeUnitOrigin\": {\n" +
+                    "                            \"offeringKey\": {\n" +
+                    "                                \"offeringID\": \"703700\",\n" +
+                    "                                \"purchaseSeq\": \"860100010217784144\"\n" +
+                    "                            },\n" +
+                    "                            \"originType\": \"1\"\n" +
+                    "                        },\n" +
+                    "                        \"rollOverFlag\": \"N\",\n" +
+                    "                        \"lastRollOveredTime\": \"19700101033000\"\n" +
+                    "                    }\n" +
+                    "                }\n" +
+                    "            }\n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "}";
+        }
     }
 }

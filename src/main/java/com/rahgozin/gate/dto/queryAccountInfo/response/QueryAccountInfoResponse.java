@@ -9,10 +9,8 @@ public class QueryAccountInfoResponse {
     @JsonProperty("accountInfo")
     AccountInfo accountInfo;
 
-    @XmlElement(name = "accountInfo")
+    @JsonProperty("accountInfo")
     public AccountInfo getAccountInfo() {
-        if (accountInfo == null)
-            accountInfo = new AccountInfo();
         return accountInfo;
     }
 }

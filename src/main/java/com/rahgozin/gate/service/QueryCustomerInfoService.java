@@ -1,9 +1,12 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
+import com.rahgozin.gate.dto.queryCustomBillingInfo.response.QueryCustomBillingInfoResEnvelope;
 import com.rahgozin.gate.dto.queryCustomerInfo.request.*;
 import com.rahgozin.gate.dto.queryCustomerInfo.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +21,22 @@ import java.util.Map;
 @Service
 public class QueryCustomerInfoService {
     private final RestTemplate queryCustomerInfoRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
     public QueryCustomerInfoService(@Qualifier("queryCustomerInfoRestTemplate")
                                     RestTemplate queryCustomerInfoRestTemplate,
-                                    XmlMapper xmlMapper,
                                     ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryCustomerInfoRestTemplate = queryCustomerInfoRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public QueryCustomerInfoResEnvelope queryCustomerInfo(String phoneNumber) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryCustomerInfoEnvelope queryCustomerInfoEnvelope = new QueryCustomerInfoEnvelope();
         QueryCustomerInfoBody queryCustomerInfoBody = new QueryCustomerInfoBody();
         QueryCustomerInfoReqMsg queryCustomerInfoReqMsg = new QueryCustomerInfoReqMsg();

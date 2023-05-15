@@ -9,20 +9,20 @@ import javax.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "Body"
+        "body"
 })
 @Generated("jsonschema2pojo")
 public class QuerySubEnvelopeRes {
 
-    @JsonProperty("Body")
+    @JsonProperty("body")
     private QuerySubBodyRes querySubBodyRes;
 
-    @JsonProperty("Body")
+    @JsonProperty("body")
     public QuerySubBodyRes getBody() {
         return querySubBodyRes;
     }
 
-    @JsonProperty("Body")
+    @JsonProperty("body")
     public void setBody(QuerySubBodyRes querySubBodyRes) {
         this.querySubBodyRes = querySubBodyRes;
     }

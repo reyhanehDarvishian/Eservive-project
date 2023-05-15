@@ -34,102 +34,112 @@ public class AccountBasicInfo {
         this.extsProperties = extsProperties;
     }
 
+    @JsonProperty("acctClass")
     public void setAcctClass(String acctClass) {
         this.acctClass = acctClass;
     }
 
-    @XmlAttribute(name = "acctClass")
+    @JsonProperty("acctClass")
     public String getAcctClass() {
         return acctClass;
     }
 
+    @JsonProperty("acctCode")
     public void setAcctCode(String acctCode) {
         this.acctCode = acctCode;
     }
 
-    @XmlAttribute(name = "acctCode")
+    @JsonProperty("acctCode")
     public String getAcctCode() {
         return acctCode;
     }
 
+    @JsonProperty("acctName")
     public void setAcctName(String acctName) {
         this.acctName = acctName;
     }
 
-    @XmlAttribute(name = "acctName")
+    @JsonProperty("acctName")
     public String getAcctName() {
         return acctName;
     }
 
+    @JsonProperty("acctType")
     public void setAcctType(String acctType) {
         this.acctType = acctType;
     }
 
-    @XmlAttribute(name = "acctType")
+    @JsonProperty("acctType")
     public String getAcctType() {
         return acctType;
     }
 
+    @JsonProperty("billLang")
     public void setBillLang(String billLang) {
         this.billLang = billLang;
     }
 
-    @XmlAttribute(name = "billLang")
+    @JsonProperty("billLang")
     public String getBillLang() {
         return billLang;
     }
 
+    @JsonProperty("currencyId")
     public void setCurrencyId(String currencyId) {
         this.currencyId = currencyId;
     }
 
-    @XmlAttribute(name = "currencyId")
+    @JsonProperty("currencyId")
     public String getCurrencyId() {
         return currencyId;
     }
 
+    @JsonProperty("partyId")
     public void setPartyId(String partyId) {
         this.partyId = partyId;
     }
 
-    @XmlAttribute(name = "partyId")
+    @JsonProperty("partyId")
     public String getPartyId() {
         return partyId;
     }
 
+    @JsonProperty("paymentType")
     public void setPaymentType(String paymentType) {
         this.paymentType = paymentType;
     }
 
-    @XmlAttribute(name = "paymentType")
+    @JsonProperty("paymentType")
     public String getPaymentType() {
         return paymentType;
     }
 
+    @JsonProperty("status")
     public void setStatus(String status) {
         this.status = status;
     }
 
-    @XmlAttribute(name = "status")
+    @JsonProperty("status")
     public String getStatus() {
         return status;
     }
 
+    @JsonProperty("statusTime")
     public void setStatusTime(String statusTime) {
         this.statusTime = statusTime;
     }
 
-    @XmlAttribute(name = "statusTime")
+    @JsonProperty("statusTime")
     public String getStatusTime() {
         return statusTime;
     }
 
-    @XmlElement(name = "extProperties")
+    @JsonProperty("extProperties")
     public ExtProperties getExtProperties() {
-        if (extProperties == null) extProperties = new ExtProperties();
         return extProperties;
     }
 
+    @JsonProperty("extProperties")
     public void setExtProperties(ExtProperties extProperties) {
         addToExtProperties(extProperties);
         this.extProperties = extProperties;

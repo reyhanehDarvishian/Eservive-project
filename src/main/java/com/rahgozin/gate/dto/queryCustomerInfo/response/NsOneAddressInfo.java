@@ -5,65 +5,70 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.xml.bind.annotation.XmlElement;
 
 public class NsOneAddressInfo {
-    String addressId;
-    String preferenceFlag;
-    String effDate;
-    String expDate;
-    String addrType;
+    private String addressId;
+    private String preferenceFlag;
+    private String effDate;
+    private String expDate;
+    private String addrType;
     @JsonProperty("addressInfo")
-    AddressInfo addressInfo;
+    private AddressInfo addressInfo;
 
-    @XmlElement(name = "addressId")
+    @JsonProperty("addressId")
     public String getAddressId() {
         return addressId;
     }
 
+    @JsonProperty("addressId")
     public void setAddressId(String addressId) {
         this.addressId = addressId;
     }
 
-    @XmlElement(name = "preferenceFlag")
+    @JsonProperty("preferenceFlag")
     public String getPreferenceFlag() {
         return preferenceFlag;
     }
 
+    @JsonProperty("preferenceFlag")
     public void setPreferenceFlag(String preferenceFlag) {
         this.preferenceFlag = preferenceFlag;
     }
 
-    @XmlElement(name = "effDate")
+    @JsonProperty("effDate")
     public String getEffDate() {
         return effDate;
     }
 
+    @JsonProperty("effDate")
     public void setEffDate(String effDate) {
         this.effDate = effDate;
     }
 
-    @XmlElement(name = "expDate")
+    @JsonProperty("expDate")
     public String getExpDate() {
         return expDate;
     }
 
+    @JsonProperty("expDate")
     public void setExpDate(String expDate) {
         this.expDate = expDate;
     }
 
-    @XmlElement(name = "addrType")
+    @JsonProperty("addrType")
     public String getAddrType() {
         return addrType;
     }
 
+    @JsonProperty("addrType")
     public void setAddrType(String addrType) {
         this.addrType = addrType;
     }
 
-    @XmlElement(name = "ns1:addressInfo")
+    @JsonProperty("addressInfo")
     public AddressInfo getAddressInfo() {
-        if (addressInfo == null) addressInfo = new AddressInfo();
         return addressInfo;
     }
 
+    @JsonProperty("addressInfo")
     public void setAddressInfo(AddressInfo addressInfo) {
         this.addressInfo = addressInfo;
     }

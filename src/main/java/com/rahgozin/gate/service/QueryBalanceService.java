@@ -1,6 +1,9 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryBalance.request.*;
@@ -12,23 +15,27 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class QueryBalanceService {
     private final RestTemplate queryBalanceRestTemplate;
-    public final XmlMapper xmlMapper;
+
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
 
     @Autowired
-    public QueryBalanceService(@Qualifier("queryBalanceRestTemplate") RestTemplate queryBalanceRestTemplate, XmlMapper xmlMapper, ApplicationProperties applicationProperties, TokenService tokenService) {
+    public QueryBalanceService(@Qualifier("queryBalanceRestTemplate") RestTemplate queryBalanceRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryBalanceRestTemplate = queryBalanceRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public QueryBalanceResEnvelope queryBalanceService(String phoneNumber) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryBalanceEnvelopeReq queryBalanceEnvelopeReq = new QueryBalanceEnvelopeReq();
         QueryBalanceBody queryBalanceBody = new QueryBalanceBody();
         QueryBalanceRequestMsg queryBalanceRequestMsg = new QueryBalanceRequestMsg();
@@ -64,6 +71,7 @@ public class QueryBalanceService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return queryBalanceRestTemplate.postForEntity(applicationProperties.getQueryBalanceConnection().getBaseUrl(), queryBalanceResBody, QueryBalanceResEnvelope.class).getBody();
+        Map body = queryBalanceRestTemplate.postForEntity(applicationProperties.getQueryBalanceConnection().getBaseUrl(), queryBalanceResBody, Map.class).getBody();
+        return new ObjectMapper().convertValue(body, QueryBalanceResEnvelope.class);
     }
 }

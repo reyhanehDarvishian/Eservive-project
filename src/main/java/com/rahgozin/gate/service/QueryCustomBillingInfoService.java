@@ -1,7 +1,9 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryCustomBillingInfo.request.*;
@@ -18,28 +20,27 @@ import java.util.Map;
 @Service
 public class QueryCustomBillingInfoService {
     private final RestTemplate queryCustomBillingInfoRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
     public QueryCustomBillingInfoService
             (@Qualifier("queryCustomBillingInfoRestTemplate") RestTemplate queryCustomBillingInfoRestTemplate,
-             XmlMapper xmlMapper, ApplicationProperties applicationProperties, TokenService tokenService) {
+              ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryCustomBillingInfoRestTemplate = queryCustomBillingInfoRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
-    public Map<String,String> queryCustomBillingInfo(String date, int opType) {
-
+    public QueryCustomBillingInfoResEnvelope queryCustomBillingInfo(String phoneNumber, String date, int opType) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryBillingEnvelope billingEnvelope = new QueryBillingEnvelope();
         QueryBillingBody billingBody = new QueryBillingBody();
         QueryCustomBillingInfoRequestMsg queryCustomBillingInfoRequestMsg = new QueryCustomBillingInfoRequestMsg();
         QueryCustomBillingInfoRequest queryCustomBillingInfoRequest = new QueryCustomBillingInfoRequest();
         QueryBillingReqHeader queryBillingReqHeader = new QueryBillingReqHeader();
-
         queryBillingReqHeader
                 .setVersion(applicationProperties.getQueryBillingInfoConnection().getVersion().toString());
         queryBillingReqHeader
@@ -58,7 +59,7 @@ public class QueryCustomBillingInfoService {
                 .setChannelID(applicationProperties.getQueryBillingInfoConnection().getOperatorId().toString());
 
         queryCustomBillingInfoRequest.getAcctAccessCode()
-                .setPrimaryIdentity(applicationProperties.getQueryBillingInfoConnection().getPrimaryIdentity());
+                .setPrimaryIdentity(phoneNumber);
 
         if (opType==0) {
 
@@ -82,6 +83,7 @@ public class QueryCustomBillingInfoService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-       return queryCustomBillingInfoRestTemplate.postForEntity(applicationProperties.getQueryBillingInfoConnection().getBaseUrl(), queryCustomBillingResBody, Map.class).getBody();
+        Map body = queryCustomBillingInfoRestTemplate.postForEntity(applicationProperties.getQueryBillingInfoConnection().getBaseUrl(), queryCustomBillingResBody, Map.class).getBody();
+        return new ObjectMapper().convertValue(body, QueryCustomBillingInfoResEnvelope.class);
     }
 }

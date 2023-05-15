@@ -1,39 +1,42 @@
 package com.rahgozin.gate.dto.queryFreeUnit.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "ResultHeader",
+        "QueryFreeUnitResult"
+})
+@Generated("jsonschema2pojo")
 public class QueryFreeUnitResultMsg {
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:bbs")
-    private String bbservices = "http://www.huawei.com/bme/cbsinterface/bbservices";
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cbs")
-    private String cbscommon = "http://www.huawei.com/bme/cbsinterface/cbscommon";
-	@JsonProperty("ResultHeader")
-	ResultHeader resultHeader;
-	@JsonProperty("QueryFreeUnitResult")
-    QueryFreeUnitResult queryFreeUnitResult;
+    private QueryFreeUnitResultHeader freeUnitResultHeader;
+    private QueryFreeUnitResult queryFreeUnitResult;
 
-    @XmlElement(name = "QueryFreeUnitResult")
+
+    @JsonProperty("resultHeader")
+    public QueryFreeUnitResultHeader getFreeUnitResultHeader() {
+        return freeUnitResultHeader;
+    }
+
+    @JsonProperty("ResultHeader")
+    public void setFreeUnitResultHeader(QueryFreeUnitResultHeader freeUnitResultHeader) {
+        this.freeUnitResultHeader = freeUnitResultHeader;
+    }
+
+    @JsonProperty("queryFreeUnitResult")
     public QueryFreeUnitResult getQueryFreeUnitResult() {
-        if (queryFreeUnitResult == null) queryFreeUnitResult = new QueryFreeUnitResult();
         return queryFreeUnitResult;
     }
 
+    @JsonProperty("QueryFreeUnitResult")
     public void setQueryFreeUnitResult(QueryFreeUnitResult queryFreeUnitResult) {
         this.queryFreeUnitResult = queryFreeUnitResult;
-    }
-
-    @XmlElement(name = "ResultHeader")
-    public ResultHeader getResultHeader() {
-        if (resultHeader == null) resultHeader = new ResultHeader();
-        return resultHeader;
-    }
-
-    public void setResultHeader(ResultHeader resultHeader) {
-        this.resultHeader = resultHeader;
     }
 
 }

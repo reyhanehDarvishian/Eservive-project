@@ -1,20 +1,27 @@
 package com.rahgozin.gate.dto.queryCustomerInfo.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "queryCustomerInfoRspMsg"
+})
+@Generated("jsonschema2pojo")
 public class QueryCustomerInfoResBody {
-    @JsonProperty("queryCustomerInfoRspMsg")
-	QueryCustomerInfoRspMsg queryCustomerInfoRspMsg;
+	private QueryCustomerInfoRspMsg queryCustomerInfoRspMsg;
 
-    @XmlElement(name = "queryCustomerInfoRspMsg")
+    @JsonProperty("queryCustomerInfoRspMsg")
     public QueryCustomerInfoRspMsg getQueryCustomerInfoRspMsg() {
-        if (queryCustomerInfoRspMsg == null) queryCustomerInfoRspMsg = new QueryCustomerInfoRspMsg();
         return queryCustomerInfoRspMsg;
     }
 
+    @JsonProperty("queryCustomerInfoRspMsg")
     public void setQueryCustomerInfoRspMsg(QueryCustomerInfoRspMsg queryCustomerInfoRspMsg) {
         this.queryCustomerInfoRspMsg = queryCustomerInfoRspMsg;
     }

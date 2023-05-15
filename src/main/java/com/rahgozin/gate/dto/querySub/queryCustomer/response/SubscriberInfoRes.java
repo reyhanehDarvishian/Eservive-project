@@ -16,12 +16,8 @@ import java.util.List;
 @Generated("jsonschema2pojo")
 public class SubscriberInfoRes {
 
-
-
     @JsonProperty("subInfo")
     private SubInfoResponse subInfoResponse;
-
-
 
     public void setSubInfoResponse(SubInfoResponse subInfoResponse) {
         this.subInfoResponse = subInfoResponse;
@@ -32,7 +28,6 @@ public class SubscriberInfoRes {
 
         return subInfoResponse;
     }
-
 
     @JsonProperty("subInfo")
     public void setSubInfo(SubInfoResponse subInfoResponse) {

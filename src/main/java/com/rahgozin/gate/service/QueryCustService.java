@@ -1,34 +1,41 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.querySub.queryCustomer.request.*;
 import com.rahgozin.gate.dto.querySub.queryCustomer.response.QuerySubEnvelopeRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class QueryCustService {
     private final RestTemplate querySubRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
-    public QueryCustService(XmlMapper xmlMapper, @Qualifier("querySubRestTemplate") RestTemplate querySubRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
+    public QueryCustService(@Qualifier("querySubRestTemplate") RestTemplate querySubRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
         this.querySubRestTemplate = querySubRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public QuerySubEnvelopeRes queryCust(Pageable pageable, String customerId) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();
         QuerySubscriberReq querySubscriberReq = new QuerySubscriberReq();

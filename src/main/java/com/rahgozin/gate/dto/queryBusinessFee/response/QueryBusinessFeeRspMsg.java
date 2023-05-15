@@ -1,10 +1,19 @@
 package com.rahgozin.gate.dto.queryBusinessFee.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "resultHeader",
+        "queryBusinessFeeResponse"
+})
+@Generated("jsonschema2pojo")
 public class QueryBusinessFeeRspMsg {
     @JsonProperty("resultHeader")
     BusinessFeeResResultHeader businessFeeResResultHeader;
@@ -12,22 +21,22 @@ public class QueryBusinessFeeRspMsg {
     @JsonProperty("queryBusinessFeeResponse")
     QueryBusinessFeeResponse queryBusinessFeeResponse;
 
-    @XmlElement(name = "queryBusinessFeeResponse")
+    @JsonProperty("queryBusinessFeeResponse")
     public QueryBusinessFeeResponse getQueryBusinessFeeResponse() {
-        if (queryBusinessFeeResponse == null) queryBusinessFeeResponse = new QueryBusinessFeeResponse();
         return queryBusinessFeeResponse;
     }
 
+    @JsonProperty("QueryBusinessFeeResponse")
     public void setQueryBusinessFeeResponse(QueryBusinessFeeResponse queryBusinessFeeResponse) {
         this.queryBusinessFeeResponse = queryBusinessFeeResponse;
     }
 
-    @XmlElement(name = "resultHeader")
+    @JsonProperty("resultHeader")
     public BusinessFeeResResultHeader getBusinessFeeResResultHeader() {
-        if (businessFeeResResultHeader == null) businessFeeResResultHeader = new BusinessFeeResResultHeader();
         return businessFeeResResultHeader;
     }
 
+    @JsonProperty("ResultHeader")
     public void setBusinessFeeResResultHeader(BusinessFeeResResultHeader businessFeeResResultHeader) {
         this.businessFeeResResultHeader = businessFeeResResultHeader;
     }

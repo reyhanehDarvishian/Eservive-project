@@ -1,8 +1,12 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
+import com.rahgozin.gate.dto.queryCustomBillingInfo.response.QueryCustomBillingInfoResEnvelope;
 import com.rahgozin.gate.dto.querySubscriberNew.queryCust.request.*;
 import com.rahgozin.gate.dto.querySubscriberNew.queryCust.response.*;
 import org.json.Cookie;
@@ -16,23 +20,26 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class NewQueryCustService {
     private final RestTemplate querySubRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
     private final QueryEntityIdService entityIdService;
 
 
-    public NewQueryCustService(@Qualifier("querySubRestTemplate") RestTemplate querySubRestTemplate, XmlMapper xmlMapper, ApplicationProperties applicationProperties, TokenService tokenService, QueryEntityIdService entityIdService) {
+    public NewQueryCustService(@Qualifier("querySubRestTemplate") RestTemplate querySubRestTemplate,  ApplicationProperties applicationProperties, TokenService tokenService, QueryEntityIdService entityIdService) {
         this.querySubRestTemplate = querySubRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
         this.entityIdService = entityIdService;
     }
     public QuerySubEnvelopeRes newQueryCustomer(Pageable pageable,String phoneNumber) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         String customerId = (entityIdService.entityId(phoneNumber).getBody().getQueryEntityIdRspMsg().getQueryEntityIdResponse().getEntityInfos().get(2).getEntityId());
         QuerySubEnvelopeReq querySubEnvelopeReq = new QuerySubEnvelopeReq();
         QuerySubBodyReq querySubBodyReq = new QuerySubBodyReq();
@@ -45,7 +52,7 @@ public class NewQueryCustService {
         querySubReqHeader.getOwnershipInfo().setBeId(applicationProperties.getQuerySubscriberConnection().getBeId());
         querySubReqHeader.getOwnershipInfo().setRegionId(applicationProperties.getQuerySubscriberConnection().getRegionId());
         querySubReqHeader.getAccessSecurity().setLoginSystemCode(applicationProperties.getQuerySubscriberConnection().getLoginSystemCode());
-        querySubReqHeader.getAccessSecurity().setPassword("i3qsntAtJug0YxeTIr+7Ij0gR9Dgz02gTwWd3E9uhfI");
+        querySubReqHeader.getAccessSecurity().setPassword(applicationProperties.getQuerySubscriberConnection().getPassword());
         querySubReqHeader.getOperatorInfo().setOperatorId(applicationProperties.getQuerySubscriberConnection().getOperatorId());
         querySubscriberReq.getIncludeObjRequest().setIncludeOfferFlag(applicationProperties.getQuerySubscriberConnection().getIncludeOfferFlag());
         querySubscriberReq.getIncludeObjRequest().setIncludeHistoryFlag(applicationProperties.getQuerySubscriberConnection().getIncludeHistoryFlag());

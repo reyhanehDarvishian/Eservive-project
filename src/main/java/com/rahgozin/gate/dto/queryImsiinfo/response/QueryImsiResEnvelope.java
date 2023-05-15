@@ -1,23 +1,32 @@
 package com.rahgozin.gate.dto.queryImsiinfo.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "Body"
+})
+@Generated("jsonschema2pojo")
 public class QueryImsiResEnvelope {
 
-    @JsonProperty("Body")
-    QueryImsiResBody queryImsiResBody;
+    @JsonProperty("body")
+    private QueryImsiResBody imsiResBody;
 
-    @XmlElement(name = "Body")
-    public QueryImsiResBody getQueryImsiResBody() {
-        if (queryImsiResBody == null) queryImsiResBody = new QueryImsiResBody();
-        return queryImsiResBody;
+    @JsonProperty("body")
+    public QueryImsiResBody getBody() {
+        return imsiResBody;
     }
 
-    public void setQueryImsiResBody(QueryImsiResBody queryImsiResBody) {
-        this.queryImsiResBody = queryImsiResBody;
+    @JsonProperty("Body")
+    public void setBody(QueryImsiResBody imsiResBody) {
+        this.imsiResBody = imsiResBody;
     }
 
 }

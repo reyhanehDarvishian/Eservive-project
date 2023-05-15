@@ -9,24 +9,25 @@ import java.util.List;
 
 public class QueryCustomerInfoResponse {
     @JsonProperty("customer")
-    Customer customer;
-    String defaultAccountId;
+    private Customer customer;
+    private String defaultAccountId;
 
+    @JsonProperty("defaultAccountId")
     public void setDefaultAccountId(String defaultAccountId) {
         this.defaultAccountId = defaultAccountId;
     }
 
-    @XmlAttribute(name = "defaultAccountId")
+    @JsonProperty("defaultAccountId")
     public String getDefaultAccountId() {
         return defaultAccountId;
     }
 
-    @XmlElement(name = "customer")
+    @JsonProperty("customer")
     public Customer getCustomer() {
-        if (customer == null) customer = new Customer();
         return customer;
     }
 
+    @JsonProperty("customer")
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

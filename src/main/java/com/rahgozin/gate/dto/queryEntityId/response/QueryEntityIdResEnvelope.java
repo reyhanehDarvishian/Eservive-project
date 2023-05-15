@@ -1,25 +1,27 @@
 package com.rahgozin.gate.dto.queryEntityId.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.annotation.Generated;
 
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "Body"
+})
+@Generated("jsonschema2pojo")
 public class QueryEntityIdResEnvelope {
-    @JsonProperty("Body")
-    QueryEntityIdResBody entityIdBody;
+    @JsonProperty("body")
+    private QueryEntityIdResBody body;
 
-    @JsonIgnore
-    @XmlElement(name = "Body")
+    @JsonProperty("body")
     public QueryEntityIdResBody getBody() {
-        if (entityIdBody == null) entityIdBody = new QueryEntityIdResBody();
-        return entityIdBody;
+        return body;
     }
 
-    public void setBody(QueryEntityIdResBody entityIdBody) {
-        this.entityIdBody = entityIdBody;
+    @JsonProperty("Body")
+    public void setBody(QueryEntityIdResBody body) {
+        this.body = body;
     }
-
-
 }

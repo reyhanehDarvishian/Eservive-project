@@ -15,7 +15,7 @@ public class QueryBalanceController {
         this.queryBalanceService = queryBalanceService;
     }
     @GetMapping("/query-balance/{phone-number}")
-    public Object queryBalance( @PathVariable(name = "phone-number") String phoneNumber){
+    public Object queryBalance(@PathVariable(name = "phone-number") String phoneNumber){
         return queryBalanceService.queryBalanceService(phoneNumber);
     }
 }

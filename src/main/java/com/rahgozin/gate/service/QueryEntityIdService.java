@@ -1,13 +1,13 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
-import com.rahgozin.gate.dto.changeImsiReport.response.ChangeImsiReportResEnvelope;
 import com.rahgozin.gate.dto.queryEntityId.request.*;
 import com.rahgozin.gate.dto.queryEntityId.response.*;
-import org.json.JSONObject;
-import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
@@ -21,25 +21,26 @@ import java.util.Map;
 public class QueryEntityIdService {
 
     private final RestTemplate queryEntityIdRestTemplate;
-    public final ObjectMapper objectMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
-    public QueryEntityIdService(ObjectMapper objectMapper, @Qualifier("queryEntityIdRestTemplate") RestTemplate queryEntityIdRestTemplate, ApplicationProperties applicationProperties, TokenService tokenService) {
+    public QueryEntityIdService(@Qualifier("queryEntityIdRestTemplate") RestTemplate queryEntityIdRestTemplate,
+                                ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryEntityIdRestTemplate = queryEntityIdRestTemplate;
-        this.objectMapper = objectMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public QueryEntityIdResEnvelope entityId(String phoneNumber) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryEntityIdEnvelope entityIdEnvelope = new QueryEntityIdEnvelope();
         QueryEntityIdBody entityIdBody = new QueryEntityIdBody();
         QueryEntityIdReqMsg entityIdReqMsg = new QueryEntityIdReqMsg();
         QueryEntityIdRequestHeader entityIdRequestHeader = new QueryEntityIdRequestHeader();
         QueryEntityIdRequest entityIdRequest = new QueryEntityIdRequest();
-
         entityIdRequestHeader.getVersion().setVersion(applicationProperties.getQueryEntityIdConnection().getVersion());
         entityIdRequestHeader.getBusinessCode().setBusinessCode(applicationProperties.getQueryEntityIdConnection().getBusinessCode());
         entityIdRequestHeader.getMessageSeq().setMessageSeq(applicationProperties.getQueryEntityIdConnection().getMessageSeq());
@@ -63,11 +64,10 @@ public class QueryEntityIdService {
         HttpEntity<String> queryEntityResBody = null;
         try {
             queryEntityResBody =
-                    new HttpEntity<>(objectMapper.writeValueAsString(entityIdEnvelope), queryEntityHeaders);
+                    new HttpEntity<>(xmlMapper.writeValueAsString(entityIdEnvelope), queryEntityHeaders);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
         return queryEntityIdRestTemplate.postForEntity(applicationProperties.getQueryEntityIdConnection().getBaseUrl(), queryEntityResBody, QueryEntityIdResEnvelope.class).getBody();
     }
 }

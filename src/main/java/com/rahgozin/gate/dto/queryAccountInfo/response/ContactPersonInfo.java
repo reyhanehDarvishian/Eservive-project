@@ -14,57 +14,62 @@ public class ContactPersonInfo {
     String lastName;
     String mobilePhone;
 
+    @JsonProperty("contactPersonId")
     public void setContactPersonId(String contactPersonId) {
         this.contactPersonId = contactPersonId;
     }
 
-    @XmlAttribute(name = "contactPersonId")
+    @JsonProperty("contactPersonId")
     public String getContactPersonId() {
         return contactPersonId;
     }
 
+    @JsonProperty("contactPersonType")
     public void setContactPersonType(String contactPersonType) {
         this.contactPersonType = contactPersonType;
     }
 
-    @XmlAttribute(name = "contactPersonType")
+    @JsonProperty("contactPersonType")
     public String getContactPersonType() {
         return contactPersonType;
     }
 
+    @JsonProperty("firstName")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @XmlAttribute(name = "firstName")
+    @JsonProperty("firstName")
     public String getFirstName() {
         return firstName;
     }
 
+    @JsonProperty("lastName")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @XmlAttribute(name = "lastName")
+    @JsonProperty("lastName")
     public String getLastName() {
         return lastName;
     }
 
+    @JsonProperty("mobilePhone")
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
-    @XmlAttribute(name = "mobilePhone")
+    @JsonProperty("mobilePhone")
     public String getMobilePhone() {
         return mobilePhone;
     }
 
-    @XmlElement(name = "addressInfo")
+    @JsonProperty("addressInfo")
     public AddressInfo getAddressInfo() {
-        if (addressInfo == null) addressInfo = new AddressInfo();
         return addressInfo;
     }
 
+    @JsonProperty("addressInfo")
     public void setAddressInfo(AddressInfo addressInfo) {
         this.addressInfo = addressInfo;
     }

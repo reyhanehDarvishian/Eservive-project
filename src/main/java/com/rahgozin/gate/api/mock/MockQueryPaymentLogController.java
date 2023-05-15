@@ -4,6 +4,7 @@ package com.rahgozin.gate.api.mock;
 import com.rahgozin.gate.config.ApplicationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,13 @@ public class MockQueryPaymentLogController {
         this.restTemplateBuilder = restTemplateBuilder;
         this.applicationProperties = applicationProperties;
     }
-    @GetMapping("/query-payment-log")
-    public Object mockQueryPaymentLog() {
-        return "";
-    }
 
+    @GetMapping("/query-payment-log")
+    public Object mockQueryPaymentLog(@RequestHeader(name = "ERROR", required = false) Boolean error) {
+        if (error) {
+            return "";
+        } else {
+            return "";
+        }
+    }
 }

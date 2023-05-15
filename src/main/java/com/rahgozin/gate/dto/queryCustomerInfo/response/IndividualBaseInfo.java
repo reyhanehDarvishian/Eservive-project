@@ -1,14 +1,32 @@
 package com.rahgozin.gate.dto.queryCustomerInfo.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rahgozin.gate.dto.queryEntityId.response.EntityInfo;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.List;
 
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "individualId",
+        "firstName",
+        "lastName",
+        "title",
+        "gender",
+        "birthday",
+        "nationality",
+        "nativePlace",
+        "writtenLang",
+        "phoneticLang",
+        "individualProperty"
+})
+@Generated("jsonschema2pojo")
 public class IndividualBaseInfo {
 	String individualId = "";
 	String firstName = "";
@@ -41,7 +59,7 @@ public class IndividualBaseInfo {
         this.birthday = birthday;
     }
 
-    @XmlAttribute(name = "birthday")
+    @JsonProperty("birthday")
     public String getBirthday() {
         return birthday;
     }
@@ -50,7 +68,7 @@ public class IndividualBaseInfo {
         this.firstName = firstName;
     }
 
-    @XmlAttribute(name = "firstName")
+    @JsonProperty("firstName")
     public String getFirstName() {
         return firstName;
     }
@@ -59,7 +77,7 @@ public class IndividualBaseInfo {
         this.gender = gender;
     }
 
-    @XmlAttribute(name = "gender")
+    @JsonProperty("gender")
     public String getGender() {
         return gender;
     }
@@ -68,7 +86,7 @@ public class IndividualBaseInfo {
         this.individualId = individualId;
     }
 
-    @XmlAttribute(name = "individualId")
+    @JsonProperty("individualId")
     public String getIndividualId() {
         return individualId;
     }
@@ -77,7 +95,7 @@ public class IndividualBaseInfo {
         this.lastName = lastName;
     }
 
-    @XmlAttribute(name = "lastName")
+    @JsonProperty("lastName")
     public String getLastName() {
         return lastName;
     }
@@ -86,7 +104,7 @@ public class IndividualBaseInfo {
         this.nationality = nationality;
     }
 
-    @XmlAttribute(name = "nationality")
+    @JsonProperty("nationality")
     public String getNationality() {
         return nationality;
     }
@@ -95,7 +113,7 @@ public class IndividualBaseInfo {
         this.nativePlace = nativePlace;
     }
 
-    @XmlAttribute(name = "nativePlace")
+    @JsonProperty("nativePlace")
     public String getNativePlace() {
         return nativePlace;
     }
@@ -104,7 +122,7 @@ public class IndividualBaseInfo {
         this.phoneticLang = phoneticLang;
     }
 
-    @XmlAttribute(name = "phoneticLang")
+    @JsonProperty("phoneticLang")
     public String getPhoneticLang() {
         return phoneticLang;
     }
@@ -113,7 +131,7 @@ public class IndividualBaseInfo {
         this.title = title;
     }
 
-    @XmlAttribute(name = "title")
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
@@ -122,17 +140,17 @@ public class IndividualBaseInfo {
         this.writtenLang = writtenLang;
     }
 
-    @XmlAttribute(name = "writtenLang")
+    @JsonProperty("writtenLang")
     public String getWrittenLang() {
         return writtenLang;
     }
 
-    @XmlElement(name = "individualProperty")
+    @JsonProperty("individualProperty")
     public IndividualProperty getIndividualProperty() {
-        if (individualProperty == null) individualProperty = new IndividualProperty();
         return individualProperty;
     }
 
+    @JsonProperty("individualProperty")
     public void setIndividualProperty(IndividualProperty individualProperty) {
 		addToIndividualProperties(individualProperty);
         this.individualProperty = individualProperty;

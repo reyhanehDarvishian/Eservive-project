@@ -1,41 +1,39 @@
 package com.rahgozin.gate.dto.queryBalance.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
-import java.util.ArrayList;
-import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "resultHeader",
+        "queryBalanceResult"
+})
+@Generated("jsonschema2pojo")
 public class QueryBalanceResultMsg {
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:ars")
-    private String arservices = "http://www.huawei.com/bme/cbsinterface/arservices";
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:arc")
-    private String arcommon = "http://cbs.huawei.com/ar/wsservice/arcommon";
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cbs")
-    private String cbscommon = "http://www.huawei.com/bme/cbsinterface/cbscommon";
+    private QueryBalanceResResultHeader balanceResResultHeader;
+    private QueryBalanceResult queryBalanceResult;
 
     @JsonProperty("resultHeader")
-    QueryBalanceResResultHeader queryBalanceResResultHeader;
-    @JsonProperty("QueryBalanceResult")
-    QueryBalanceResult queryBalanceResult;
-
-    @XmlElement(name = "resultHeader")
-    public QueryBalanceResResultHeader getQueryBalanceResResultHeader() {
-        if (queryBalanceResResultHeader == null) queryBalanceResResultHeader = new QueryBalanceResResultHeader();
-        return queryBalanceResResultHeader;
+    public QueryBalanceResResultHeader getBalanceResResultHeader() {
+        return balanceResResultHeader;
     }
 
-    public void setQueryBalanceResResultHeader(QueryBalanceResResultHeader queryBalanceResResultHeader) {
-        this.queryBalanceResResultHeader = queryBalanceResResultHeader;
+    @JsonProperty("ResultHeader")
+    public void setBalanceResResultHeader(QueryBalanceResResultHeader balanceResResultHeader) {
+        this.balanceResResultHeader = balanceResResultHeader;
     }
 
-    @XmlElement(name = "QueryBalanceResult")
+    @JsonProperty("queryBalanceResult")
     public QueryBalanceResult getQueryBalanceResult() {
-        if (queryBalanceResult == null) queryBalanceResult = new QueryBalanceResult();
         return queryBalanceResult;
     }
 
+    @JsonProperty("QueryBalanceResult")
     public void setQueryBalanceResult(QueryBalanceResult queryBalanceResult) {
         this.queryBalanceResult = queryBalanceResult;
     }

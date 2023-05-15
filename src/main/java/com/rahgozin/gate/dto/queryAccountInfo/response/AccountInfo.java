@@ -21,60 +21,65 @@ public class AccountInfo {
     @JsonProperty("accountGroupInfo")
     AccountGroupInfo accountGroupInfo;
 
+    @JsonProperty("accountId")
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    @XmlAttribute(name = "accountId")
+    @JsonProperty("accountId")
     public String getAccountId() {
         return accountId;
     }
 
+    @JsonProperty("vip")
     public void setVip(String vip) {
         this.vip = vip;
     }
 
-    @XmlAttribute(name = "vip")
+    @JsonProperty("vip")
     public String getVip() {
         return vip;
     }
 
-    @XmlElement(name = "accountBasicInfo")
+    @JsonProperty("accountBasicInfo")
     public AccountBasicInfo getAccountBasicInfo() {
-        if (accountBasicInfo == null) accountBasicInfo = new AccountBasicInfo();
         return accountBasicInfo;
     }
 
+    @JsonProperty("accountBasicInfo")
     public void setAccountBasicInfo(AccountBasicInfo accountBasicInfo) {
         this.accountBasicInfo = accountBasicInfo;
     }
 
-    @XmlElement(name = "accountGroupInfo")
+    @JsonProperty("accountGroupInfo")
     public AccountGroupInfo getAccountGroupInfo() {
         if (accountGroupInfo == null) accountGroupInfo = new AccountGroupInfo();
         return accountGroupInfo;
     }
 
+    @JsonProperty("accountGroupInfo")
     public void setAccountGroupInfo(AccountGroupInfo accountGroupInfo) {
         this.accountGroupInfo = accountGroupInfo;
     }
 
-    @XmlElement(name = "billCycleInfo")
+    @JsonProperty("billCycleInfo")
     public BillCycleInfo getBillCycleInfo() {
         if (billCycleInfo == null) billCycleInfo = new BillCycleInfo();
         return billCycleInfo;
     }
 
+    @JsonProperty("billCycleInfo")
     public void setBillCycleInfo(BillCycleInfo billCycleInfo) {
         this.billCycleInfo = billCycleInfo;
     }
 
-    @XmlElement(name = "contactPersonInfo")
+    @JsonProperty("contactPersonInfo")
     public ContactPersonInfo getContactPersonInfo() {
         if (contactPersonInfo == null) contactPersonInfo = new ContactPersonInfo();
         return contactPersonInfo;
     }
 
+    @JsonProperty("contactPersonInfo")
     public void setContactPersonInfo(ContactPersonInfo contactPersonInfo) {
         this.contactPersonInfo = contactPersonInfo;
     }

@@ -1,20 +1,29 @@
 package com.rahgozin.gate.dto.queryAccountInfo.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "Body"
+})
+@Generated("jsonschema2pojo")
 
 public class QueryAccountInfoResEnvelope {
-    @JsonProperty("Body")
+
+    @JsonProperty("body")
     QueryAccountInfoResBody queryAccountInfoResBody;
 
-    @XmlElement(name = "Body")
+
+    @JsonProperty("body")
     public QueryAccountInfoResBody getQueryAccountInfoResBody() {
-        if (queryAccountInfoResBody == null) queryAccountInfoResBody = new QueryAccountInfoResBody();
         return queryAccountInfoResBody;
     }
-
+    @JsonProperty("Body")
     public void setQueryAccountInfoResBody(QueryAccountInfoResBody queryAccountInfoResBody) {
         this.queryAccountInfoResBody = queryAccountInfoResBody;
     }

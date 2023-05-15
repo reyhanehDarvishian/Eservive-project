@@ -303,12 +303,10 @@ public class TokenService {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("TokenService => tokenId: " + tokenId);
         return tokenId;
     }
 
     private CRMToken getCrmToken(String scope) {
-        System.out.println(scope);
         HttpHeaders tokenHeaders = new HttpHeaders();
         tokenHeaders.add(HttpHeaders.AUTHORIZATION, applicationProperties.getGetToken().getBasic64Str());
         tokenHeaders.add(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded");
@@ -320,7 +318,8 @@ public class TokenService {
         mapValue.add("client_id", applicationProperties.getGetToken().getClientId());
         mapValue.add("client_secret", applicationProperties.getGetToken().getClientSecret());
         HttpEntity<MultiValueMap<String, String>> requestBody = new HttpEntity<>(mapValue, tokenHeaders);
-        Map body = new RestTemplate().postForEntity("https://sandbox.mci.ir/api/auth/token", requestBody, Map.class).getBody();
+        Map body = new RestTemplate()
+                .postForEntity("https://sandbox.mci.ir/api/auth/token", requestBody, Map.class).getBody();
         CRMToken crmToken = new ObjectMapper().convertValue(body, CRMToken.class);
         return crmToken;
     }

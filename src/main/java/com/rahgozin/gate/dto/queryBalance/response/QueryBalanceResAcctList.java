@@ -1,41 +1,51 @@
 package com.rahgozin.gate.dto.queryBalance.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "acctKey",
+        "balanceResult",
+        "accountCredit"
+})
+@Generated("jsonschema2pojo")
 public class QueryBalanceResAcctList {
-    @JsonProperty("AcctKey")
-    String acctKey;
-    @JsonProperty("BalanceResult")
-    QueryBalanceResBalanceResult queryBalanceResBalanceResult;
-    @JsonProperty("AccountCredit")
-    QueryBalanceResAccountCredit queryBalanceResAccountCredit;
+    private String acctKey;
+    private QueryBalanceResBalanceResult queryBalanceResBalanceResult;
+    private QueryBalanceResAccountCredit queryBalanceResAccountCredit;
 
-    @XmlAttribute(name = "AcctKey")
+    @JsonProperty("acctKey")
     public String getAcctKey() {
         return acctKey;
     }
 
+    @JsonProperty("AcctKey")
     public void setAcctKey(String acctKey) {
         this.acctKey = acctKey;
     }
 
-    @XmlElement(name = "AccountCredit")
+    @JsonProperty("accountCredit")
     public QueryBalanceResAccountCredit getQueryBalanceResAccountCredit() {
         return queryBalanceResAccountCredit;
     }
 
+    @JsonProperty("AccountCredit")
     public void setQueryBalanceResAccountCredit(QueryBalanceResAccountCredit queryBalanceResAccountCredit) {
         this.queryBalanceResAccountCredit = queryBalanceResAccountCredit;
     }
 
-    @XmlElement(name = "BalanceResult")
+    @JsonProperty("balanceResult")
     public QueryBalanceResBalanceResult getQueryBalanceResBalanceResult() {
         return queryBalanceResBalanceResult;
     }
 
+    @JsonProperty("BalanceResult")
     public void setQueryBalanceResBalanceResult(QueryBalanceResBalanceResult queryBalanceResBalanceResult) {
         this.queryBalanceResBalanceResult = queryBalanceResBalanceResult;
     }

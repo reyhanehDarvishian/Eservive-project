@@ -1,6 +1,8 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.changeSubscriberIdentity.request.*;
@@ -17,21 +19,22 @@ import java.util.Map;
 @Service
 public class ChangeSubIdentityService {
     private final RestTemplate changeSubIdentityRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     public ChangeSubIdentityService(@Qualifier("changeSubIdentityRestTemplate")
-                                            RestTemplate changeSubIdentityRestTemplate, XmlMapper xmlMapper,
+                                            RestTemplate changeSubIdentityRestTemplate,
                                     ApplicationProperties applicationProperties,
                                     TokenService tokenService) {
         this.changeSubIdentityRestTemplate = changeSubIdentityRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public Map changeSubIdentity() {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         ChangeSubIdentityMainBody changeSubIdentityMainBody = new ChangeSubIdentityMainBody();
 
         ChangeSubIdentityEnvelopeReq changeSubIdentityEnvelopeReq = new ChangeSubIdentityEnvelopeReq();

@@ -32,7 +32,8 @@ import javax.annotation.Generated;
     "statusDetail",
     "salesChannelType",
     "salesChannelId",
-    "beId"
+    "beId",
+     "remark"
 })
 @Generated("jsonschema2pojo")
 
@@ -87,15 +88,16 @@ public class SubInfoResponse {
     private String salesChannelId;
     @JsonProperty("beId")
     private String beId;
-
     @JsonProperty("remark")
     private String remark;
 
 
+    @JsonProperty("remark")
     public String getRemark() {
         return remark;
     }
 
+    @JsonProperty("remark")
     public void setRemark(String remark) {
         this.remark = remark;
     }

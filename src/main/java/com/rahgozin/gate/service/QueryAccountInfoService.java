@@ -1,10 +1,14 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryAccountInfo.request.*;
 import com.rahgozin.gate.dto.queryAccountInfo.response.QueryAccountInfoResEnvelope;
+import com.rahgozin.gate.dto.queryCustomBillingInfo.response.QueryCustomBillingInfoResEnvelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
@@ -12,25 +16,27 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
+
 @Service
 public class QueryAccountInfoService {
     private final RestTemplate queryAccountInfoRestTemplate;
-
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
     public QueryAccountInfoService(@Qualifier("queryAccountInfoRestTemplate") RestTemplate queryAccountInfoRestTemplate,
-                                   XmlMapper xmlMapper, ApplicationProperties applicationProperties,
+                                   ApplicationProperties applicationProperties,
                                    TokenService tokenService) {
         this.queryAccountInfoRestTemplate = queryAccountInfoRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
-    public QueryAccountInfoResEnvelope queryAccountInfo() {
+    public QueryAccountInfoResEnvelope queryAccountInfo(String accountId) {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryAccountInfoEnvelope queryAccountInfoEnvelope = new QueryAccountInfoEnvelope();
         QueryAccountInfoBody queryAccountInfoBody = new QueryAccountInfoBody();
         QueryAccountInfoReqMsg queryAccountInfoReqMsg = new QueryAccountInfoReqMsg();
@@ -47,7 +53,7 @@ public class QueryAccountInfoService {
         queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOperatorId(applicationProperties.getQueryAccountInfoConnection().getOperatorId());
         queryAccountInfoRequestHeader.getQueryAccountInfoOperatorInfo().setOrgId(applicationProperties.getQueryAccountInfoConnection().getOrgId());
         queryAccountInfoRequestHeader.setChannelType(applicationProperties.getQueryAccountInfoConnection().getChannelType());
-        queryAccountInfoRequest.getQueryAccountInfoQueryObj().getQueryAccountInfoAcctAccessCode().setAccountId(applicationProperties.getQueryAccountInfoConnection().getAccountId());
+        queryAccountInfoRequest.getQueryAccountInfoQueryObj().getQueryAccountInfoAcctAccessCode().setAccountId(accountId);
         queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctBillCycleFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeAcctBillCycleFlag());
         queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeAcctCreditLimitFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeAcctCreditLimitFlag());
         queryAccountInfoRequest.getQueryAccountInfoIncludeObj().setIncludeDeactivationFlag(applicationProperties.getQueryAccountInfoConnection().getIncludeDeactivationFlag());

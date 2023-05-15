@@ -23,13 +23,13 @@ public class ChangeIMSIReportReqMsg {
 
 
     @XmlElement(name = "requestHeader")
-    public ChangeImsiReportRequestHeader getRequestHeaderBean() {
+    public ChangeImsiReportRequestHeader getRequestHeader() {
         if (changeImsiReportRequestHeader == null)
             changeImsiReportRequestHeader = new ChangeImsiReportRequestHeader();
         return changeImsiReportRequestHeader;
     }
 
-    public void setRequestHeaderBean(ChangeImsiReportRequestHeader changeImsiReportRequestHeader) {
+    public void setRequestHeader(ChangeImsiReportRequestHeader changeImsiReportRequestHeader) {
         this.changeImsiReportRequestHeader = changeImsiReportRequestHeader;
     }
 

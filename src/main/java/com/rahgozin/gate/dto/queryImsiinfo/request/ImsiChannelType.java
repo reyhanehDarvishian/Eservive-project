@@ -7,7 +7,7 @@ public class ImsiChannelType {
 
     @JacksonXmlText
     private Integer channelType;
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns")
+    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:ns1")
     private String channelTypeSchema = "http://www.huawei.com/bes/crminterface/crmheader";
 
     public Integer getChannelType() {

@@ -1,5 +1,6 @@
 package com.rahgozin.gate.dto.changeImsiReport.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -57,6 +58,7 @@ public class ChangeImsiReportRequestHeader {
         return version;
     }
 
+    @JsonIgnore
     @XmlElement(name = "crm:accessSecurity")
     public ChangeImsiReportAccessSecurity getAccessSecurity() {
         if (changeImsiReportAccessSecurity == null)
@@ -78,6 +80,7 @@ public class ChangeImsiReportRequestHeader {
         this.changeImsiReportOperatorInfo = changeImsiReportOperatorInfo;
     }
 
+    @JsonIgnore
     @XmlElement(name = "crm:ownershipInfo")
     public ChangeImsiReportOwnershipInfo getOwnershipInfo() {
         if (changeImsiReportOwnershipInfo == null) changeImsiReportOwnershipInfo = new ChangeImsiReportOwnershipInfo();

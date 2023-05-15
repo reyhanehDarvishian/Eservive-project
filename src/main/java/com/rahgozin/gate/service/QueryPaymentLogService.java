@@ -1,6 +1,8 @@
 package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryPaymentLog.request.*;
@@ -16,21 +18,21 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class QueryPaymentLogService {
     private final RestTemplate queryPaymentLogRestTemplate;
-    public final XmlMapper xmlMapper;
     private final ApplicationProperties applicationProperties;
     private final TokenService tokenService;
 
     @Autowired
     public QueryPaymentLogService(@Qualifier("queryPaymentLogRestTemplate") RestTemplate queryPaymentLogRestTemplate,
-                                  XmlMapper xmlMapper,
                                   ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryPaymentLogRestTemplate = queryPaymentLogRestTemplate;
-        this.xmlMapper = xmlMapper;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
     }
 
     public String queryPaymentLog() {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         QueryPaymentLogEnvelope queryPaymentLogEnvelope = new QueryPaymentLogEnvelope();
         QueryPaymentLogBody queryPaymentLogBody = new QueryPaymentLogBody();
         QueryPaymentLogReqMsg queryPaymentLogReqMsg = new QueryPaymentLogReqMsg();

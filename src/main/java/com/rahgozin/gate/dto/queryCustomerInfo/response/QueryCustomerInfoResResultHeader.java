@@ -7,35 +7,38 @@ import javax.xml.bind.annotation.XmlElement;
 
 
 public class QueryCustomerInfoResResultHeader {
-	String version;
-	String resultCode;
-    String resultDesc;
+	private String version;
+	private String resultCode;
+    private String resultDesc;
 
+    @JsonProperty("resultCode")
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
 
-    @XmlAttribute(name = "resultCode")
+    @JsonProperty("resultCode")
     public String getResultCode() {
         return resultCode;
     }
 
+    @JsonProperty("resultDesc")
     public void setResultDesc(String resultDesc) {
         this.resultDesc = resultDesc;
     }
 
-    @XmlAttribute(name = "resultDesc")
+    @JsonProperty("resultDesc")
     public String getResultDesc() {
         return resultDesc;
     }
 
 
-    @XmlAttribute(name = "version")
+    @JsonProperty("version")
 	public String getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
+    @JsonProperty("version")
+    public void setVersion(String version) {
 		this.version = version;
 	}
 }

@@ -9,7 +9,7 @@ import javax.annotation.Generated;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "ns1:querySubscriberRspMsg"
+        "querySubscriberRspMsg"
 })
 @Generated("jsonschema2pojo")
 public class QuerySubBodyRes {
