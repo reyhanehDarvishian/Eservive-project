@@ -1,5 +1,6 @@
 package com.rahgozin.gate.dto.queryPaymentLog.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -12,13 +13,14 @@ public class QueryPaymentLogRequestHeader {
     QueryPaymentLogRequestHeaderBusinessCode businessCode;
     @JsonProperty("cbs:MessageSeq")
     QueryPaymentLogRequestHeaderMessageSeq messageSeq;
-    @JsonProperty("cbs:OwnershipInfo")
+    @JsonProperty("OwnershipInfo")
     QueryPaymentLogRequestHeaderOwnershipInfo ownershipInfo;
-    @JsonProperty("cbs:AccessSecurity")
+    @JsonProperty("AccessSecurity")
     QueryPaymentLogRequestHeaderAccessSecurity accessSecurity;
-    @JsonProperty("cbs:OperatorInfo")
+    @JsonProperty("OperatorInfo")
     QueryPaymentLogRequestHeaderOperatorInfo operatorInfo;
 
+    @JsonIgnore
     @XmlAttribute(name = "cbs:Version")
     public QueryPaymentLogRequestHeaderVersion getVersion() {
         if (version == null) version = new QueryPaymentLogRequestHeaderVersion();
@@ -29,6 +31,7 @@ public class QueryPaymentLogRequestHeader {
         this.version = version;
     }
 
+    @JsonIgnore
     @XmlAttribute(name = "cbs:BusinessCode")
     public QueryPaymentLogRequestHeaderBusinessCode getBusinessCode() {
         if (businessCode == null) businessCode = new QueryPaymentLogRequestHeaderBusinessCode();
@@ -39,6 +42,7 @@ public class QueryPaymentLogRequestHeader {
         this.businessCode = businessCode;
     }
 
+    @JsonIgnore
     @XmlAttribute(name = "cbs:MessageSeq")
     public QueryPaymentLogRequestHeaderMessageSeq getMessageSeq() {
         if (messageSeq == null) messageSeq = new QueryPaymentLogRequestHeaderMessageSeq();
@@ -49,7 +53,7 @@ public class QueryPaymentLogRequestHeader {
         messageSeq = messageSeq;
     }
 
-    @XmlAttribute(name = "cbs:OwnershipInfo")
+    @XmlAttribute(name = "OwnershipInfo")
     public QueryPaymentLogRequestHeaderOwnershipInfo getOwnershipInfo() {
         if (ownershipInfo == null) ownershipInfo = new QueryPaymentLogRequestHeaderOwnershipInfo();
         return ownershipInfo;
@@ -59,7 +63,7 @@ public class QueryPaymentLogRequestHeader {
         ownershipInfo = ownershipInfo;
     }
 
-    @XmlAttribute(name = "cbs:AccessSecurity")
+    @XmlAttribute(name = "AccessSecurity")
     public QueryPaymentLogRequestHeaderAccessSecurity getAccessSecurity() {
         if (accessSecurity == null) accessSecurity = new QueryPaymentLogRequestHeaderAccessSecurity();
         return accessSecurity;
@@ -69,7 +73,7 @@ public class QueryPaymentLogRequestHeader {
         accessSecurity = accessSecurity;
     }
 
-    @XmlAttribute(name = "cbs:OperatorInfo")
+    @XmlAttribute(name = "OperatorInfo")
     public QueryPaymentLogRequestHeaderOperatorInfo getOperatorInfo() {
         if (operatorInfo == null) operatorInfo = new QueryPaymentLogRequestHeaderOperatorInfo();
         return operatorInfo;

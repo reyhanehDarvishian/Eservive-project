@@ -1,83 +1,65 @@
 
 package com.rahgozin.gate.dto.queryCustomBillingInfo.response;
 
-import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "TotalVoiceCallsDuration",
-    "SubscriptionFee",
-    "LocalVoiceCalls",
-    "InternationVoiceCalls",
-    "InternationalRoamingCharges",
-    "SMS",
-    "VMS",
-    "MMS",
-    "Internet",
-    "VAS",
-    "Packages",
-    "SpecialServices",
-    "CRMCosts",
-    "TotalAmount",
-    "Discount",
-    "Tax",
-    "ExemptionFee",
-    "Charity",
-    "GovernmentGeneralIncome",
-    "Sum",
-    "TotalOldDebts",
-    "TotalOldCredit",
-    "UnconfirmedPayment",
-    "Rounding",
-    "Payable",
-    "BillId",
-    "PaymentId",
-    "AdvancePayment",
-    "eGov",
-    "onnetAmount",
-    "offnetAmount",
-    "onnetDuration",
-    "offnetDuration",
-    "totatRatingDiscount",
-    "voiceRatingDiscount",
-    "smsRatingDiscount",
-    "gprsRatingDiscount",
-    "postToPreBT"
-})
-@Generated("jsonschema2pojo")
-public class InvoiceSummary {
+import javax.annotation.Generated;
 
+public class InvoiceSummary {
     private String totalVoiceCallsDuration;
+    private String subscriptionFeeName;
     private String subscriptionFee;
+    private String localVoiceCallsName;
     private String localVoiceCalls;
+    private String internationVoiceCallsName;
     private String internationVoiceCalls;
+    private String internationalRoamingChargesName;
     private String internationalRoamingCharges;
+    private String smsName;
     private String sms;
+    private String vmsName;
     private String vms;
     private String mms;
+    private String internetName;
     private String internet;
+    private String vasName;
     private String vas;
+    private String packagesName;
     private String packages;
+    private String specialServicesName;
     private String specialServices;
+    private String cRMCostsName;
     private String cRMCosts;
+    private String totalAmountName;
     private String totalAmount;
+    private String discountName;
     private String discount;
+    private String taxName;
     private String tax;
+    private String exemptionFeeName;
     private String exemptionFee;
+    private String charityName;
     private String charity;
+    private String governmentGeneralIncomeName;
     private String governmentGeneralIncome;
+    private String sumName;
     private String sum;
+    private String totalOldDebtsName;
     private String totalOldDebts;
+    private String totalOldCreditName;
     private String totalOldCredit;
+    private String unconfirmedPaymentName;
     private String unconfirmedPayment;
+    private String roundingName;
     private String rounding;
+    private String payableName;
     private String payable;
     private String billId;
     private String paymentId;
     private String advancePayment;
+    private String eGovName;
     private String eGov;
     private String onnetAmount;
     private String offnetAmount;
@@ -87,7 +69,243 @@ public class InvoiceSummary {
     private String voiceRatingDiscount;
     private String smsRatingDiscount;
     private String gprsRatingDiscount;
+    private String postToPreBTName;
     private String postToPreBT;
+
+    @JsonProperty("payableTitle")
+    public String getPayableName() {
+        return payableName;
+    }
+
+    public void setPayableName(String payableName) {
+        this.payableName = payableName;
+    }
+
+    @JsonProperty("roundingTitle")
+    public String getRoundingName() {
+        return roundingName;
+    }
+
+    public void setRoundingName(String roundingName) {
+        this.roundingName = roundingName;
+    }
+
+    @JsonProperty("exemptionFeeTitle")
+    public String getExemptionFeeName() {
+        return exemptionFeeName;
+    }
+
+    public void setExemptionFeeName(String exemptionFeeName) {
+        this.exemptionFeeName = exemptionFeeName;
+    }
+
+    @JsonProperty("unconfirmedPaymentTitle")
+    public String getUnconfirmedPaymentName() {
+        return unconfirmedPaymentName;
+    }
+
+    public void setUnconfirmedPaymentName(String unconfirmedPaymentName) {
+        this.unconfirmedPaymentName = unconfirmedPaymentName;
+    }
+
+    @JsonProperty("totalOldCreditTitle")
+    public String getTotalOldCreditName() {
+        return totalOldCreditName;
+    }
+
+    public void setTotalOldCreditName(String totalOldCreditName) {
+        this.totalOldCreditName = totalOldCreditName;
+    }
+
+    @JsonProperty("discountTitle")
+    public String getDiscountName() {
+        return discountName;
+    }
+
+    public void setDiscountName(String discountName) {
+        this.discountName = discountName;
+    }
+
+    @JsonProperty("sumTitle")
+    public String getSumName() {
+        return sumName;
+    }
+
+    public void setSumName(String sumName) {
+        this.sumName = sumName;
+    }
+
+    @JsonProperty("postToPreBTTitle")
+    public String getPostToPreBTName() {
+        return postToPreBTName;
+    }
+
+    public void setPostToPreBTName(String postToPreBTName) {
+        this.postToPreBTName = postToPreBTName;
+    }
+
+    @JsonProperty("governmentGeneralIncomeTitle")
+    public String getGovernmentGeneralIncomeName() {
+        return governmentGeneralIncomeName;
+    }
+
+    public void setGovernmentGeneralIncomeName(String governmentGeneralIncomeName) {
+        this.governmentGeneralIncomeName = governmentGeneralIncomeName;
+    }
+
+    @JsonProperty("charityTitle")
+    public String getCharityName() {
+        return charityName;
+    }
+
+    public void setCharityName(String charityName) {
+        this.charityName = charityName;
+    }
+
+    @JsonProperty("totalOldDebtsTitle")
+    public String getTotalOldDebtsName() {
+        return totalOldDebtsName;
+    }
+
+    public void setTotalOldDebtsName(String totalOldDebtsName) {
+        this.totalOldDebtsName = totalOldDebtsName;
+    }
+
+    @JsonProperty("taxTitle")
+    public String getTaxName() {
+        return taxName;
+    }
+
+    public void setTaxName(String taxName) {
+        this.taxName = taxName;
+    }
+
+    @JsonProperty("totalAmountTitle")
+    public String getTotalAmountName() {
+        return totalAmountName;
+    }
+
+    public void setTotalAmountName(String totalAmountName) {
+        this.totalAmountName = totalAmountName;
+    }
+
+    @JsonProperty("subscriptionFeeTitle")
+    public String getSubscriptionFeeName() {
+        return subscriptionFeeName;
+    }
+
+    public void setSubscriptionFeeName(String subscriptionFeeName) {
+        this.subscriptionFeeName = subscriptionFeeName;
+    }
+
+    @JsonProperty("eGovTitle")
+    public String geteGovName() {
+        return eGovName;
+    }
+
+    public void seteGovName(String eGovName) {
+        this.eGovName = eGovName;
+    }
+
+    @JsonProperty("specialServicesTitle")
+    public String getSpecialServicesName() {
+        return specialServicesName;
+    }
+
+    public void setSpecialServicesName(String specialServicesName) {
+        this.specialServicesName = specialServicesName;
+    }
+
+    @JsonProperty("crmCostsTitle")
+    public String getcRMCostsName() {
+        return cRMCostsName;
+    }
+
+    public void setcRMCostsName(String cRMCostsName) {
+        this.cRMCostsName = cRMCostsName;
+    }
+
+    @JsonProperty("crmCosts")
+    public String getCRMCosts() {
+        return cRMCosts;
+    }
+
+    @JsonProperty("CRMCosts")
+    public void setCRMCosts(String cRMCosts) {
+        this.cRMCosts = cRMCosts;
+    }
+
+    @JsonProperty("vasTitle")
+    public String getVasName() {
+        return vasName;
+    }
+
+    public void setVasName(String vasName) {
+        this.vasName = vasName;
+    }
+
+    @JsonProperty("internetTitle")
+    public String getInternetName() {
+        return internetName;
+    }
+
+    public void setInternetName(String internetName) {
+        this.internetName = internetName;
+    }
+
+    @JsonProperty("packagesTitle")
+    public String getPackagesName() {
+        return packagesName;
+    }
+
+    public void setPackagesName(String packagesName) {
+        this.packagesName = packagesName;
+    }
+
+    @JsonProperty("vmsTitle")
+    public String getVmsName() {
+        return vmsName;
+    }
+
+    public void setVmsName(String vmsName) {
+        this.vmsName = vmsName;
+    }
+
+    @JsonProperty("smsTitle")
+    public String getSmsName() {
+        return smsName;
+    }
+
+    public void setSmsName(String smsName) {
+        this.smsName = smsName;
+    }
+
+    @JsonProperty("internationalRoamingChargesTitle")
+    public String getInternationalRoamingChargesName() {
+        return internationalRoamingChargesName;
+    }
+
+    public void setInternationalRoamingChargesName(String internationalRoamingChargesName) {
+        this.internationalRoamingChargesName = internationalRoamingChargesName;
+    }
+
+    @JsonProperty("InternationVoiceCallsTitle")
+    public String getInternationVoiceCallsName() {
+        return internationVoiceCallsName;
+    }
+
+    @JsonProperty("localVoiceCallsTitle")
+    public void setInternationVoiceCallsName(String internationVoiceCallsName) {
+        this.internationVoiceCallsName = internationVoiceCallsName;
+    }
+
+    public String getLocalVoiceCallsName() {
+        return localVoiceCallsName;
+    }
+
+    public void setLocalVoiceCallsName(String localVoiceCallsName) {
+        this.localVoiceCallsName = localVoiceCallsName;
+    }
 
     @JsonProperty("totalVoiceCallsDuration")
     public String getTotalVoiceCallsDuration() {
@@ -209,15 +427,6 @@ public class InvoiceSummary {
         this.specialServices = specialServices;
     }
 
-    @JsonProperty("crmCosts")
-    public String getCRMCosts() {
-        return cRMCosts;
-    }
-
-    @JsonProperty("CRMCosts")
-    public void setCRMCosts(String cRMCosts) {
-        this.cRMCosts = cRMCosts;
-    }
 
     @JsonProperty("totalAmount")
     public String getTotalAmount() {

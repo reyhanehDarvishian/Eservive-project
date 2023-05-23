@@ -1,47 +1,35 @@
-<QuerySubEnvelopeRes>
-    <Body>
-        <querySubscriberRspMsg>
-            <resultHeader>
-                <version>1</version>
-                <resultCode>0</resultCode>
-                <resultDesc>success</resultDesc>
-            </resultHeader>
-            <querySubscriberResponse>
-                <subscriberInfo>
-                    <subInfo>
-                        <subsId>8611010002820090</subsId>
-                        <ownerPartyRoleType>C</ownerPartyRoleType>
-                        <ownerPartyRoleId>8611000000731043</ownerPartyRoleId>
-                        <subsName>9921905802</subsName>
-                        <subsWrittenLang>Persian</subsWrittenLang>
-                        <subsVocieLang>4</subsVocieLang>
-                        <offeringId>107</offeringId>
-                        <brand>2</brand>
-                        <primaryIdentity>9921905802</primaryIdentity>
-                        <networkType>1</networkType>
-                        <defaultAcctId>8611010002877093</defaultAcctId>
-                        <paymentType>1</paymentType>
-                        <imsi>432113911287746</imsi>
-                        <iccid>8998113900011287746</iccid>
-                        <subType>1</subType>
-                        <effDate>2022-04-26T16:45:47</effDate>
-                        <expDate>2022-12-12T11:46:54</expDate>
-                        <activeDate>2022-04-26T16:45:47</activeDate>
-                        <status>9</status>
-                        <statusTime>2022-12-12T11:46:56</statusTime>
-                        <statusDetail>000000000000</statusDetail>
-                        <salesChannelType>601</salesChannelType>
-                        <salesChannelId>5236334594</salesChannelId>
-                        <beId>10101</beId>
-                        <remark>Bulk Unbar B2BCreditControlReason</remark>
-                    </subInfo>
-                </subscriberInfo>
-                <pageQuery>
-                    <pageSize>20</pageSize>
-                    <startNum>0</startNum>
-                    <totalNum>20</totalNum>
-                </pageQuery>
-            </querySubscriberResponse>
-        </querySubscriberRspMsg>
-    </Body>
-</QuerySubEnvelopeRes>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ars:QueryPaymentLogRequestMsg xmlns:ars="http://www.huawei.com/bme/cbsinterface/arservices">
+            <RequestHeader>
+                <cbs:Version xmlns:cbs="http://www.huawei.com/bme/cbsinterface/cbscommon">1</cbs:Version>
+                <cbs:BusinessCode xmlns:cbs="http://www.huawei.com/bme/cbsinterface/cbscommon">queryPaymentLog</cbs:BusinessCode>
+                <cbs:MessageSeq xmlns:cbs="http://www.huawei.com/bme/cbsinterface/cbscommon">663_20180818_094922_337696239694</cbs:MessageSeq>
+                <OwnershipInfo xmlns="http://www.huawei.com/bme/cbsinterface/cbscommon">
+                    <BEID>10101</BEID>
+                </OwnershipInfo>
+                <AccessSecurity xmlns="http://www.huawei.com/bme/cbsinterface/cbscommon">
+                    <LoginSystemCode>714</LoginSystemCode>
+                    <Password>kQwkaEwWU0gravIASYtwcf0XZq2BP0ahtPj/DKXeZyE=</Password>
+                </AccessSecurity>
+                <OperatorInfo xmlns="http://www.huawei.com/bme/cbsinterface/cbscommon">
+                    <OperatorID>714</OperatorID>
+                    <ChannelID>714</ChannelID>
+                </OperatorInfo>
+            </RequestHeader>
+            <QueryPaymentLogRequest>
+                <ars:AcctAccessCode xsi:type="ars:AcctAccessCode_type0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <arc:PrimaryIdentity xmlns:arc="http://cbs.huawei.com/ar/wsservice/arcommon">9125053921</arc:PrimaryIdentity>
+                    <arc:AccountKey xmlns:arc="http://cbs.huawei.com/ar/wsservice/arcommon"/>
+                    <arc:AccountCode xmlns:arc="http://cbs.huawei.com/ar/wsservice/arcommon"/>
+                </ars:AcctAccessCode>
+                <ars:TotalRowNum>0</ars:TotalRowNum>
+                <ars:BeginRowNum>0</ars:BeginRowNum>
+                <ars:FetchRowNum>1000</ars:FetchRowNum>
+                <ars:StartTime>20220622000000</ars:StartTime>
+                <ars:EndTime>20230518235959</ars:EndTime>
+            </QueryPaymentLogRequest>
+        </ars:QueryPaymentLogRequestMsg>
+    </soapenv:Body>
+</soapenv:Envelope>

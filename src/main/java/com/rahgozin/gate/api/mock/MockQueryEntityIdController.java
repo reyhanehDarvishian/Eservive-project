@@ -52,14 +52,18 @@ public class MockQueryEntityIdController {
                     "                \"resultDesc\": \"success\"\n" +
                     "            },\n" +
                     "            \"queryEntityIdResponse\": {\n" +
-                    "                \"entityInfo\": {\n" +
-                    "                    \"entityType\": \"C\",\n" +
-                    "                    \"entityId\": \"8611000000731043\"\n" +
-                    "                },\n" +
                     "                \"entityInfos\": [\n" +
                     "                    {\n" +
+                    "                        \"entityType\": \"A\",\n" +
+                    "                        \"entityId\": \"9610032321331805\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"entityType\": \"S\",\n" +
+                    "                        \"entityId\": \"9610022321331805\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
                     "                        \"entityType\": \"C\",\n" +
-                    "                        \"entityId\": \"8611000000731043\"\n" +
+                    "                        \"entityId\": \"9610012053388197\"\n" +
                     "                    }\n" +
                     "                ]\n" +
                     "            }\n" +

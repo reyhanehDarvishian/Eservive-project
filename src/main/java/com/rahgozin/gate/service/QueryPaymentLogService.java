@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryPaymentLog.request.*;
+import com.rahgozin.gate.dto.queryPaymentLog.response.*;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class QueryPaymentLogService {
         this.tokenService = tokenService;
     }
 
-    public String queryPaymentLog() {
+    public QueryPaymentLogResEnvelope queryPaymentLog(String phoneNumber) {
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -47,7 +48,7 @@ public class QueryPaymentLogService {
         queryPaymentLogRequestHeader.getOperatorInfo().setOperatorId(applicationProperties.getQueryPaymentLogConnection().getOperatorId());
         queryPaymentLogRequestHeader.getOperatorInfo().setChannelId(applicationProperties.getQueryPaymentLogConnection().getChannelId());
         queryPaymentLogReqMsg.setQueryPaymentLogRequestHeader(queryPaymentLogRequestHeader);
-        queryPaymentLogRequest.getAcctAccessCode().getPrimaryIdentity().setPrimaryIdentity(applicationProperties.getQueryPaymentLogConnection().getPrimaryIdentity());
+        queryPaymentLogRequest.getAcctAccessCode().getPrimaryIdentity().setPrimaryIdentity(phoneNumber);
         queryPaymentLogRequest.setTotalRowNum(applicationProperties.getQueryPaymentLogConnection().getTotalRowNum());
         queryPaymentLogRequest.setBeginRowNum(applicationProperties.getQueryPaymentLogConnection().getBeginRowNum());
         queryPaymentLogRequest.setFetchRowNum(applicationProperties.getQueryPaymentLogConnection().getFetchRowNum());
@@ -70,7 +71,6 @@ public class QueryPaymentLogService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        JSONObject queryPaymentLogResponse = XML.toJSONObject(queryPaymentLogRestTemplate.postForEntity(applicationProperties.getQueryPaymentLogConnection().getBaseUrl(), queryPaymentLogResBody, String.class).getBody());
-        return queryPaymentLogResponse.toString(4);
+        return queryPaymentLogRestTemplate.postForEntity("https://api.mci.ir/api/v1/ecare/query-payment-log-soap", queryPaymentLogResBody, QueryPaymentLogResEnvelope.class).getBody();
     }
 }

@@ -5,6 +5,10 @@ import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.rahgozin.gate.dto.queryFreeUnit.response.FreeUnitItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -24,6 +28,19 @@ public class InvoiceInfo {
     private String primaryIdentity;
     private String status;
     private InvoiceSummary invoiceSummary;
+//    private List<InvoiceSummary> invoiceSummaries = new ArrayList<>();
+//
+//    public void addToInvoiceSummaries(InvoiceSummary invoiceSummary) {
+//        invoiceSummaries.add(invoiceSummary);
+//    }
+//
+//    public List<InvoiceSummary> getInvoiceSummaries() {
+//        return invoiceSummaries;
+//    }
+//
+//    public void setInvoiceSummaries(List<InvoiceSummary> invoiceSummaries) {
+//        this.invoiceSummaries = invoiceSummaries;
+//    }
 
     @JsonProperty("acctKey")
     public String getAcctKey() {
@@ -82,6 +99,7 @@ public class InvoiceInfo {
 
     @JsonProperty("InvoiceSummary")
     public void setInvoiceSummary(InvoiceSummary invoiceSummary) {
+//        addToInvoiceSummaries(invoiceSummary);
         this.invoiceSummary = invoiceSummary;
     }
 

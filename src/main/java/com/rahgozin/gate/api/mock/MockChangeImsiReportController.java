@@ -57,6 +57,16 @@ public class MockChangeImsiReportController {
                     "                        \"channelId\": \"601\",\n" +
                     "                        \"createProleId\": \"1551769783058199481\",\n" +
                     "                        \"createProleType\": \"E\",\n" +
+                    "                        \"createTime\": \"2019-08-07T10:03:28\",\n" +
+                    "                        \"newIMSI\": \"8998113900001031961\",\n" +
+                    "                        \"oldIMSI\": \"8998113900001031856\",\n" +
+                    "                        \"orderId\": \"130100000001343099\"\n" +
+                    "                    },\n" +
+                    "                    {\n" +
+                    "                        \"businessFee\": \"0\",\n" +
+                    "                        \"channelId\": \"601\",\n" +
+                    "                        \"createProleId\": \"1551769783058199481\",\n" +
+                    "                        \"createProleType\": \"E\",\n" +
                     "                        \"createTime\": \"2019-08-28T15:47:05\",\n" +
                     "                        \"newIMSI\": \"8998113900052249123\",\n" +
                     "                        \"oldIMSI\": \"8998113900001031961\",\n" +

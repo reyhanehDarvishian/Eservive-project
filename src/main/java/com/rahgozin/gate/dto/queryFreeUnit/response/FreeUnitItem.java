@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.annotation.Generated;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "FreeUnitType",
+        "Description",
         "FreeUnitTypeName",
         "MeasureUnit",
         "MeasureUnitName",
@@ -22,12 +21,78 @@ import javax.xml.bind.annotation.XmlElement;
 @Generated("jsonschema2pojo")
 public class FreeUnitItem {
     String freeUnitType;
+    String description;
+    String unitInitTitle;
+    String unitUnusedTitle;
+    String callInitTitle;
+    String callUnusedTitle;
+    String messageInitTitle;
+    String messageUnusedTitle;
     String freeUnitTypeName;
     String measureUnit;
     String measureUnitName;
     String totalInitialAmount;
     String totalUnusedAmount;
     private FreeUnitItemDetail freeUnitItemDetail;
+
+
+    public String getUnitUnusedTitle() {
+        return unitUnusedTitle;
+    }
+
+    public void setUnitUnusedTitle(String unitUnusedTitle) {
+        this.unitUnusedTitle = unitUnusedTitle;
+    }
+
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
+    }
+
+    public String getUnitInitTitle() {
+        return unitInitTitle;
+    }
+
+    public void setUnitInitTitle(String unitInitTitle) {
+        this.unitInitTitle = unitInitTitle;
+    }
+
+    public String getCallInitTitle() {
+        return callInitTitle;
+    }
+
+    public void setCallInitTitle(String callInitTitle) {
+        this.callInitTitle = callInitTitle;
+    }
+
+    public String getCallUnusedTitle() {
+        return callUnusedTitle;
+    }
+
+    public void setCallUnusedTitle(String callUnusedTitle) {
+        this.callUnusedTitle = callUnusedTitle;
+    }
+
+    public String getMessageInitTitle() {
+        return messageInitTitle;
+    }
+
+    public void setMessageInitTitle(String messageInitTitle) {
+        this.messageInitTitle = messageInitTitle;
+    }
+
+    public String getMessageUnusedTitle() {
+        return messageUnusedTitle;
+    }
+
+    public void setMessageUnusedTitle(String messageUnusedTitle) {
+        this.messageUnusedTitle = messageUnusedTitle;
+    }
+
+    @JsonProperty("Description")
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @JsonProperty("FreeUnitType")
     public void setFreeUnitType(String freeUnitType) {

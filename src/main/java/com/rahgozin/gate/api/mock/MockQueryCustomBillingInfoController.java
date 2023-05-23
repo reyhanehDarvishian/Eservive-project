@@ -56,6 +56,57 @@ public class MockQueryCustomBillingInfoController {
                     "                    \"primaryIdentity\": \"9960449819\",\n" +
                     "                    \"status\": \"N\",\n" +
                     "                    \"invoiceSummary\": {\n" +
+                    "                        \"localVoiceCallsName\": \"مکالمه\",\n" +
+                    "                        \"totalVoiceCallsDuration\": \"0.0\",\n" +
+                    "                        \"subscriptionFeeTitle\": \"آبونمان\",\n" +
+                    "                        \"subscriptionFee\": \"6510.0\",\n" +
+                    "                        \"localVoiceCalls\": \"0.0\",\n" +
+                    "                        \"InternationVoiceCallsTitle\": \"مکالمه با خارج از کشور\",\n" +
+                    "                        \"internationVoiceCalls\": \"0.0\",\n" +
+                    "                        \"internationalRoamingChargesTitle\": \"رومینگ بین الملل\",\n" +
+                    "                        \"internationalRoamingCharges\": \"0.0\",\n" +
+                    "                        \"smsTitle\": \"پیام کوتاه\",\n" +
+                    "                        \"sms\": \"0.0\",\n" +
+                    "                        \"vmsTitle\": \"پیام صوتی\",\n" +
+                    "                        \"vms\": \"0.0\",\n" +
+                    "                        \"mms\": \"0.0\",\n" +
+                    "                        \"internetTitle\": \"اینترنت با تعرفه عادی\",\n" +
+                    "                        \"internet\": \"0.0\",\n" +
+                    "                        \"vasTitle\": \"بسته خدمات مبتنی بر محتوا\",\n" +
+                    "                        \"vas\": \"0.0\",\n" +
+                    "                        \"packagesTitle\": \"بسته ها\",\n" +
+                    "                        \"packages\": \"0.0\",\n" +
+                    "                        \"specialServicesTitle\": \"سرویس های ویژه\",\n" +
+                    "                        \"specialServices\": \"0.0\",\n" +
+                    "                        \"crmCostsTitle\": \"کارمزد خدمات\",\n" +
+                    "                        \"totalAmountTitle\": \"جمع صورتحساب\",\n" +
+                    "                        \"totalAmount\": \"6510.0\",\n" +
+                    "                        \"discountTitle\": \"تخفیفات صورتحساب\",\n" +
+                    "                        \"discount\": \"0.0\",\n" +
+                    "                        \"taxTitle\": \"مالیات و عوارض\",\n" +
+                    "                        \"tax\": \"585.9\",\n" +
+                    "                        \"exemptionFeeTitle\": \"معافیت\",\n" +
+                    "                        \"exemptionFee\": \"0.0\",\n" +
+                    "                        \"charityTitle\": \"کمک های مردمی و باشگاه هواداری\",\n" +
+                    "                        \"charity\": \"0.0\",\n" +
+                    "                        \"governmentGeneralIncomeTitle\": \"درآمد عمومی دولت\",\n" +
+                    "                        \"governmentGeneralIncome\": \"0.0\",\n" +
+                    "                        \"sumTitle\": \"جمع سایر هزینه ها\",\n" +
+                    "                        \"sum\": \"7095.9\",\n" +
+                    "                        \"totalOldDebtsTitle\": \"بدهکاری پیشین\",\n" +
+                    "                        \"totalOldDebts\": \"16287.7\",\n" +
+                    "                        \"totalOldCreditTitle\": \"بستانکاری\",\n" +
+                    "                        \"totalOldCredit\": \"0.0\",\n" +
+                    "                        \"unconfirmedPaymentTitle\": \"وصولی تایید نشده\",\n" +
+                    "                        \"unconfirmedPayment\": \"0.0\",\n" +
+                    "                        \"roundingTitle\": \"کسر هزار ریال\",\n" +
+                    "                        \"rounding\": \"383\",\n" +
+                    "                        \"payableTitle\": \"مبلغ قابل پرداخت\",\n" +
+                    "                        \"payable\": \"23000\",\n" +
+                    "                        \"billId\": \"6186801230154\",\n" +
+                    "                        \"paymentId\": \"2326377\",\n" +
+                    "                        \"advancePayment\": \"0\",\n" +
+                    "                        \"eGovTitle\": \"خدمات دولت الکترونیک\",\n" +
                     "                        \"eGov\": \"0.0\",\n" +
                     "                        \"onnetAmount\": \"0.0\",\n" +
                     "                        \"offnetAmount\": \"0.0\",\n" +
@@ -65,34 +116,8 @@ public class MockQueryCustomBillingInfoController {
                     "                        \"voiceRatingDiscount\": \"0.0\",\n" +
                     "                        \"smsRatingDiscount\": \"0.0\",\n" +
                     "                        \"gprsRatingDiscount\": \"0.0\",\n" +
+                    "                        \"postToPreBTTitle\": \"انتقال اعتبار\",\n" +
                     "                        \"postToPreBT\": \"0\",\n" +
-                    "                        \"totalVoiceCallsDuration\": \"0.0\",\n" +
-                    "                        \"subscriptionFee\": \"10080.0\",\n" +
-                    "                        \"localVoiceCalls\": \"0.0\",\n" +
-                    "                        \"internationVoiceCalls\": \"0.0\",\n" +
-                    "                        \"internationalRoamingCharges\": \"0.0\",\n" +
-                    "                        \"sms\": \"0.0\",\n" +
-                    "                        \"vms\": \"0.0\",\n" +
-                    "                        \"mms\": \"0.0\",\n" +
-                    "                        \"internet\": \"0.0\",\n" +
-                    "                        \"vas\": \"0.0\",\n" +
-                    "                        \"packages\": \"0.0\",\n" +
-                    "                        \"specialServices\": \"0.0\",\n" +
-                    "                        \"totalAmount\": \"10080.0\",\n" +
-                    "                        \"discount\": \"0.0\",\n" +
-                    "                        \"tax\": \"907.2\",\n" +
-                    "                        \"exemptionFee\": \"0.0\",\n" +
-                    "                        \"charity\": \"0.0\",\n" +
-                    "                        \"governmentGeneralIncome\": \"0.0\",\n" +
-                    "                        \"sum\": \"10987.2\",\n" +
-                    "                        \"totalOldDebts\": \"16287.7\",\n" +
-                    "                        \"totalOldCredit\": \"0.0\",\n" +
-                    "                        \"unconfirmedPayment\": \"0.0\",\n" +
-                    "                        \"rounding\": \"274\",\n" +
-                    "                        \"payable\": \"27000\",\n" +
-                    "                        \"billId\": \"6186801230154\",\n" +
-                    "                        \"paymentId\": \"2726200\",\n" +
-                    "                        \"advancePayment\": \"0\",\n" +
                     "                        \"crmCosts\": \"0.0\"\n" +
                     "                    }\n" +
                     "                }\n" +

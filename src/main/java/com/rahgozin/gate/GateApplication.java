@@ -1,5 +1,6 @@
 package com.rahgozin.gate;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -47,7 +48,6 @@ public class GateApplication {
         this.restTemplateBuilder = restTemplateBuilder;
     }
     public static void main(String[] args) {
-
         SpringApplication.run(GateApplication.class, args);
 //        GetTokenService getTokenService = new GetTokenService(applicationProperties);
 //        getTokenService.getToken();

@@ -1,5 +1,6 @@
 package com.rahgozin.gate.dto.queryPaymentLog.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -17,6 +18,7 @@ public class QueryPaymentLogAcctAccessCode {
     @JsonProperty("arc:AccountCode")
     QueryPaymentLogAccountCode accountCode;
 
+    @JsonIgnore
     @XmlElement(name = "ars:PrimaryIdentity")
     public QueryPaymentLogPrimaryIdentity getPrimaryIdentity() {
         if (primaryIdentity == null) primaryIdentity = new QueryPaymentLogPrimaryIdentity();

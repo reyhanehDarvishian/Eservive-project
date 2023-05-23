@@ -69,7 +69,7 @@ public class TokenService {
     public String getQueryPaymentLogToken() {
         String accessToken = TokenData.getQueryPaymentLogToken();
         if (accessToken == null) {
-            CRMToken crmToken = this.getCrmToken("ecare.query-payment-log.read");
+            CRMToken crmToken = this.getCrmToken("ecare.query-payment-log-soap.read");
             accessToken = crmToken.getAccessToken();
             TokenData.addQueryPaymentLogToken(accessToken);
             return TokenData.getQueryPaymentLogToken();
@@ -79,7 +79,7 @@ public class TokenService {
     }
 
     public void reNewQueryPaymentLogToken() {
-        CRMToken crmToken = this.getCrmToken("ecare.query-payment-log.read");
+        CRMToken crmToken = this.getCrmToken("ecare.query-payment-log-soap.read");
         String accessToken = crmToken.getAccessToken();
         TokenData.addQueryPaymentLogToken(accessToken);
     }

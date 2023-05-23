@@ -45,6 +45,18 @@ public class MockQueryAccountInfoController {
                     "                    \"accountBasicInfo\": {\n" +
                     "                        \"extsProperties\": [\n" +
                     "                            {\n" +
+                    "                                \"code\": \"CustomerSegment\",\n" +
+                    "                                \"value\": \"1\"\n" +
+                    "                            },\n" +
+                    "                            {\n" +
+                    "                                \"code\": \"CustomerLevel\",\n" +
+                    "                                \"value\": \"0\"\n" +
+                    "                            },\n" +
+                    "                            {\n" +
+                    "                                \"code\": \"MainSegment\",\n" +
+                    "                                \"value\": \"No\"\n" +
+                    "                            },\n" +
+                    "                            {\n" +
                     "                                \"code\": \"SubSegment\",\n" +
                     "                                \"value\": \"No\"\n" +
                     "                            }\n" +
@@ -77,15 +89,7 @@ public class MockQueryAccountInfoController {
                     "                    },\n" +
                     "                    \"contactPersonInfo\": {\n" +
                     "                        \"contactPersonId\": \"8611010002702010\",\n" +
-                    "                        \"addressInfo\": {\n" +
-                    "                            \"addrId\": \"8612010002937020\",\n" +
-                    "                            \"addrClass\": \"S\",\n" +
-                    "                            \"addr1\": \"ایران\",\n" +
-                    "                            \"addr2\": \"آذربایجان غربی\",\n" +
-                    "                            \"addr3\": \"سردشت\",\n" +
-                    "                            \"usAddr\": \"تست تست تست\",\n" +
-                    "                            \"postalCode\": \"1111111111\"\n" +
-                    "                        },\n" +
+                    "                        \"addressInfo\": null,\n" +
                     "                        \"contactPersonType\": \"1\",\n" +
                     "                        \"firstName\": \"طاهره\",\n" +
                     "                        \"lastName\": \"طاهری بازخانه\",\n" +

@@ -1,29 +1,30 @@
-package com.rahgozin.gate.dto.queryFreeUnit.response;
+package com.rahgozin.gate.dto.queryPaymentLog.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.rahgozin.gate.config.ApplicationProperties;
 
 import javax.annotation.Generated;
-
+import javax.xml.bind.annotation.XmlElement;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "Body"
 })
 @Generated("jsonschema2pojo")
-public class QueryFreeUnitEnvelopeRes {
+public class QueryPaymentLogResEnvelope {
     @JsonProperty("body")
-    private QueryFreeUnitBodyRes freeUnitBodyRes;
+    private Body body;
 
     @JsonProperty("body")
-    public QueryFreeUnitBodyRes getBody() {
-        return freeUnitBodyRes;
+    public Body getBody() {
+        if (body == null) body = new Body();
+        return body;
     }
 
     @JsonProperty("Body")
-    public void setBody(QueryFreeUnitBodyRes freeUnitBodyRes) {
-        this.freeUnitBodyRes = freeUnitBodyRes;
+    public void setBody(Body body) {
+        this.body = body;
     }
+
 }

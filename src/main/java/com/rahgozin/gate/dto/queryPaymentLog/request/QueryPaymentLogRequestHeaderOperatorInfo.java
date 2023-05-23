@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class QueryPaymentLogRequestHeaderOperatorInfo {
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cbs")
+    @JacksonXmlProperty(isAttribute = true, localName = "xmlns")
     private String operatorInfoSchema = "http://www.huawei.com/bme/cbsinterface/cbscommon";
     @JsonProperty("OperatorID")
     private String operatorId;

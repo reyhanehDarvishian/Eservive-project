@@ -4,7 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 @EnableConfigurationProperties
@@ -29,6 +31,16 @@ public class ApplicationProperties {
     private ChangeImsiReportConnection changeImsiReportConnection;
     private QueryFreeUnitConnection queryFreeUnitConnection;
     private GetToken getToken;
+    private Map<String, String> desc = new HashMap<>();
+    private Map<String, String> billing = new HashMap<>();
+
+    public Map<String, String> getBilling() {
+        return billing;
+    }
+
+    public void setBilling(Map<String, String> billing) {
+        this.billing = billing;
+    }
 
     public QueryFreeUnitConnection getQueryFreeUnitConnection() {
         return queryFreeUnitConnection;
@@ -39,7 +51,15 @@ public class ApplicationProperties {
         return this;
     }
 
-    public static class QueryFreeUnitConnection{
+    public Map<String, String> getDesc() {
+        return desc;
+    }
+
+    public void setDesc(Map<String, String> desc) {
+        this.desc = desc;
+    }
+
+    public static class QueryFreeUnitConnection {
         private String baseUrl;
         private Integer readTimeout;
         private Integer connectionTimeout;
@@ -52,6 +72,7 @@ public class ApplicationProperties {
         private String operatorId;
         private String channelId;
         private String primaryIdentity;
+
 
         public String getBaseUrl() {
             return baseUrl;

@@ -2,20 +2,17 @@ package com.rahgozin.gate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.rahgozin.gate.config.ApplicationProperties;
 import com.rahgozin.gate.dto.queryCustomBillingInfo.request.*;
-import com.rahgozin.gate.dto.queryCustomBillingInfo.response.*;
+import com.rahgozin.gate.dto.queryCustomBillingInfo.response.QueryCustomBillingInfoResEnvelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 @Service
 public class QueryCustomBillingInfoService {
@@ -26,7 +23,7 @@ public class QueryCustomBillingInfoService {
     @Autowired
     public QueryCustomBillingInfoService
             (@Qualifier("queryCustomBillingInfoRestTemplate") RestTemplate queryCustomBillingInfoRestTemplate,
-              ApplicationProperties applicationProperties, TokenService tokenService) {
+             ApplicationProperties applicationProperties, TokenService tokenService) {
         this.queryCustomBillingInfoRestTemplate = queryCustomBillingInfoRestTemplate;
         this.applicationProperties = applicationProperties;
         this.tokenService = tokenService;
@@ -61,7 +58,7 @@ public class QueryCustomBillingInfoService {
         queryCustomBillingInfoRequest.getAcctAccessCode()
                 .setPrimaryIdentity(phoneNumber);
 
-        if (opType==0) {
+        if (opType == 0) {
 
             queryCustomBillingInfoRequest.setBillCycleID(date);
         }
@@ -83,7 +80,33 @@ public class QueryCustomBillingInfoService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        Map body = queryCustomBillingInfoRestTemplate.postForEntity(applicationProperties.getQueryBillingInfoConnection().getBaseUrl(), queryCustomBillingResBody, Map.class).getBody();
-        return new ObjectMapper().convertValue(body, QueryCustomBillingInfoResEnvelope.class);
+        QueryCustomBillingInfoResEnvelope body = queryCustomBillingInfoRestTemplate.postForEntity(applicationProperties.getQueryBillingInfoConnection().getBaseUrl(), queryCustomBillingResBody, QueryCustomBillingInfoResEnvelope.class).getBody();
+
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setLocalVoiceCallsName(applicationProperties.getBilling().getOrDefault("localVoiceCalls", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setInternationVoiceCallsName(applicationProperties.getBilling().getOrDefault("internationVoiceCalls", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setInternationalRoamingChargesName(applicationProperties.getBilling().getOrDefault("internationalRoamingCharges", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setSmsName(applicationProperties.getBilling().getOrDefault("sms", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setVmsName(applicationProperties.getBilling().getOrDefault("vms", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setPackagesName(applicationProperties.getBilling().getOrDefault("packages", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setInternetName(applicationProperties.getBilling().getOrDefault("internet", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setVasName(applicationProperties.getBilling().getOrDefault("vas", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setcRMCostsName(applicationProperties.getBilling().getOrDefault("crmCosts", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setSpecialServicesName(applicationProperties.getBilling().getOrDefault("specialServices", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().seteGovName(applicationProperties.getBilling().getOrDefault("eGov", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setSubscriptionFeeName(applicationProperties.getBilling().getOrDefault("subscriptionFee", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setTotalAmountName(applicationProperties.getBilling().getOrDefault("totalAmount", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setTaxName(applicationProperties.getBilling().getOrDefault("tax", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setTotalOldDebtsName(applicationProperties.getBilling().getOrDefault("totalOldDebts", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setCharityName(applicationProperties.getBilling().getOrDefault("charity", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setGovernmentGeneralIncomeName(applicationProperties.getBilling().getOrDefault("governmentGeneralIncome", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setPostToPreBTName(applicationProperties.getBilling().getOrDefault("postToPreBT", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setSumName(applicationProperties.getBilling().getOrDefault("sum", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setDiscountName(applicationProperties.getBilling().getOrDefault("discount", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setTotalOldCreditName(applicationProperties.getBilling().getOrDefault("totalOldCredit", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setUnconfirmedPaymentName(applicationProperties.getBilling().getOrDefault("unconfirmedPayment", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setExemptionFeeName(applicationProperties.getBilling().getOrDefault("exemptionFee", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setRoundingName(applicationProperties.getBilling().getOrDefault("rounding", "none"));
+        body.getBody().getQueryCustomBillingInfoResultMsg().getQueryCustomBillingInfoResult().getInvoiceInfo().getInvoiceSummary().setPayableName(applicationProperties.getBilling().getOrDefault("payable", "none"));
+        return body;
     }
 }

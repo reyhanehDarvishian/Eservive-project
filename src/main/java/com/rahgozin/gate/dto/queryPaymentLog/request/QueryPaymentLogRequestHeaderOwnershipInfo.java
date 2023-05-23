@@ -6,7 +6,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class QueryPaymentLogRequestHeaderOwnershipInfo {
-    @JacksonXmlProperty(isAttribute = true, localName = "xmlns:cbs")
+    @JacksonXmlProperty(isAttribute = true, localName = "xmlns")
     private String ownershipInfoSchema = "http://www.huawei.com/bme/cbsinterface/cbscommon";
     @JsonProperty("BEID")
     private String beId;

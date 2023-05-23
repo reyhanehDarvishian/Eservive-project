@@ -52,6 +52,10 @@ public class MockQueryBusinessFeeController {
                     "                \"feeDetails\": {\n" +
                     "                    \"chargeCodesNames\": [\n" +
                     "                        {\n" +
+                    "                            \"chargeCodeName\": \"Transfer of Ownership Fee\",\n" +
+                    "                            \"languageCode\": \"en_US\"\n" +
+                    "                        },\n" +
+                    "                        {\n" +
                     "                            \"chargeCodeName\": \"هزینه انتقال مالکیت \",\n" +
                     "                            \"languageCode\": \"fa_IR\"\n" +
                     "                        }\n" +

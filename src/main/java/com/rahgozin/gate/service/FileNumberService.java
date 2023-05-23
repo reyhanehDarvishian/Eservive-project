@@ -27,7 +27,7 @@ public class FileNumberService {
         this.entityIdService = entityIdService;
     }
 
-    public String getFileNumber(String phoneNumber) {
+    public Object getFileNumber(String phoneNumber) {
         XmlMapper xmlMapper = new XmlMapper();
         xmlMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         xmlMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);

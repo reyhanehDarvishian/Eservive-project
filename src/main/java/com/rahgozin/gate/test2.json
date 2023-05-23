@@ -1,0 +1,12 @@
+{
+  "Body": {
+    "QueryCustomBillingInfoResultMsg": {
+      "ResultHeader": {
+        "Version": "1",
+        "ResultCode": "102050522",
+        "MsgLanguageCode": "2002",
+        "ResultDesc": "No subscriber information is found based on value 98867 of service number."
+      }
+    }
+  }
+}
